@@ -74,10 +74,10 @@ const Gen2Overview = () => {
         </Heading>
         <Text className="max-inline-content">
           Amplify has reimagined the way frontend developers build fullstack
-          applications on AWS. This next generation of Amplify’s backend
-          building tooling lets you author your frontend and backend definition
-          completely with TypeScript, a file convention, and Git branch-based
-          environments.
+          applications on AWS. This next generation of Amplify's backend
+          building tooling lets you author your backend definition completely
+          with TypeScript, iterate faster locally with per-developer sandbox
+          environments, and deploy using Git branch-based environments.
         </Text>
 
         <Flex className="home-cta">
