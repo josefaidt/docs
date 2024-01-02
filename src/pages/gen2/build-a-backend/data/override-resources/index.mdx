@@ -26,7 +26,7 @@ const backend = defineBackend({
   data,
 });
 
-const dataResources = backend.resources.data.resources;
+const dataResources = backend.data.resources;
 
 // Access L2 resources under `.resources`
 dataResources.tables["Todo"].tableArn;
@@ -42,7 +42,7 @@ Object.values(dataResources.cfnResources.cfnTables).forEach((table) => {
 ## Customize Amplify-generated AppSync GraphQL API resources
 
 
-Apply all the customizations on `backend.resources.data.resources.graphqlApi` or `backend.resources.data.resources.cfnResources.cfnGraphqlApi`. For example, to enable X-Ray tracing for the AppSync GraphQL API:
+Apply all the customizations on `backend.data.resources.graphqlApi` or `backend.data.resources.cfnResources.cfnGraphqlApi`. For example, to enable X-Ray tracing for the AppSync GraphQL API:
 
 ```ts
 import { defineBackend } from "@aws-amplify/backend";
@@ -52,13 +52,13 @@ const backend = defineBackend({
   data,
 });
 
-backend.resources.data.resources.cfnResources.cfnGraphqlApi.xrayEnabled = true;
+backend.data.resources.cfnResources.cfnGraphqlApi.xrayEnabled = true;
 ```
 
 ## Customize Amplify-generated resources for data models
 
 
-Apply all the customizations on `backend.resources.data.resources.tables["MODEL_NAME"]` or `backend.resources.data.resources.cfnResources.cfnTables["MODEL_NAME"]`. Pass in the model type name into `backend.resources.data.resources.cfnResources.cfnTables["MODEL_NAME"]` to modify the resources generated for that particular model type. For example, to enable time-to-live on the Todo `@model` type's DynamoDB table:
+Apply all the customizations on `backend.data.resources.tables["MODEL_NAME"]` or `backend.data.resources.cfnResources.cfnTables["MODEL_NAME"]`. Pass in the model type name into `backend.data.resources.cfnResources.cfnTables["MODEL_NAME"]` to modify the resources generated for that particular model type. For example, to enable time-to-live on the Todo `@model` type's DynamoDB table:
 
 ```ts
 import { defineBackend } from "@aws-amplify/backend";
@@ -68,7 +68,7 @@ const backend = defineBackend({
   data,
 });
 
-backend.resources.data.resources.cfnResources.cfnTables['Todo'].timeToLiveSpecification = {
+backend.data.resources.cfnResources.cfnTables['Todo'].timeToLiveSpecification = {
   attributeName: 'ttl',
   enabled: true
 };
@@ -87,7 +87,7 @@ const backend = defineBackend({
   data,
 });
 
-backend.resources.data.resources.cfnResources.cfnTables['Todo'].billingMode = 'PAY_PER_REQUEST';
+backend.data.resources.cfnResources.cfnTables['Todo'].billingMode = 'PAY_PER_REQUEST';
 ```
 
 ### Example - Configure provisioned throughput for a DynamoDB table
@@ -102,7 +102,7 @@ const backend = defineBackend({
   data,
 });
 
-backend.resources.data.resources.cfnResources.cfnTables["Todo"].provisionedThroughput = {
+backend.data.resources.cfnResources.cfnTables["Todo"].provisionedThroughput = {
   readCapacityUnits: 5,
   writeCapacityUnits: 5,
 };
@@ -121,7 +121,7 @@ const backend = defineBackend({
   data,
 });
 
-backend.resources.data.resources.cfnResources.cfnTables["Todo"].pointInTimeRecoverySpecification = {
+backend.data.resources.cfnResources.cfnTables["Todo"].pointInTimeRecoverySpecification = {
   pointInTimeRecoveryEnabled: true,
 };
 ```

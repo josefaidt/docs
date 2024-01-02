@@ -639,7 +639,7 @@ const backend = defineBackend({
   data
 });
 
-const { cfnUserPool } = backend.resources.auth.resources.cfnResources;
+const { cfnUserPool } = backend.auth.resources.cfnResources;
 
 cfnUserPool.addPropertyOverride('DeviceConfiguration', {
   ChallengeRequiredOnNewDevice: true,
