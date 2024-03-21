@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Client code generation',
-  description: "Amplify's codegen capabilities generate native code for iOS and Android, as well as types for Flow and TypeScript. It can also generate GraphQL statements (queries, mutations, and subscriptions).",
+  description:
+    "Amplify's codegen capabilities generate native code for iOS and Android, as well as types for Flow and TypeScript. It can also generate GraphQL statements (queries, mutations, and subscriptions).",
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

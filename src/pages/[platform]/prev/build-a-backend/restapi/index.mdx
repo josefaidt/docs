@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'API (REST)',
-  description: 'A straightforward and secure solution for making HTTP requests using REST APIs',
+  description:
+    'A straightforward and secure solution for making HTTP requests using REST APIs',
   platforms: [
     'android',
     'angular',
@@ -18,11 +19,7 @@ export const meta = {
   route: '/[platform]/prev/build-a-backend/restapi',
   canonicalObjects: [
     {
-      platforms: [
-        'flutter',
-        'android',
-        'swift'
-      ],
+      platforms: ['flutter', 'android', 'swift'],
       canonicalPath: '/swift/prev/build-a-backend/restapi/'
     },
     {
@@ -43,7 +40,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

@@ -4,7 +4,7 @@ export const meta = {
     'Learn how to set up and connect your backend resources for authentication in Amplify (Gen 2).'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -213,8 +213,8 @@ The `Authenticator` component offers a simple way to add authentication flows in
 
 ```html
 <script setup>
-  import { Authenticator } from "@aws-amplify/ui-vue";
-  import "@aws-amplify/ui-vue/styles.css";
+  import { Authenticator } from '@aws-amplify/ui-vue';
+  import '@aws-amplify/ui-vue/styles.css';
 
   import { Amplify } from 'aws-amplify';
   import config from '../amplifyconfiguration.json';

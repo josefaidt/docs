@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Subscribe and unsubscribe',
-  description: "Learn more about how to subscribe to and unsubscribe from topics using Amplify's PubSub category",
+  description:
+    "Learn more about how to subscribe to and unsubscribe from topics using Amplify's PubSub category",
   platforms: [
     'javascript',
     'react-native',
@@ -13,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'angular',
-        'javascript',
-        'nextjs',
-        'react'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/pubsub/subscribe/'
+      platforms: ['vue', 'angular', 'javascript', 'nextjs', 'react'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/pubsub/subscribe/'
     }
   ]
 };
@@ -29,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

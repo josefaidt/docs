@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'API (GraphQL)',
-  description: 'Easy and secure solution to access your backend data with support for real-time updates using GraphQL',
+  description:
+    'Easy and secure solution to access your backend data with support for real-time updates using GraphQL',
   platforms: [
     'android',
     'angular',
@@ -18,13 +19,7 @@ export const meta = {
   route: '/[platform]/build-a-backend/graphqlapi',
   canonicalObjects: [
     {
-      platforms: [
-        'nextjs',
-        'react',
-        'javascript',
-        'angular',
-        'vue'
-      ],
+      platforms: ['nextjs', 'react', 'javascript', 'angular', 'vue'],
       canonicalPath: '/javascript/build-a-backend/graphqlapi/'
     }
   ]
@@ -34,7 +29,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

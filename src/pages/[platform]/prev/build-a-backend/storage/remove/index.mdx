@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Remove files',
-  description: 'Learn how to remove files using the Storage category in Amplify',
+  description:
+    'Learn how to remove files using the Storage category in Amplify',
   platforms: [
     'javascript',
     'react-native',
@@ -16,13 +17,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'angular',
-        'javascript',
-        'react',
-        'nextjs'
-      ],
+      platforms: ['vue', 'angular', 'javascript', 'react', 'nextjs'],
       canonicalPath: '/javascript/prev/build-a-backend/storage/remove/'
     }
   ]
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

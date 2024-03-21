@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Set up custom queries and mutations',
-  description: 'Add authorization rules to your GraphQL schema to control access to your data.',
+  description:
+    'Add authorization rules to your GraphQL schema to control access to your data.',
   platforms: [
     'android',
     'angular',
@@ -27,7 +28,8 @@ export const meta = {
         'swift',
         'react-native'
       ],
-      canonicalPath: '/javascript/build-a-backend/graphqlapi/custom-business-logic/'
+      canonicalPath:
+        '/javascript/build-a-backend/graphqlapi/custom-business-logic/'
     }
   ]
 };
@@ -36,7 +38,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -45,9 +47,7 @@ export function getStaticProps(context) {
   };
 }
 
-<MigrationAlert
-  url={'/[platform]/tools/cli-legacy/function-directive/'}
-/>
+<MigrationAlert url={'/[platform]/tools/cli-legacy/function-directive/'} />
 
 Define your custom business logic in a Lambda function resolver, HTTP resolver, or an AppSync JavaScript or VTL resolver and expose them in a GraphQL query or mutation. Extend or override Amplify-generated GraphQL resolvers to optimize for your specific use cases.
 
@@ -618,7 +618,7 @@ npm i @aws-cdk/aws-appsync@~1.172.0
 
 > **Note:** Installations using the '\~' character do not modify the package.json. To use '\~' for default npm configurations, make sure your package.json reflects the right dependency to avoid compatibility errors in CDK.
 
-Finally, add your custom resolvers into the `cdk-stack.ts` file. You can either add the JavaScript or VTL inline into your `cdk-stack.ts` file. 
+Finally, add your custom resolvers into the `cdk-stack.ts` file. You can either add the JavaScript or VTL inline into your `cdk-stack.ts` file.
 
 #### Unit Resolver
 
@@ -645,7 +645,7 @@ export function request(ctx) {
 export function response(ctx) {
   return ctx.arguments.message
 }
-`
+`;
 
 export class cdkStack extends cdk.Stack {
   constructor(

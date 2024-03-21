@@ -1,9 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-import { JS_PLATFORMS } from '@/data/platforms';
 
 export const meta = {
   title: 'Connect to data from server-side runtimes',
-  description: 'Learn more about how to call an AppSync GraphQL API from a NodeJS app or a Lambda function',
+  description:
+    'Learn more about how to call an AppSync GraphQL API from a NodeJS app or a Lambda function',
   platforms: [
     'javascript',
     'nextjs',
@@ -22,7 +22,8 @@ export const meta = {
         'react-native',
         'javascript'
       ],
-      canonicalPath: '/javascript/build-a-backend/graphqlapi/connect-from-server-runtime/'
+      canonicalPath:
+        '/javascript/build-a-backend/graphqlapi/connect-from-server-runtime/'
     }
   ]
 };
@@ -31,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

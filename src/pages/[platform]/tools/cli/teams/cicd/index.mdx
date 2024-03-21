@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Continuous deployment',
-  description: 'Use the multi-environments feature with the Amplify Console for a fully managed web application hosting and continuous deployment solution.',
+  description:
+    'Use the multi-environments feature with the Amplify Console for a fully managed web application hosting and continuous deployment solution.',
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 ## Using Amplify Console
 

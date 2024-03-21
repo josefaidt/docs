@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Use CDK to add custom AWS resources',
-  description: "The Amplify CLI provides the ability to add custom AWS resources with AWS Cloud Development Kit (CDK). Running the 'amplify add custom' command in your Amplify project provides CDK starter stacks along with mechanisms to reference other Amplify-generated resources.",
+  description:
+    "The Amplify CLI provides the ability to add custom AWS resources with AWS Cloud Development Kit (CDK). Running the 'amplify add custom' command in your Amplify project provides CDK starter stacks along with mechanisms to reference other Amplify-generated resources.",
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 The Amplify CLI provides the ability to add custom AWS resources with AWS Cloud Development Kit (CDK). Running the `amplify add custom` command in your Amplify project provides CDK starter stacks along with mechanisms to reference other Amplify-generated resources.
 
@@ -53,6 +53,7 @@ The Amplify CLI provides the ability to add custom AWS resources with AWS Cloud 
 ```bash
 amplify add custom
 ```
+
 ```console
 ? How do you want to define this custom resource? …  (Use arrow keys or type to filter)
 ❯ AWS CDK
@@ -67,7 +68,6 @@ To migrate from AWS CDK v1 to v2, refer to the [migration documentation](/[platf
 
 </Callout>
 
-
 The following example creates an SNS topic whose notification messages are forwarded via email:
 
 ```ts
@@ -78,24 +78,29 @@ import * as sns from 'aws-cdk-lib/aws-sns';
 import * as subs from 'aws-cdk-lib/aws-sns-subscriptions';
 
 export class cdkStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps, amplifyResourceProps?: AmplifyHelpers.AmplifyResourceProps) {
+  constructor(
+    scope: Construct,
+    id: string,
+    props?: cdk.StackProps,
+    amplifyResourceProps?: AmplifyHelpers.AmplifyResourceProps
+  ) {
     super(scope, id, props);
     /* Do not remove - Amplify CLI automatically injects the current deployment environment in this input parameter */
     new cdk.CfnParameter(this, 'env', {
       type: 'String',
-      description: 'Current Amplify CLI env name',
+      description: 'Current Amplify CLI env name'
     });
 
     const amplifyProjectInfo = AmplifyHelpers.getProjectInfo();
     const snsTopicResourceName = `sns-topic-${amplifyProjectInfo.projectName}-${cdk.Fn.ref('env')}`;
     const topic = new sns.Topic(this, 'sns-topic', {
-      topicName: snsTopicResourceName,
+      topicName: snsTopicResourceName
     });
 
     topic.addSubscription(new subs.EmailSubscription('<your-email-address>'));
     new cdk.CfnOutput(this, 'snsTopicArn', {
       value: topic.topicArn,
-      description: 'The arn of the SNS topic',
+      description: 'The arn of the SNS topic'
     });
   }
 }
@@ -105,8 +110,7 @@ export class cdkStack extends cdk.Stack {
 
 <Callout warning>
 
-When creating custom resources using Amplify CLI, the CLI may require additional permissions outside the Amplify managed policy, [`AdministratorAccess-Amplify`](https://console.aws.amazon.com/iam/home#policies/arn:aws:iam::aws:policy/AdministratorAccess-Amplify).
-Please refer to the Amplify [IAM Policy](/[platform]/tools/cli/reference/iam/) documentation for additional information regarding the necessary permissions for Amplify CLI and for more information on providing additional permissions to your Amplify CLI IAM user refer to [AWS IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-directly-console) documentation.
+When creating custom resources using Amplify CLI, the CLI may require additional permissions outside the Amplify managed policy, [`AdministratorAccess-Amplify`](https://console.aws.amazon.com/iam/home#policies/arn:aws:iam::aws:policy/AdministratorAccess-Amplify). Please refer to the Amplify [IAM Policy](/[platform]/tools/cli/reference/iam/) documentation for additional information regarding the necessary permissions for Amplify CLI and for more information on providing additional permissions to your Amplify CLI IAM user refer to [AWS IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-directly-console) documentation.
 
 </Callout>
 
@@ -136,7 +140,7 @@ If you want to use the environment name as a variable for a resource, use `cdk.F
 const role = new iam.Role(this, 'CustomRole', {
   assumedBy: new iam.AccountRootPrincipal(),
   roleName: `${roleResourceNamePrefix}-${cdk.Fn.ref('env')}` // Reference to Amplify "env" name
-})
+});
 ```
 
 If you want to apply conditional logic based on the current environment name, use `AmplifyHelpers.projectInfo()`:
@@ -148,7 +152,7 @@ import * as AmplifyHelpers from '@aws-amplify/cli-extensibility-helper';
 
 const envName = AmplifyHelpers.getProjectInfo().envName;
 
-if (envName === "prod") {
+if (envName === 'prod') {
   // ...
 } else {
   // ...
@@ -160,16 +164,20 @@ if (envName === "prod") {
 The CDK stack for custom AWS resources can reference Amplify-generated resources' CloudFormation outputs. To reference another resource, first add the resource as a dependency.
 
 ```ts
-import { AmplifyDependentResourcesAttributes } from "../../types/amplify-dependent-resources-ref";
+import { AmplifyDependentResourcesAttributes } from '../../types/amplify-dependent-resources-ref';
 
-const dependencies: AmplifyDependentResourcesAttributes = AmplifyHelpers.addResourceDependency(this,
-  amplifyResourceProps.category,
-  amplifyResourceProps.resourceName,
-  [{
-    category: "function", // api, auth, storage, function, etc.
-    resourceName: "<resource-name>" // find the resource at "amplify/backend/<category>/<resourceName>"
-  } /* add more dependencies as needed */] 
-);
+const dependencies: AmplifyDependentResourcesAttributes =
+  AmplifyHelpers.addResourceDependency(
+    this,
+    amplifyResourceProps.category,
+    amplifyResourceProps.resourceName,
+    [
+      {
+        category: 'function', // api, auth, storage, function, etc.
+        resourceName: '<resource-name>' // find the resource at "amplify/backend/<category>/<resourceName>"
+      } /* add more dependencies as needed */
+    ]
+  );
 ```
 
 Then use the `cdk.Fn.ref` function to create a dynamic reference of the dependencies' outputs.

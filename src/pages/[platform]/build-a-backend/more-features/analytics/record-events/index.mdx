@@ -24,7 +24,8 @@ export const meta = {
         'react',
         'vue'
       ],
-      canonicalPath: '/javascript/build-a-backend/more-features/analytics/record-events/'
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/analytics/record-events/'
     }
   ]
 };
@@ -33,7 +34,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -64,7 +65,7 @@ To record custom events call the `record` API:
 import { record } from 'aws-amplify/analytics';
 
 record({
-  name: 'albumVisit',
+  name: 'albumVisit'
 });
 ```
 
@@ -77,7 +78,7 @@ import { record } from 'aws-amplify/analytics';
 
 record({
   name: 'albumVisit',
-  attributes: { genre: '', artist: '' },
+  attributes: { genre: '', artist: '' }
 });
 ```
 
@@ -92,7 +93,7 @@ import { record } from 'aws-amplify/analytics';
 
 record({
   name: 'albumVisit',
-  metrics: { minutesListened: 30 },
+  metrics: { minutesListened: 30 }
 });
 ```
 

@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Working with files / attachments',
-  description: 'Learn more about associating Amplify Storage files with Amplify GraphQL API records.',
+  description:
+    'Learn more about associating Amplify Storage files with Amplify GraphQL API records.',
   platforms: [
     'javascript',
     'react-native',
@@ -21,7 +22,8 @@ export const meta = {
         'react',
         'nextjs'
       ],
-      canonicalPath: '/javascript/prev/build-a-backend/graphqlapi/working-with-files/'
+      canonicalPath:
+        '/javascript/prev/build-a-backend/graphqlapi/working-with-files/'
     }
   ]
 };
@@ -30,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

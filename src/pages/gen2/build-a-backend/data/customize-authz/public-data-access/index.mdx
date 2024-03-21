@@ -1,9 +1,10 @@
 export const meta = {
-  title: "Public data access",
-  description: "The public authorization strategy grants everyone access to the API, which is protected behind the scenes with an API key. You can also override the authorization provider to use an unauthenticated IAM role from Cognito instead of an API key for public access."
+  title: 'Public data access',
+  description:
+    'The public authorization strategy grants everyone access to the API, which is protected behind the scenes with an API key. You can also override the authorization provider to use an unauthenticated IAM role from Cognito instead of an API key for public access.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -21,9 +22,9 @@ To grant everyone access, use the `.public()` authorization strategy. Behind the
 const schema = a.schema({
   Todo: a
     .model({
-      content: a.string(),
+      content: a.string()
     })
-    .authorization([a.allow.public()]),
+    .authorization([a.allow.public()])
 });
 ```
 
@@ -35,8 +36,8 @@ You can also override the authorization provider. In the example below, `iam` is
 const schema = a.schema({
   Todo: a
     .model({
-      content: a.string(),
+      content: a.string()
     })
-    .authorization([a.allow.public('iam')]),
+    .authorization([a.allow.public('iam')])
 });
 ```

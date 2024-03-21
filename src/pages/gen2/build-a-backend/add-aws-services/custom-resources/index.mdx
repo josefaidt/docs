@@ -3,7 +3,7 @@ export const meta = {
   description: 'Learn how to write custom resources with the AWS CDK.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -239,8 +239,8 @@ const customNotifications = new CustomNotifications(
 backend.addOutput({
   custom: {
     topicArn: customNotifications.topic.topicArn,
-    topicName: customNotifications.topic.topicName,
-  },
+    topicName: customNotifications.topic.topicName
+  }
 });
 ```
 

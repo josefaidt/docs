@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Build options',
-  description: "Use build options for the function category in Amplify to execute a script before a function is deployed, for example, to transpile Typescript or ES6 with Babel into a format that is supported by the AWS Lambda's node runtime.",
+  description:
+    "Use build options for the function category in Amplify to execute a script before a function is deployed, for example, to transpile Typescript or ES6 with Babel into a format that is supported by the AWS Lambda's node runtime.",
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 <BlockSwitcher>
 
@@ -62,7 +62,7 @@ Let's say, a function resource has been created with `amplify function add` and 
 {
   "scripts": {
     "amplify:generateReport": "cd amplify/backend/function/generateReport && tsc -p ./tsconfig.json && cd -"
-  },
+  }
 }
 ```
 
@@ -112,7 +112,7 @@ Let's say, a function resource has been created with `amplify function add` and 
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
   }
 }
 ```
@@ -150,7 +150,7 @@ There are no existing build options for Python functions. The process of buildin
 
 Amplify will run `pipenv install` in your function's source directory during builds using either Pipenv's default virtual environment, or whichever virtual environment happens to be active. Then, during the packaging stage, the contents of the `site-packages` directory for that virtual environment will be zipped up along with the function-specific files.
 
-The contents of the Python build can include local development dependencies (e.g. for testing) in addition to those necessary for your function to run. Packages installed as "editable" (using the `-e` flag) will not be  packaged, as they are represented as an `.egg-link` file pointing to the local, editable code of the dependency.
+The contents of the Python build can include local development dependencies (e.g. for testing) in addition to those necessary for your function to run. Packages installed as "editable" (using the `-e` flag) will not be packaged, as they are represented as an `.egg-link` file pointing to the local, editable code of the dependency.
 
 </Block>
 

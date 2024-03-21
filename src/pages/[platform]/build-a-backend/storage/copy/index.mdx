@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Copy files',
-  description: "Learn more about how to copy files using Amplify's storage category.",
+  description:
+    "Learn more about how to copy files using Amplify's storage category.",
   platforms: [
     'javascript',
     'flutter',
@@ -31,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Identify text',
-  description: 'Learn how to identify text from images and documents in your application using AWS Amplify.',
+  description:
+    'Learn how to identify text from images and documents in your application using AWS Amplify.',
   platforms: [
     'javascript',
     'swift',
@@ -14,14 +15,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'angular',
-        'javascript',
-        'react',
-        'vue',
-        'nextjs'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/predictions/identify-text/'
+      platforms: ['angular', 'javascript', 'react', 'vue', 'nextjs'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/predictions/identify-text/'
     }
   ]
 };
@@ -30,7 +26,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

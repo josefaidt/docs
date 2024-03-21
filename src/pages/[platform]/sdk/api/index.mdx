@@ -4,17 +4,11 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 export const meta = {
   title: 'API',
   description: 'API',
-  platforms: [
-    'android',
-    'swift'
-  ],
+  platforms: ['android', 'swift'],
   route: '/[platform]/sdk/api',
   canonicalObjects: [
     {
-      platforms: [
-        'android',
-        'swift'
-      ],
+      platforms: ['android', 'swift'],
       canonicalPath: '/swift/sdk/api/'
     }
   ]
@@ -24,7 +18,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

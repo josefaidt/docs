@@ -16,13 +16,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'angular',
-        'javascript',
-        'react',
-        'nextjs',
-        'vue'
-      ],
+      platforms: ['angular', 'javascript', 'react', 'nextjs', 'vue'],
       canonicalPath: '/javascript/start/getting-started/nextsteps/'
     }
   ]
@@ -32,7 +26,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

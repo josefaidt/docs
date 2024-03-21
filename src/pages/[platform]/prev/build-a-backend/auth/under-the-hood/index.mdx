@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Under the hood',
-  description: 'Learn more about the foundational auth concepts for cloud-based applications and how they work with Amplify.',
+  description:
+    'Learn more about the foundational auth concepts for cloud-based applications and how they work with Amplify.',
   platforms: [
     'javascript',
     'android',
@@ -33,7 +34,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

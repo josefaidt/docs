@@ -3,23 +3,12 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 export const meta = {
   title: 'Migrate from Google Maps',
   description: 'Migrate applications from Google Maps to Amplify Geo',
-  platforms: [
-    'javascript',
-    'angular',
-    'nextjs',
-    'react',
-    'vue'
-  ],
+  platforms: ['javascript', 'angular', 'nextjs', 'react', 'vue'],
   canonicalObjects: [
     {
-      platforms: [
-        'angular',
-        'vue',
-        'javascript',
-        'nextjs',
-        'react'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/geo/google-migration/'
+      platforms: ['angular', 'vue', 'javascript', 'nextjs', 'react'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/geo/google-migration/'
     }
   ]
 };
@@ -28,7 +17,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

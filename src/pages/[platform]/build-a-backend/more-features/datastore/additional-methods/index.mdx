@@ -16,14 +16,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'nextjs',
-        'angular',
-        'javascript',
-        'vue',
-        'react'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/datastore/additional-methods/'
+      platforms: ['nextjs', 'angular', 'javascript', 'vue', 'react'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/datastore/additional-methods/'
     }
   ]
 };
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

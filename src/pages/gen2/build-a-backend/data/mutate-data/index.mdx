@@ -1,9 +1,10 @@
 export const meta = {
   title: 'Create, update, and delete application data',
-  description: 'Mutate application data in an API by generating the client, adding items, updating existing items, deleting items, troubleshooting unauthorized errors, and canceling requests.'
+  description:
+    'Mutate application data in an API by generating the client, adding items, updating existing items, deleting items, troubleshooting unauthorized errors, and canceling requests.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -103,10 +104,10 @@ const client = generateClient<Schema>();
 const { errors, data: newTodo } = await client.models.Todo.create(
   {
     content: 'My new todo',
-    isDone: true,
+    isDone: true
   },
   {
-    authMode: 'apiKey',
+    authMode: 'apiKey'
   }
 );
 ```

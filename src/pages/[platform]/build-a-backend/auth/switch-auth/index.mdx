@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Switching authentication flows',
-  description: 'Learn more about how to switch between different auth flows in Amplify.',
+  description:
+    'Learn more about how to switch between different auth flows in Amplify.',
   platforms: [
     'android',
     'javascript',
@@ -15,13 +16,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'angular',
-        'nextjs',
-        'react',
-        'javascript',
-        'vue'
-      ],
+      platforms: ['angular', 'nextjs', 'react', 'javascript', 'vue'],
       canonicalPath: '/javascript/build-a-backend/auth/switch-auth/'
     }
   ]
@@ -31,7 +26,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

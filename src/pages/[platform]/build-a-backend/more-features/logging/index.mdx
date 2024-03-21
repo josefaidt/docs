@@ -4,17 +4,11 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 export const meta = {
   title: 'Logging',
   description: 'Logging',
-  platforms: [
-    'android',
-    'swift'
-  ],
+  platforms: ['android', 'swift'],
   route: '/[platform]/build-a-backend/more-features/logging',
   canonicalObjects: [
     {
-      platforms: [
-        'android',
-        'swift'
-      ],
+      platforms: ['android', 'swift'],
       canonicalPath: '/swift/build-a-backend/more-features/logging/'
     }
   ]
@@ -24,7 +18,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

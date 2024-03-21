@@ -13,14 +13,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'vue',
-        'nextjs',
-        'react',
-        'angular'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/datastore/example-application/'
+      platforms: ['javascript', 'vue', 'nextjs', 'react', 'angular'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/datastore/example-application/'
     }
   ]
 };
@@ -29,7 +24,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

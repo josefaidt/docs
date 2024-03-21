@@ -3,7 +3,7 @@ export const meta = {
   description: 'Learn how to connect your app code to an API.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -77,7 +77,7 @@ import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '../amplify/data/resource'; // Path to your backend resource definition
 
 const client = generateClient<Schema>({
-  authMode: 'apiKey',
+  authMode: 'apiKey'
 });
 ```
 
@@ -89,7 +89,7 @@ import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '../amplify/data/resource'; // Path to your backend resource definition
 
 const client = generateClient<Schema>({
-  authMode: 'userPool',
+  authMode: 'userPool'
 });
 ```
 
@@ -101,7 +101,7 @@ import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '../amplify/data/resource'; // Path to your backend resource definition
 
 const client = generateClient<Schema>({
-  authMode: 'iam',
+  authMode: 'iam'
 });
 ```
 
@@ -113,7 +113,7 @@ import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '../amplify/data/resource'; // Path to your backend resource definition
 
 const client = generateClient<Schema>({
-  authMode: 'oidc',
+  authMode: 'oidc'
 });
 ```
 
@@ -131,7 +131,7 @@ const lambdaAuthToken = getAuthToken();
 
 const client = generateClient<Schema>({
   authMode: 'lambda',
-  authToken: lambdaAuthToken,
+  authToken: lambdaAuthToken
 });
 ```
 
@@ -148,7 +148,7 @@ You can also specify the authorization mode on each individual API request. This
 
 ```ts
 const { data: todos, errors } = await client.models.Todo.list({
-  authMode: 'apiKey',
+  authMode: 'apiKey'
 });
 ```
 
@@ -157,7 +157,7 @@ const { data: todos, errors } = await client.models.Todo.list({
 
 ```ts
 const { data: todos, errors } = await client.models.Todo.list({
-  authMode: 'userPool',
+  authMode: 'userPool'
 });
 ```
 
@@ -166,7 +166,7 @@ const { data: todos, errors } = await client.models.Todo.list({
 
 ```ts
 const { data: todos, errors } = await client.models.Todo.list({
-  authMode: 'iam',
+  authMode: 'iam'
 });
 ```
 
@@ -175,7 +175,7 @@ const { data: todos, errors } = await client.models.Todo.list({
 
 ```ts
 const { data: todos, errors } = await client.models.Todo.list({
-  authMode: 'oidc',
+  authMode: 'oidc'
 });
 ```
 
@@ -190,7 +190,7 @@ const lambdaAuthToken = getAuthToken();
 
 const { data: todos, errors } = await client.models.Todo.list({
   authMode: 'lambda',
-  authToken: lambdaAuthToken,
+  authToken: lambdaAuthToken
 });
 ```
 
@@ -211,8 +211,8 @@ import { generateClient } from 'aws-amplify/data';
 
 const client = generateClient<Schema>({
   headers: {
-    'My-Custom-Header': 'my value',
-  },
+    'My-Custom-Header': 'my value'
+  }
 });
 ```
 
@@ -226,8 +226,8 @@ const { data: blog, errors } = await client.models.Blog.get(
   { id: 'myBlogId' },
   {
     headers: {
-      'My-Custom-Header': 'my value',
-    },
+      'My-Custom-Header': 'my value'
+    }
   }
 );
 ```
@@ -260,9 +260,9 @@ const client = generateClient<Schema>({
     }
     */
     return {
-      'My-Custom-Header': 'my value',
+      'My-Custom-Header': 'my value'
     };
-  },
+  }
 });
 ```
 
@@ -288,9 +288,9 @@ const res = await client.models.Blog.get(
       }
       */
       return {
-        'My-Custom-Header': 'my value',
+        'My-Custom-Header': 'my value'
       };
-    },
+    }
   }
 );
 ```

@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Versioning and conflict resolution',
-  description: 'The @versioned directive adds object versioning and conflict resolution to a type.',
+  description:
+    'The @versioned directive adds object versioning and conflict resolution to a type.',
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 ## @versioned
 
@@ -52,16 +52,17 @@ The `@versioned` directive adds object versioning and conflict resolution to a t
 
 <Callout>
 
-Note that **@versioned** is only supported in client code (statement and types) generated via AppSync [codegen](/[platform]/tools/cli-legacy/client-codegen/).
-**@versioned** is not supported by models generated via `amplify codegen models`.
-Use [Amplify DataStore](/[platform]/build-a-backend/more-features/datastore/set-up-datastore/) instead of **@versioned** to provide offline app data access with built-in conflict-resolution.
+Note that **@versioned** is only supported in client code (statement and types) generated via AppSync [codegen](/[platform]/tools/cli-legacy/client-codegen/). **@versioned** is not supported by models generated via `amplify codegen models`. Use [Amplify DataStore](/[platform]/build-a-backend/more-features/datastore/set-up-datastore/) instead of **@versioned** to provide offline app data access with built-in conflict-resolution.
 
 </Callout>
 
 ### Definition
 
 ```graphql
-directive @versioned(versionField: String = "version", versionInput: String = "expectedVersion") on OBJECT
+directive @versioned(
+  versionField: String = "version"
+  versionInput: String = "expectedVersion"
+) on OBJECT
 ```
 
 ### Usage
@@ -72,7 +73,7 @@ Add `@versioned` to a type that is also annotate with `@model` to enable object 
 type Post @model @versioned {
   id: ID!
   title: String!
-  version: Int!   # <- If not provided, it is added for you.
+  version: Int! # <- If not provided, it is added for you.
 }
 ```
 
@@ -80,12 +81,10 @@ type Post @model @versioned {
 
 ```graphql
 mutation Create {
-  createPost(input:{
-    title:"Conflict detection in the cloud!"
-  }) {
+  createPost(input: { title: "Conflict detection in the cloud!" }) {
     id
     title
-    version  # will be 1
+    version # will be 1
   }
 }
 ```
@@ -97,9 +96,9 @@ mutation Create {
 ```graphql
 mutation Update($postId: ID!) {
   updatePost(
-    input:{
-      id: $postId,
-      title: "Conflict detection in the cloud is great!",
+    input: {
+      id: $postId
+      title: "Conflict detection in the cloud is great!"
       expectedVersion: 1
     }
   ) {
@@ -114,12 +113,7 @@ mutation Update($postId: ID!) {
 
 ```graphql
 mutation Delete($postId: ID!) {
-  deletePost(
-    input: {
-      id: $postId,
-      expectedVersion: 2
-    }
-  ) {
+  deletePost(input: { id: $postId, expectedVersion: 2 }) {
     id
     title
     version
@@ -127,9 +121,7 @@ mutation Delete($postId: ID!) {
 }
 ```
 
-Update and delete operations will fail if the **expectedVersion** does not match the version
-stored in DynamoDB. You may change the default name of the version field on the type as well as the name
-of the input field via the **versionField** and **versionInput** arguments on the `@versioned` directive.
+Update and delete operations will fail if the **expectedVersion** does not match the version stored in DynamoDB. You may change the default name of the version field on the type as well as the name of the input field via the **versionField** and **versionInput** arguments on the `@versioned` directive.
 
 ### Generates
 

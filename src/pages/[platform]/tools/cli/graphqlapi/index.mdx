@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'API (GraphQL)',
-  description: 'Add a GraphQL API and database to your Amplify app using the Amplify CLI.',
+  description:
+    'Add a GraphQL API and database to your Amplify app using the Amplify CLI.',
   platforms: [
     'android',
     'angular',
@@ -38,7 +39,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

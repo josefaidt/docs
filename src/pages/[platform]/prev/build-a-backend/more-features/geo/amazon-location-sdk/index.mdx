@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Use Amazon Location Service SDK',
-  description: 'For specialized use cases where Amplify does not provide the functionality, you can use the escape hatch to access a low-level client instance for Amazon Location Service.',
+  description:
+    'For specialized use cases where Amplify does not provide the functionality, you can use the escape hatch to access a low-level client instance for Amazon Location Service.',
   platforms: [
     'swift',
     'android',
@@ -14,14 +15,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'angular',
-        'nextjs',
-        'javascript',
-        'react'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/geo/amazon-location-sdk/'
+      platforms: ['vue', 'angular', 'nextjs', 'javascript', 'react'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/geo/amazon-location-sdk/'
     }
   ]
 };
@@ -30,7 +26,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

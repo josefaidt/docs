@@ -1,5 +1,5 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'File browser',
   description: 'Get started with Amplify Studio',
@@ -36,7 +36,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +44,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 Amplify Studio's **File browser** provides a view of the backend file storage for an application. You can use this feature to test your files and to provide both technical and non-technical team members with the ability to create and update an application's files in real-time instead of building admin views.
 

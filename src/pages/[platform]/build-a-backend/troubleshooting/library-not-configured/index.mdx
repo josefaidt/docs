@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Troubleshoot configuration errors',
-  description: 'Addressing missing configuration or NoCredentials error messages',
+  description:
+    'Addressing missing configuration or NoCredentials error messages',
   platforms: [
     'angular',
     'javascript',
@@ -21,7 +22,8 @@ export const meta = {
         'nextjs',
         'javascript'
       ],
-      canonicalPath: '/javascript/build-a-backend/troubleshooting/library-not-configured/'
+      canonicalPath:
+        '/javascript/build-a-backend/troubleshooting/library-not-configured/'
     }
   ]
 };
@@ -30,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -45,11 +47,11 @@ If you are running into a missing configuration or `NoCredentials` error message
 
 Make sure you are calling `Amplify.configure` in the root file of your project. The root file of your app may be different depending on your frontend framework. The current default for some common frameworks are listed below (if you are not using TypeScript the `ts` and `tsx` extensions would be `js` and `jsx`):
 
-* Vue.js: **src/main.ts**
-* React: **src/main.tsx**
-* Angular: **src/main.ts**
-* Next.js Page Router: **pages/_app.tsx** or **src/pages/_app.tsx**
-* Nuxt: **app.vue** (Or in a plugins file, as recommended [here](https://docs.amplify.aws/react/build-a-backend/server-side-rendering/nuxt/).)
+- Vue.js: **src/main.ts**
+- React: **src/main.tsx**
+- Angular: **src/main.ts**
+- Next.js Page Router: **pages/\_app.tsx** or **src/pages/\_app.tsx**
+- Nuxt: **app.vue** (Or in a plugins file, as recommended [here](https://docs.amplify.aws/react/build-a-backend/server-side-rendering/nuxt/).)
 
 <Callout>
 
@@ -74,7 +76,7 @@ Amplify.configure();
 export default function App() {
   return (
     <div>
-        <ComponentX />
+      <ComponentX />
     </div>
   );
 }
@@ -86,11 +88,7 @@ import { fetchAuthSession } from 'aws-amplify/auth';
 fetchAuthSession(); // Will throw "AuthUserPoolException: Auth UserPool not configured."
 
 export default function ComponentX() {
-  return (
-    <div className="box">
-      ...
-    </div>
-  );
+  return <div className="box">...</div>;
 }
 ```
 
@@ -100,7 +98,7 @@ This error can also happen when using Next.js Layouts and calling Amplify APIs i
 import ConfigureAmplifyClientSide from '@/ConfigureAmplifyClientSide';
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -118,7 +116,7 @@ export default function RootLayout({
 ```
 
 ```tsx title="ConfigureAmplifyClientSide.tsx"
-import { Amplify } from "aws-amplify";
+import { Amplify } from 'aws-amplify';
 
 Amplify.configure(config, { ssr: true });
 
@@ -128,7 +126,7 @@ export default function ConfigureAmplifyClientSide() {
 ```
 
 ```tsx title="page.tsx"
-import { fetchAuthSession } from "aws-amplify/auth";
+import { fetchAuthSession } from 'aws-amplify/auth';
 
 // The layout calls configure, but fetchAuthSession ends up executing first
 // Will throw "AuthUserPoolException: Auth UserPool not configured."
@@ -137,11 +135,7 @@ fetchAuthSession().then((session) => {
 });
 
 export default function HomePage() {
-  return (
-    <div className="box">
-      ...
-    </div>
-  );
+  return <div className="box">...</div>;
 }
 ```
 
@@ -156,7 +150,7 @@ Amplify.configure();
 export default function App() {
   return (
     <div>
-        <ComponentX />
+      <ComponentX />
     </div>
   );
 }
@@ -167,7 +161,7 @@ import { type AuthSession, fetchAuthSession } from 'aws-amplify/auth';
 import { useEffect, useState } from 'react';
 
 export default function ComponentX() {
-  const [session, setSession] = useState<AuthSession|undefined>();
+  const [session, setSession] = useState<AuthSession | undefined>();
 
   const getSession = async () => {
     try {
@@ -182,11 +176,7 @@ export default function ComponentX() {
     getSession();
   }, []);
 
-  return (
-    <div className="box">
-      ...
-    </div>
-  );
+  return <div className="box">...</div>;
 }
 ```
 

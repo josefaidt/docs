@@ -3,7 +3,7 @@ export const meta = {
   description: 'Learn how to manage user profiles and add user attributes.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -56,16 +56,16 @@ import { defineAuth } from '@aws-amplify/backend';
 
 export const auth = defineAuth({
   loginWith: {
-    email: true,
+    email: true
   },
-// highlight-start
+  // highlight-start
   userAttributes: {
     birthdate: {
       required: false,
-      mutable: false,
-    },
-  },
-// highlight-end
+      mutable: false
+    }
+  }
+  // highlight-end
 });
 ```
 

@@ -1,24 +1,25 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Connect to existing AWS resources with Amplify CLI',
-  description: "Use the Amplify CLI to connect existing AWS resources to a new app.",
+  description:
+    'Use the Amplify CLI to connect existing AWS resources to a new app.',
   platforms: [
-                'angular',
-                'flutter',
-                'javascript',
-                'nextjs',
-                'react',
-                'react-native',
-                'vue'
-              ]
+    'angular',
+    'flutter',
+    'javascript',
+    'nextjs',
+    'react',
+    'react-native',
+    'vue'
+  ]
 };
 
 export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -37,7 +38,7 @@ In this guide, you will learn how to connect a new Flutter mobile app to backend
 Connecting a web app? We also offer a version of this guide for integrating existing backends with React using the Amplify CLI. Check out the [React guide](/react/build-a-backend/existing-resources/cli/).
 
 </Callout>
-</InlineFilter> 
+</InlineFilter>
 
 <InlineFilter filters={["angular", "javascript", "nextjs", "react", "react-native", "vue"]}>
 In this guide, you will learn how to connect a new React web app to backend resources you've already created using the Amplify CLI.
@@ -56,63 +57,71 @@ This guide will walk you through connecting a new Flutter app to AWS resources c
 
 Before you begin, you will need:
 
-* An existing Flutter app
-* An AWS account: If you don't already have an account, follow the [Setting Up Your AWS Environment](https://aws.amazon.com/getting-started/guides/setup-environment/) tutorial for a quick overview.
-* The Amplify CLI [installed](/[platform]/tools/cli/start/set-up-cli/) and configured.
-* Flutter [installed](https://docs.flutter.dev/get-started/install) and configured.
-* A text editor combined with Flutter’s command-line tools. For this guide, we will use VS Code, but you can use your preferred IDE.
+- An existing Flutter app
+- An AWS account: If you don't already have an account, follow the [Setting Up Your AWS Environment](https://aws.amazon.com/getting-started/guides/setup-environment/) tutorial for a quick overview.
+- The Amplify CLI [installed](/[platform]/tools/cli/start/set-up-cli/) and configured.
+- Flutter [installed](https://docs.flutter.dev/get-started/install) and configured.
+- A text editor combined with Flutter’s command-line tools. For this guide, we will use VS Code, but you can use your preferred IDE.
 
 ### Find the AWS backend details
+
 Before connecting the backend resources to our new app, we first need to locate the details of the AWS environment provisioned for the existing app.
 
 **Step 1:** In your existing app, open the file `<Your-App>/amplify/team-provider-info.json`.
 
-<img src="/images/existing-resources/team-provider-info-mobile-cli.png" alt="The team-provider-info.json file within the file directory of the Amplify app." width="450" />
+<img
+  src="/images/existing-resources/team-provider-info-mobile-cli.png"
+  alt="The team-provider-info.json file within the file directory of the Amplify app."
+  width="450"
+/>
 
 **Step 2:** In the `team-provider-info.json` file, note the following:
 
-1. The environment you want to use 
+1. The environment you want to use
 2. The `AmplifyAppId` for the required environment
 
 {/* cSpell:disable */}
-<img src="/images/existing-resources/dev-amplifyappid-mobile-cli.png" alt="The environment and AmplifyAppId in team-provider-info.json file." width="450" />
+
+<img
+  src="/images/existing-resources/dev-amplifyappid-mobile-cli.png"
+  alt="The environment and AmplifyAppId in team-provider-info.json file."
+  width="450"
+/>
 {/* cSpell:enable */}
 
 ### Create the Flutter app
+
 Now that we have gathered the necessary backend details, we can start building out the new Flutter app.
 
 **Step 1:** Create a Flutter app by running the following command in your terminal.
 
 ```bash showLineNumbers={false}
 
-flutter create amplify_connect_resources 
+flutter create amplify_connect_resources
 
 ```
 
-
-
-**Step 2:** Open the newly created Flutter app using VS Code by running the following commands in your terminal. 
+**Step 2:** Open the newly created Flutter app using VS Code by running the following commands in your terminal.
 
 ```
-cd amplify_connect_resources 
-code . -r 
+cd amplify_connect_resources
+code . -r
 ```
 
 ![Open the created app using VS Code.](/images/existing-resources/app-vscode-mobile-cli.png)
 
-
 **Step 3:** Navigate to the app's root folder and import the Amplify backend for the app by running the following command in your terminal.
 
 ```bash showLineNumbers={false}
-amplify pull --appId <The_App_ID> --envName <The_App_Env> 
+amplify pull --appId <The_App_ID> --envName <The_App_Env>
 ```
-
 
 **Step 4:** Select the AWS Authentication method. In this example, we are using an AWS profile. Ensure that the selected profile has the necessary permissions to access and modify AWS resources. See [Configure the Amplify CLI](/[platform]/tools/cli/start/set-up-cli/#configure-the-amplify-cli) for more information on setting up your AWS profile.
 
 Accept the default values for the prompts about the default editor, type of app, and storage location of the configuration file. Then answer **Yes** to the “modifying this backend” question. Amplify CLI will initialize the backend and connect the project to the cloud.
 
 {/* cSpell:disable */}
+
 ```
 ? Select the authentication method you want to use: AWS profile
 
@@ -132,20 +141,26 @@ Please tell us about your project
 
 Edit your schema at /Users/malakamm/development/amplify_connect_resources/amplify/backend/api/amplifyBudget/schema.graphql or place .graphql files in a directory at /Users/malakamm/development/amplify_connect_resources/amplify/backend/api/amplifyBudget/schema
 ✔ Successfully pulled backend environment dev from the cloud.
-✅ 
+✅
 
 ✅ Successfully pulled backend environment dev from the cloud.
 Run 'amplify pull' to sync future upstream changes.
 ```
+
 {/* cSpell:enable */}
 
 The Amplify CLI will add a new folder named `amplify` to the app's root folder, which contains the Amplify project and backend details. It will also add a new Dart file, `amplifyconfiguration.dart`, to the `lib/` folder. The app will use this file at runtime to locate and connect to the backend resources you have provisioned.
 
-<img src="/images/existing-resources/amplify-amplifyconfig-mobile-cli.png" alt="The Amplify folder and amplifyconfiguration.dart file within the file directory of the Amplify app." width="450" />
+<img
+  src="/images/existing-resources/amplify-amplifyconfig-mobile-cli.png"
+  alt="The Amplify folder and amplifyconfiguration.dart file within the file directory of the Amplify app."
+  width="450"
+/>
 
 **Step 5:** Update the file `pubspec.yaml` in the app root directory to add the required packages. In this example, we will use the same packages as the app created in this guide. To do this, update the `pubspec.yaml` as shown in the following.
 
 {/* cSpell:disable */}
+
 ```yaml title="pubspec.yaml"
 name: budget_tracker
 description: A new Flutter project.
@@ -160,10 +175,10 @@ dependencies:
   amplify_auth_cognito: ^1.0.0
   amplify_authenticator: ^1.0.0
   amplify_flutter: ^1.0.0
-// highlight-end  
+// highlight-end
   flutter:
     sdk: flutter
-// highlight-next-line 
+// highlight-next-line
  go_router: ^6.5.5
   cupertino_icons: ^1.0.2
 
@@ -176,19 +191,24 @@ flutter:
   uses-material-design: true
 
 ```
-{/* cSpell:enable */}
 
+{/* cSpell:enable */}
 
 **Step 6**: To enable type-safe interaction with the GraphQL schema, use this command to generate the required Dart files.
 
 ```bash showLineNumbers={false}
 
-amplify codegen models 
+amplify codegen models
 
 ```
+
 The Amplify CLI will generate the Dart files in the `lib/models` folder.
 
-<img src="/images/existing-resources/lib-models-dart-mobile-cli.png" alt="The models folder within the file directory of the Amplify app." width="450" />
+<img
+  src="/images/existing-resources/lib-models-dart-mobile-cli.png"
+  alt="The models folder within the file directory of the Amplify app."
+  width="450"
+/>
 
 **Step 7:** Update the `main.dart` file with the following code to introduce the Amplify Authenticator and integrate Amplify API with your app to create, update, query, and delete `BudgetEntry` items. Typically, you would break this file up into smaller modules but we've kept it as a single file for this guide.
 
@@ -600,9 +620,7 @@ class _ManageBudgetEntryScreenState extends State<ManageBudgetEntryScreen> {
 
 ```
 
-
 **Step 8:** Run the app using the following command, and use the authentication flow to create a user. Then create a few budget items.
-
 
 ```bash showLineNumbers={false}
 
@@ -611,16 +629,13 @@ flutter run
 
 ```
 
-
-
 <video autoPlay={true} muted={true} loop={true} width="50%">
   <source src="/images/existing-resources/budget-tracker-mobile-cli.mp4" />
 </video>
 
-### Conclusion 
+### Conclusion
 
 Congratulations! Your new Flutter app is now connected to AWS resources from a different app through AWS Amplify. This integration grants your app access to authentication resources for user management and a scalable GraphQL API backed by Amazon DynamoDB.
-
 
 ### Clean up resources
 
@@ -632,6 +647,7 @@ amplify delete
 ```
 
 If you would like to expand this demo app into a production-ready app, you may need to add additional resources, such as authorization and storage. Refer to the [Build & connect backend section](/[platform]/build-a-backend/) for guides on how to add and connect other backend resources.
+
 </InlineFilter>
 
 <InlineFilter filters={["angular", "javascript", "nextjs", "react", "react-native", "vue"]}>
@@ -641,28 +657,39 @@ This guide will walk you through connecting a new React web app to the AWS resou
 
 Before you begin, you will need:
 
-* An existing React app
-* An AWS account: If you don't already have an account, follow the [Setting Up Your AWS Environment](https://aws.amazon.com/getting-started/guides/setup-environment/) tutorial for a quick overview.
-* The Amplify CLI [installed](https://docs.amplify.aws/cli/start/install/) and configured.
-* A text editor. For this guide, we will use VS Code, but you can use your preferred IDE.
+- An existing React app
+- An AWS account: If you don't already have an account, follow the [Setting Up Your AWS Environment](https://aws.amazon.com/getting-started/guides/setup-environment/) tutorial for a quick overview.
+- The Amplify CLI [installed](https://docs.amplify.aws/cli/start/install/) and configured.
+- A text editor. For this guide, we will use VS Code, but you can use your preferred IDE.
 
 ### Find the AWS backend details
+
 Before connecting the backend resources to our new app, we first need to locate the details of the AWS environment provisioned for the existing app.
 
 **Step 1:** In your existing app, open the file `<Your-App>/amplify/team-provider-info.json` .
 
-<img src="/images/existing-resources/team-provider-info-web-cli.png" alt="The team-provider-info.json file within the file directory of the Amplify app." width="450" />
+<img
+  src="/images/existing-resources/team-provider-info-web-cli.png"
+  alt="The team-provider-info.json file within the file directory of the Amplify app."
+  width="450"
+/>
 
 **Step 2:** In the `team-provider-info.json` file, note the following:
 
-1. The environment you want to use 
+1. The environment you want to use
 2. The `AmplifyAppId` for the required environment
 
 {/* cSpell:disable */}
-<img src="/images/existing-resources/dev-amplifyappid-web-cli.png" alt="The environment and AmplifyAppId in team-provider-info.json file." width="450" />
+
+<img
+  src="/images/existing-resources/dev-amplifyappid-web-cli.png"
+  alt="The environment and AmplifyAppId in team-provider-info.json file."
+  width="450"
+/>
 {/* cSpell:enable */}
 
 ### Create the React app
+
 Now that we have gathered the necessary backend details, we can start building out the new React app.
 
 **Step 1:** Create a React app by running the following command in your terminal.
@@ -671,7 +698,7 @@ Now that we have gathered the necessary backend details, we can start building o
 npx create-react-app react-amplify-connect
 ```
 
-**Step 2:** Open the newly created React app using VS Code by running the following commands in your terminal. 
+**Step 2:** Open the newly created React app using VS Code by running the following commands in your terminal.
 
 ```
 cd react-amplify-connect
@@ -691,6 +718,7 @@ amplify pull --appId <The_App_ID> --envName <The_App_Env>
 Accept the default values for the prompts and make sure to answer **Yes** to the “modifying this backend” question. Amplify CLI will initialize the backend and connect the project to the cloud.
 
 {/* cSpell:disable */}
+
 ```
 ? Select the authentication method you want to use: AWS profile
 
@@ -719,16 +747,21 @@ Edit your schema at /Users/malakamm/development/react-amplify-connect/amplify/ba
 Browserslist: caniuse-lite is outdated. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme
-✅ 
+✅
 
 ✅ Successfully pulled backend environment dev from the cloud.
 Run 'amplify pull' to sync future upstream changes.
 ```
+
 {/* cSpell:enable */}
 
-The Amplify CLI will add a new folder named `amplify` to the app's root folder, which contains the Amplify project and backend details. 
+The Amplify CLI will add a new folder named `amplify` to the app's root folder, which contains the Amplify project and backend details.
 
-<img src="/images/existing-resources/app-root-folder-web-cli.png" alt="The amplify folder within the file directory of the Amplify app." width="450" />
+<img
+  src="/images/existing-resources/app-root-folder-web-cli.png"
+  alt="The amplify folder within the file directory of the Amplify app."
+  width="450"
+/>
 
 **Step 5**: Use the following command to generate the GraphQL statements.
 
@@ -736,7 +769,7 @@ The Amplify CLI will add a new folder named `amplify` to the app's root folder, 
 amplify codegen add
 ```
 
-**Step 6:** Accept the default values of the prompts. 
+**Step 6:** Accept the default values of the prompts.
 
 ```
 
@@ -750,9 +783,13 @@ amplify codegen add
 
 The CLI will add a new folder named `graphql` to the app's root folder, which contains the GraphQL statements.
 
-<img src="/images/existing-resources/graphql-web-cli.png" alt="The graphql folder within the file directory of the Amplify app." width="450" />
+<img
+  src="/images/existing-resources/graphql-web-cli.png"
+  alt="The graphql folder within the file directory of the Amplify app."
+  width="450"
+/>
 
-**Step 7:** Install the aws-amplify and @aws-amplify/ui-react packages by running the following commands. 
+**Step 7:** Install the aws-amplify and @aws-amplify/ui-react packages by running the following commands.
 
 ```bash showLineNumbers={false}
 npm install aws-amplify @aws-amplify/ui-react
@@ -852,7 +889,6 @@ export default withAuthenticator(App);
 
 
 ```
-
 
 **Step 9:** Run the app using the following command.
 
@@ -994,7 +1030,11 @@ export default withAuthenticator(App);
 amplify publish
 ```
 
-<img src="/images/existing-resources/publish-app-web-cli.png" alt="Amplify CLI publish the app and display a URL." width="450" />
+<img
+  src="/images/existing-resources/publish-app-web-cli.png"
+  alt="Amplify CLI publish the app and display a URL."
+  width="450"
+/>
 
 **Step 12:** Use the URL to run the app in the browser.
 
@@ -1015,4 +1055,5 @@ amplify delete
 ```
 
 If you would like to expand this demo app into a production-ready app, you may need to add additional resources, such as authorization and storage. Refer to the [Build & connect backend section](/[platform]/build-a-backend/) for guides on how to add and connect other backend resources.
+
 </InlineFilter>

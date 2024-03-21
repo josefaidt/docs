@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Set up Amplify PubSub',
-  description: 'Learn more about how you can use PubSub to pass messages between your app instances and your app’s backend creating real-time interactive experiences.',
+  description:
+    'Learn more about how you can use PubSub to pass messages between your app instances and your app’s backend creating real-time interactive experiences.',
   platforms: [
     'javascript',
     'react-native',
@@ -21,7 +22,8 @@ export const meta = {
         'angular',
         'nextjs'
       ],
-      canonicalPath: '/javascript/build-a-backend/more-features/pubsub/set-up-pubsub/'
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/pubsub/set-up-pubsub/'
     }
   ]
 };
@@ -30,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

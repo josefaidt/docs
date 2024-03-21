@@ -6,7 +6,7 @@ export const meta = {
   route: '/gen2/reference'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

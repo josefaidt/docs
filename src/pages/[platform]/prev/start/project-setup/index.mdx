@@ -2,8 +2,7 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Amplify project setup',
-  description:
-    'Set up Amplify prerequisites and a project.',
+  description: 'Set up Amplify prerequisites and a project.',
   platforms: [
     'angular',
     'javascript',
@@ -21,7 +20,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -33,7 +32,7 @@ export function getStaticProps(context) {
 
 <Callout info>
 
-We recommend that you use the [latest version for project setup](/[platform]/start/project-setup/) for your chosen framework or language. 
+We recommend that you use the [latest version for project setup](/[platform]/start/project-setup/) for your chosen framework or language.
 
 This page is a reference for those who need the previous version and includes all project setup content for that version. Selecting the navigation menu will take you back to the current version by default.
 

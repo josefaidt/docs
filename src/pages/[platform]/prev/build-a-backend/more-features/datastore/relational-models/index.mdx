@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Relational models',
-  description: "Learn more about how DataStore handles relationships between Models, such as 'has one', 'has many', 'belongs to'.",
+  description:
+    "Learn more about how DataStore handles relationships between Models, such as 'has one', 'has many', 'belongs to'.",
   platforms: [
     'flutter',
     'swift',
@@ -16,14 +17,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'nextjs',
-        'react',
-        'angular',
-        'vue',
-        'javascript'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/datastore/relational-models/'
+      platforms: ['nextjs', 'react', 'angular', 'vue', 'javascript'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/datastore/relational-models/'
     }
   ]
 };
@@ -32,7 +28,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

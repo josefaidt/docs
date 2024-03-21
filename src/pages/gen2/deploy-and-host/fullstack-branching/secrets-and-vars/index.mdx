@@ -3,13 +3,12 @@ export const meta = {
   description: 'Manage secrets and environment variables across your fullstack branch and local dev environments.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
     }
   };
-
 }
 
 Amplify Gen 2 offers centralized management of secrets and environment variables for all fullstack branches. Secrets allow you to securely configure environment-specific values like social sign-in keys, function environment variables, function secrets, and other sensitive data needed by your application across environments.

@@ -1,20 +1,12 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Best practices',
   description: "Constraints of Amplify Studio's Figma to React capabilities",
-  platforms: [
-    'javascript',
-    'react', 
-    'nextjs'
-  ],
+  platforms: ['javascript', 'react', 'nextjs'],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'javascript', 
-        'nextjs'
-      ],
+      platforms: ['react', 'javascript', 'nextjs'],
       canonicalPath: '/javascript/build-ui/uibuilder/bestpractices/'
     }
   ]
@@ -24,7 +16,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -32,11 +24,11 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 We're constantly improving Amplify Studio to make Figma to React code conversion better but there are some constraints that need to be taken into account.
 
 ## Make sure to mark frames as components in Figma
+
 Amplify Studio only converts Figma components. If you only have a Figma "frame", Studio will ignore it because frames tend to be used to lay out a set of components.
 
 Learn more about how Figma components work and how to create them with the video below from the Figma team:

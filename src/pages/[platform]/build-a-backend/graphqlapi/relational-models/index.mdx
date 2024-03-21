@@ -4,17 +4,14 @@ export const meta = {
   title: 'Relational models',
   description:
     'Learn more about how API (GraphQL) handles relationships between Models, such as "has one", "has many", "belongs to".',
-  platforms: [
-    'android',
-    'swift'
-    ]
+  platforms: ['android', 'swift']
 };
 
 export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -184,7 +181,7 @@ do {
                     rating: 10)
     let comment = Comment(content: "Loving Amplify API!",
                             post: post) // Directly pass in the post instance
-    
+
     let createPostResult = try await Amplify.API.mutate(request: .create(post))
     guard case .success = createPostResult else {
         print("API response: \(createPostResult)")
@@ -755,7 +752,7 @@ do {
     let post = Post(title: "My Post", rating: 10)
     let user = User(username: "User")
     let postEditor = PostEditor(post: post, user: user)
-    
+
     let createPostResult = try await Amplify.API.mutate(request: .create(post))
     guard case .success = createPostResult else {
         print("API response: \(createPostResult)")
@@ -879,12 +876,13 @@ do {
         print("API response: \(queryCommentResult)")
         return
     }
-    
+
     print("Post: ", loadedPost)
 } catch {
     print("Failed to query comment with post", error)
 }
 ```
+
 This will populate the selection set of the post in the GraphQL document which indicates to your GraphQL service to retrieve the post model as part of the operation. Once the comment is loaded, the post model is immediately available in-memory without requiring an additional network request.
 
 </Block>
@@ -1032,7 +1030,7 @@ This query fetches a postEditor and eagerly loads its post and user
 
 ```swift
 do {
-    let queryPostResult = try await Amplify.API.query(request: 
+    let queryPostResult = try await Amplify.API.query(request:
             .get(Post.self,
                  byIdentifier: "p1",
                  includes: { post in
@@ -1044,7 +1042,7 @@ do {
         print("API response: \(queryPostResult)")
         return
     }
-    
+
     try await comments.fetch()
     print("Comments: ", comments)
 } catch {
@@ -1061,7 +1059,7 @@ You can generate complex nested queries through the includes parameter.
 <Block>
 
 ```swift
-let queryCommentResult = try await Amplify.API.query(request: 
+let queryCommentResult = try await Amplify.API.query(request:
     .get(Comment.self,
          byIdentifier: "p1",
          includes: { comment in

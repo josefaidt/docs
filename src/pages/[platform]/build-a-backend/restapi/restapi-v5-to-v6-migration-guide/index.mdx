@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Migrate from v5 to v6',
-  description: 'Learn more about the migration steps to upgrade API(REST) APIs from Amplify JavaScript v5 to v6',
+  description:
+    'Learn more about the migration steps to upgrade API(REST) APIs from Amplify JavaScript v5 to v6',
   platforms: ['angular', 'javascript', 'nextjs', 'react', 'vue', 'react-native']
 };
 
@@ -10,7 +11,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -58,6 +59,7 @@ For v6 REST APIs, all API's use the same underlying input/output types, although
       }
       ```
     </div>
+
   </Columns>
 </Accordion>
 
@@ -105,6 +107,7 @@ For v6 REST APIs, all API's use the same underlying input/output types, although
       }
       ```
     </div>
+
   </Columns>
 </Accordion>
 
@@ -136,6 +139,7 @@ For v6 REST APIs, all API's use the same underlying input/output types, although
       }).response;
     }
     ```
+
   </Block>
   <Block name="V5">
     ```ts
@@ -159,6 +163,7 @@ For v6 REST APIs, all API's use the same underlying input/output types, although
       });
     }
     ```
+
   </Block>
 </BlockSwitcher>
 
@@ -490,8 +495,8 @@ The process for cancelling a request has changed in v6. In v5 you send in the pr
     import { API } from 'aws-amplify'
 
     const promise = API.get(
-      apiName, 
-      path, 
+      apiName,
+      path,
       options
     );
 
@@ -511,4 +516,3 @@ The process for cancelling a request has changed in v6. In v5 you send in the pr
 
   </Block>
 </BlockSwitcher>
-

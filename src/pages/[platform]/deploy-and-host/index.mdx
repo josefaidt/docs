@@ -18,22 +18,11 @@ export const meta = {
   route: '/[platform]/deploy-and-host',
   canonicalObjects: [
     {
-      platforms: [
-        'react-native',
-        'swift',
-        'android',
-        'flutter'
-      ],
+      platforms: ['react-native', 'swift', 'android', 'flutter'],
       canonicalPath: '/react-native/deploy-and-host/'
     },
     {
-      platforms: [
-        'javascript',
-        'angular',
-        'vue',
-        'react',
-        'nextjs'
-      ],
+      platforms: ['javascript', 'angular', 'vue', 'react', 'nextjs'],
       canonicalPath: '/javascript/deploy-and-host/'
     }
   ]
@@ -43,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

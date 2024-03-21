@@ -2,24 +2,12 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Upgrade from AppSync SDK',
-  description: 'Learn how to upgrade from AWS AppSync SDK (Maintenance mode) to AWS Amplify.',
-  platforms: [
-    'swift',
-    'javascript',
-    'angular',
-    'nextjs',
-    'react',
-    'vue'
-  ],
+  description:
+    'Learn how to upgrade from AWS AppSync SDK (Maintenance mode) to AWS Amplify.',
+  platforms: ['swift', 'javascript', 'angular', 'nextjs', 'react', 'vue'],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'react',
-        'vue',
-        'angular',
-        'nextjs'
-      ],
+      platforms: ['javascript', 'react', 'vue', 'angular', 'nextjs'],
       canonicalPath: '/javascript/build-a-backend/graphqlapi/upgrade-guide/'
     }
   ]
@@ -29,7 +17,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

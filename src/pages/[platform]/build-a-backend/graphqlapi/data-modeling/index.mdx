@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Customize your data model',
-  description: 'Customize your data model with primary keys, secondary indexes, and model relationships.',
+  description:
+    'Customize your data model with primary keys, secondary indexes, and model relationships.',
   platforms: [
     'angular',
     'javascript',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -194,7 +195,6 @@ query QueryCustomersForAccountRepresentative($accountRepresentativeID: ID!) {
 }
 ```
 
-
 <InlineFilter filters={["react", "nextjs", "angular", "vue", "react-native", "javascript"]}>
 
 ```js
@@ -346,7 +346,6 @@ mutation CreateProject {
 }
 ```
 
-
 ```js
 import { createProject } from './graphql/mutations';
 
@@ -390,7 +389,6 @@ mutation CreateProject {
   }
 }
 ```
-
 
 ```js
 import { createProject } from './graphql/mutations';
@@ -444,7 +442,6 @@ mutation CreatePost {
   }
 }
 ```
-
 
 ```js
 import { createPost } from './graphql/mutations';
@@ -529,7 +526,6 @@ const result = await client.graphql({
 const postWithComments = result.data.createPost;
 const postComments = postWithComments.comments.items; // access comments from post
 ```
-
 
 ### Belongs To relationship
 
@@ -810,11 +806,11 @@ You can use the `@default` directive to specify a default value for optional [sc
 ```graphql
 type Todo @model {
   content: String @default(value: "My new Todo")
-  # Note: all "value" parameters must be passed as a string value. 
+  # Note: all "value" parameters must be passed as a string value.
   # Under the hood, Amplify will parse the string values into respective types.
-  # For example, to set a default value for an integer field, 
+  # For example, to set a default value for an integer field,
   # you must pass in `"0"` instead of `0` without the double-quotes.
-  likes: Int @default(value: "0") # 
+  likes: Int @default(value: "0") #
 }
 ```
 
@@ -1087,6 +1083,7 @@ type Customer @model {
 Amplify Studio does not support splitting GraphQL schemas.
 
 If using Amplify Studio, please follow the [Limitations](https://docs.amplify.aws/javascript/tools/console/data/data-model/#split-graphql-files) section of the Data Modeling documentation for Amplify Studio.
+
 </Callout>
 
 AWS Amplify supports splitting your GraphQL schema into separate `.graphql` files.
@@ -1095,7 +1092,7 @@ You can start by creating a `amplify/backend/api/<api-name>/schema/` directory. 
 
 You can then run `amplify api gql-compile` and the output build schema will include all the types declared across your schema files.
 
-As your project grows, you may want to organize your custom queries, mutations, and subscriptions depending on the size and maintenance requirements of your project. You can either consolidate  all of them into one file or colocate them with their corresponding models.
+As your project grows, you may want to organize your custom queries, mutations, and subscriptions depending on the size and maintenance requirements of your project. You can either consolidate all of them into one file or colocate them with their corresponding models.
 
 **Using a Single `Query.graphql` File**
 
@@ -1136,16 +1133,18 @@ extend type Query {
   # additional custom queries
 }
 ```
+
 <Callout info>
-The order in which the Query types are extended does not affect the compilation of separate schema files.
+  The order in which the Query types are extended does not affect the
+  compilation of separate schema files.
 </Callout>
 
 <Callout info>
 Declaring custom Query, Mutation, and/or Subscription with the same field names in another schema file will result in schema validation errors similar to the following:
 
 `🛑 Object type extension 'Query' cannot redeclare field getBlogById`
-</Callout>
 
+</Callout>
 
 ## How it works
 

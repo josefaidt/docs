@@ -30,7 +30,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -152,7 +152,7 @@ async function currentSession() {
 
 ### Refreshing sessions
 
-The `fetchAuthSession` API automatically refreshes the user's session when the authentication tokens have expired and a valid `refreshToken` is present. Additionally, you can also refresh the session explicitly by calling the `fetchAuthSession` API with the `forceRefresh` flag enabled. 
+The `fetchAuthSession` API automatically refreshes the user's session when the authentication tokens have expired and a valid `refreshToken` is present. Additionally, you can also refresh the session explicitly by calling the `fetchAuthSession` API with the `forceRefresh` flag enabled.
 
 ```ts
 import { fetchAuthSession } from 'aws-amplify/auth';

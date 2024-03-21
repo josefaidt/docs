@@ -24,7 +24,8 @@ export const meta = {
         'react',
         'nextjs'
       ],
-      canonicalPath: '/javascript/prev/build-a-backend/auth/delete-user-account/'
+      canonicalPath:
+        '/javascript/prev/build-a-backend/auth/delete-user-account/'
     }
   ]
 };
@@ -33,7 +34,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

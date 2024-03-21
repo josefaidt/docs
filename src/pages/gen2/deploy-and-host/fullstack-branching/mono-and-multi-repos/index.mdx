@@ -4,13 +4,12 @@ export const meta = {
     'Set up multiple repositories with the Amplify CI/CD pipeline.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
     }
   };
-
 }
 
 You might have different frontend and backend teams that maintain their own repositories. With Amplify Gen 2, you can deploy repositories that have backend-only code, so frontend and backend teams can operate independently of each other.

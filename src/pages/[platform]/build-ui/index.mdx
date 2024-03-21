@@ -30,10 +30,7 @@ export const meta = {
       canonicalPath: '/react-native/build-ui/'
     },
     {
-      platforms: [
-        'javascript',
-        'react'
-      ],
+      platforms: ['javascript', 'react'],
       canonicalPath: '/javascript/build-ui/'
     }
   ]
@@ -43,7 +40,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

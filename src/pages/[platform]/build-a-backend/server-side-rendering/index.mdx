@@ -15,13 +15,7 @@ export const meta = {
   route: '/[platform]/build-a-backend/server-side-rendering',
   canonicalObjects: [
     {
-      platforms: [
-        'react-native',
-        'angular',
-        'vue',
-        'javascript',
-        'react'
-      ],
+      platforms: ['react-native', 'angular', 'vue', 'javascript', 'react'],
       canonicalPath: '/javascript/build-a-backend/server-side-rendering/'
     }
   ]
@@ -31,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {
@@ -101,7 +95,6 @@ You must **not** hoist any variables, object references created within the callb
 **NOTE:** If you anticipate a large number of concurrent requests to your server that require calls to `runWithAmplifyServerContext`, which may cause the rate limit exceptions thrown by the Cognito service, you can request to adjust the limit. See [Quotas in Amazon Cognito document](https://docs.aws.amazon.com/cognito/latest/developerguide/limits.html) for details.
 
 </Callout>
-
 
 Once you prepare the three required parameters you can perform calls of Amplify categories APIs on the server side. For example:
 

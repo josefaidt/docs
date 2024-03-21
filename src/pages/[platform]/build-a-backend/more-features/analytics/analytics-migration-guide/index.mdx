@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Migrate from v5 to v6',
-  description: 'Learn more about the migration steps to upgrade Analytics APIs for Amplify JavaScript v5 to v6',
+  description:
+    'Learn more about the migration steps to upgrade Analytics APIs for Amplify JavaScript v5 to v6',
   platforms: [
     'javascript',
     'react-native',
@@ -21,7 +22,8 @@ export const meta = {
         'vue',
         'react'
       ],
-      canonicalPath: '/javascript/build-a-backend/more-features/analytics/analytics-migration-guide/'
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/analytics/analytics-migration-guide/'
     }
   ]
 };
@@ -30,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -117,6 +119,7 @@ The `record` API in v6 has not changed in behavior, however, there are a couple 
       ```
 
     </div>
+
   </Columns>
 </Accordion>
 
@@ -168,19 +171,19 @@ The functionality of this API has not changed, however the input structure has b
 
       ```
       trackerType: 'pageView' | 'event' | 'session'
-		  opts: { 
+    	  opts: {
         provider: string; // removed in v6
         enable: boolean;
         attributes?: // simplified in v6: no longer accepts a function
           | (() => [key: string]: string | Promise<[key: string]: string>)
-	        | [key: string]: string;
+            | [key: string]: string;
         // trackerType: pageView
         eventName?: string;
         type?: 'SPA' | 'multiPageApp';
         getUrl?: () => string; // renamed urlProvider in v6
         // trackerType: event
         events?: string[];
-	      selectorPrefix?: string;
+          selectorPrefix?: string;
       }
       ```
 
@@ -206,6 +209,7 @@ The functionality of this API has not changed, however the input structure has b
       ```
 
     </div>
+
   </Columns>
 </Accordion>
 
@@ -326,6 +330,7 @@ This API has been renamed to `identifyUser` in v6 to align with other platforms.
       ```
 
     </div>
+
   </Columns>
 </Accordion>
 
@@ -409,6 +414,7 @@ The Kinesis and Kinesis (Firehose) `record` APIs in v6 have not changed in behav
       ```
 
     </div>
+
   </Columns>
 </Accordion>
 
@@ -492,6 +498,7 @@ The Personalize `record` API in v6 has not changed in behavior, however, there a
       ```
 
     </div>
+
   </Columns>
 </Accordion>
 

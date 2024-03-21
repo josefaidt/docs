@@ -1,9 +1,10 @@
 export const meta = {
   title: 'Next.js App Router (Server Components)',
-  description: 'Get started with AWS Amplify Gen 2 using the Next.js App Router using Server Components.'
+  description:
+    'Get started with AWS Amplify Gen 2 using the Next.js App Router using Server Components.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -23,17 +24,15 @@ import createProject from 'src/fragments/gen2/quickstart/create-nextjs-app-route
 
 import createAmplify from 'src/fragments/gen2/quickstart/create-amplify.mdx';
 
-<Fragments fragments={{ javascript: createAmplify, nextjs: createAmplify}} />
+<Fragments fragments={{ javascript: createAmplify, nextjs: createAmplify }} />
 
 import buildABackend from 'src/fragments/gen2/quickstart/build-a-backend.mdx';
 
 <Fragments fragments={{ javascript: buildABackend, nextjs: buildABackend }} />
 
-
 ## Build UI
 
 Let's add UI that connects to the backend data and auth resources.
-
 
 ### Configure Amplify Client Side
 
@@ -47,11 +46,11 @@ Next, create a `components` folder in the root of your project and copy the cont
 
 ```ts title="components/ConfigureAmplify.tsx"
 // components/ConfigureAmplify.tsx
-"use client";
+'use client';
 
-import { Amplify } from "aws-amplify";
+import { Amplify } from 'aws-amplify';
 
-import config from "@/amplifyconfiguration.json";
+import config from '@/amplifyconfiguration.json';
 
 Amplify.configure(config, { ssr: true });
 
@@ -102,33 +101,33 @@ First, install the Amplify Next.js adapter:
 npm install @aws-amplify/adapter-nextjs
 ```
 
-Next, create a `utils/amplify-utils.ts` file from the root of the project and paste the code below.  `runWithAmplifyServerContext`,  `cookiesClient`, and `AuthGetCurrentUserServer` are declared here and will be used to gain access to Amplify assets from the server.
+Next, create a `utils/amplify-utils.ts` file from the root of the project and paste the code below. `runWithAmplifyServerContext`, `cookiesClient`, and `AuthGetCurrentUserServer` are declared here and will be used to gain access to Amplify assets from the server.
 
 ```ts title="utils/amplify-utils.ts"
 // utils/amplify-utils.ts
-import { cookies } from "next/headers";
+import { cookies } from 'next/headers';
 
-import { createServerRunner } from "@aws-amplify/adapter-nextjs";
-import { generateServerClientUsingCookies } from "@aws-amplify/adapter-nextjs/api";
-import { getCurrentUser } from "aws-amplify/auth/server";
+import { createServerRunner } from '@aws-amplify/adapter-nextjs';
+import { generateServerClientUsingCookies } from '@aws-amplify/adapter-nextjs/api';
+import { getCurrentUser } from 'aws-amplify/auth/server';
 
-import { type Schema } from "@/amplify/data/resource";
-import config from "@/amplifyconfiguration.json";
+import { type Schema } from '@/amplify/data/resource';
+import config from '@/amplifyconfiguration.json';
 
 export const { runWithAmplifyServerContext } = createServerRunner({
-  config,
+  config
 });
 
 export const cookiesClient = generateServerClientUsingCookies<Schema>({
   config,
-  cookies,
+  cookies
 });
 
 export async function AuthGetCurrentUserServer() {
   try {
     const currentUser = await runWithAmplifyServerContext({
       nextServerContext: { cookies },
-      operation: (contextSpec) => getCurrentUser(contextSpec),
+      operation: (contextSpec) => getCurrentUser(contextSpec)
     });
     return currentUser;
   } catch (error) {
@@ -137,24 +136,23 @@ export async function AuthGetCurrentUserServer() {
 }
 ```
 
-
 ### Add server authentication routes
 
 First, create a client-side `Login` component in the `components` folder that will be wrapped in `withAuthenticator`. If the user is logged in, they will be redirected to the index route; otherwise, the [Amplify UI Authenticator component](https://ui.docs.amplify.aws/react/connected-components/authenticator) will be rendered.
 
 ```ts title="components/Login.tsx"
 // components/Login.tsx
-"use client";
+'use client';
 
-import { withAuthenticator } from "@aws-amplify/ui-react";
-import { AuthUser } from "aws-amplify/auth";
-import { redirect } from "next/navigation";
-import { useEffect } from "react";
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import { AuthUser } from 'aws-amplify/auth';
+import { redirect } from 'next/navigation';
+import { useEffect } from 'react';
 
 function Login({ user }: { user?: AuthUser }) {
   useEffect(() => {
     if (user) {
-      redirect("/");
+      redirect('/');
     }
   }, [user]);
   return null;
@@ -227,7 +225,6 @@ export default function Login() {
 
 </Accordion>
 
-
 Finally, create a `Logout` component to be used later.
 
 ```ts title="components/Logout.tsx"
@@ -270,7 +267,10 @@ export const auth = defineAuth({
         'http://localhost:3000/login',
         'https://mywebsite.com/login'
       ],
-      logoutUrls: ['http://localhost:3000/logout', 'https://mywebsite.com/logout']
+      logoutUrls: [
+        'http://localhost:3000/logout',
+        'https://mywebsite.com/logout'
+      ]
     }
   }
 });
@@ -284,14 +284,13 @@ Create `middleware.ts` in the root of the project with the contents below.
 
 This middleware runs `fetchAuthSession` wrapped in `runWithAmplifyServerContext` and will redirect to `/login` when a user is not logged in.
 
-
 ```ts title="middleware.ts"
 // middleware.ts
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
-import { fetchAuthSession } from "aws-amplify/auth/server";
+import { fetchAuthSession } from 'aws-amplify/auth/server';
 
-import { runWithAmplifyServerContext } from "@/utils/amplify-utils";
+import { runWithAmplifyServerContext } from '@/utils/amplify-utils';
 
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next();
@@ -306,14 +305,14 @@ export async function middleware(request: NextRequest) {
         console.log(error);
         return false;
       }
-    },
+    }
   });
 
   if (authenticated) {
     return response;
   }
 
-  return NextResponse.redirect(new URL("/login", request.url));
+  return NextResponse.redirect(new URL('/login', request.url));
 }
 
 export const config = {
@@ -326,8 +325,8 @@ export const config = {
      * - favicon.ico (favicon file)
      * - login
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|login).*)",
-  ],
+    '/((?!api|_next/static|_next/image|favicon.ico|login).*)'
+  ]
 };
 ```
 

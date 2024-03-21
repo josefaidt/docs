@@ -6,7 +6,7 @@ export const meta = {
   route: '/gen2/start/quickstart'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {
@@ -17,4 +17,3 @@ export function getStaticProps(context) {
 }
 
 <Overview childPageNodes={props.childPageNodes} />
-

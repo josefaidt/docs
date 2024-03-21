@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Use transfer acceleration',
-  description: "How to enable and use S3's Transfer Acceleration on your S3 bucket",
+  description:
+    "How to enable and use S3's Transfer Acceleration on your S3 bucket",
   platforms: [
     'javascript',
     'react-native',
@@ -21,7 +22,8 @@ export const meta = {
         'javascript',
         'react-native'
       ],
-      canonicalPath: '/javascript/prev/build-a-backend/storage/transfer-acceleration/'
+      canonicalPath:
+        '/javascript/prev/build-a-backend/storage/transfer-acceleration/'
     }
   ]
 };
@@ -30,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

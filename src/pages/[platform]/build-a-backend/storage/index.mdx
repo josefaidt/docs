@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'Storage',
-  description: 'Learn more about how you can manage user content for your app in public, protected or private storage buckets using Amplify Storage.',
+  description:
+    'Learn more about how you can manage user content for your app in public, protected or private storage buckets using Amplify Storage.',
   platforms: [
     'android',
     'angular',
@@ -35,7 +36,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

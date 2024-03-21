@@ -16,19 +16,11 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'swift',
-        'android',
-        'javascript',
-        'vue'
-      ],
+      platforms: ['swift', 'android', 'javascript', 'vue'],
       canonicalPath: '/javascript/start/getting-started/installation/'
     },
     {
-      platforms: [
-        'react',
-        'nextjs'
-      ],
+      platforms: ['react', 'nextjs'],
       canonicalPath: '/react/start/getting-started/installation/'
     }
   ]
@@ -38,7 +30,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -159,7 +151,7 @@ The `configure` command only supports creating AWS profiles that use permanent c
 
 `amplify configure` will ask you to sign into the AWS Console.
 
-Once you're signed in, Amplify CLI will ask you to use the [AWS Identity and Access Management (IAM)](https://aws.amazon.com/iam/) to create an IAM user. 
+Once you're signed in, Amplify CLI will ask you to use the [AWS Identity and Access Management (IAM)](https://aws.amazon.com/iam/) to create an IAM user.
 
 ```console
 Specify the AWS Region

@@ -21,7 +21,8 @@ export const meta = {
         'react',
         'vue'
       ],
-      canonicalPath: '/javascript/prev/build-a-backend/graphqlapi/connect-to-api/'
+      canonicalPath:
+        '/javascript/prev/build-a-backend/graphqlapi/connect-to-api/'
     }
   ]
 };
@@ -30,7 +31,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,6 +45,7 @@ export function getStaticProps(context) {
 In this guide, you will connect your application code to the backend API using the Amplify Libraries. We will review how to install and configure Amplify Libraries.
 
 Before you begin, you will need:
+
 - An GraphQL API already set up either via the [Amplify CLI](/[platform]/tools/cli/), or directly via the underlying [AWS AppSync service](https://docs.aws.amazon.com/appsync/latest/devguide/designing-a-graphql-api.html).
 - A frontend application set up. For instructions on setting up an app, see [Project Setup: Create your application](/[platform]/prev/start/project-setup/create-application/)
 - [npm installed](https://docs.npmjs.com/getting-started)
@@ -67,12 +69,12 @@ You will then configure the library to connect with the Amplify CLI-provisioned 
 When you deploy your backend (`amplify push`), an `aws-exports.js` file is generated for you. This file contains your API's endpoint information and auth configurations.
 
 ```ts
-import { Amplify } from 'aws-amplify'
+import { Amplify } from 'aws-amplify';
 // highlight-next-line
-import awsconfig from './aws-exports'
+import awsconfig from './aws-exports';
 
 // highlight-next-line
-Amplify.configure(awsconfig)
+Amplify.configure(awsconfig);
 ```
 
 </Block>
@@ -87,17 +89,18 @@ To connect your app code to your GraphQL API, you need to provide two configurat
 
 The Amplify Library connects you to a GraphQL API endpoint based on the information provided to `Amplify.configure()`.
 
-When working with existing GraphQL APIs, you must manually provide your API endpoint and auth configurations. First, to configure the GraphQL API endpoint URL, set the `aws_appsync_graphqlEndpoint` and `aws_appsync_region` values. 
+When working with existing GraphQL APIs, you must manually provide your API endpoint and auth configurations. First, to configure the GraphQL API endpoint URL, set the `aws_appsync_graphqlEndpoint` and `aws_appsync_region` values.
 
 ```ts
-import { Amplify } from 'aws-amplify'
+import { Amplify } from 'aws-amplify';
 
 Amplify.configure({
   // highlight-start
-  aws_appsync_graphqlEndpoint: 'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
-  aws_appsync_region: 'us-east-1',
+  aws_appsync_graphqlEndpoint:
+    'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
+  aws_appsync_region: 'us-east-1'
   // highlight-end
-})
+});
 ```
 
 #### Configure the default authorization mode
@@ -109,10 +112,11 @@ The **Default Authorization Mode** is the authorization mode that the GraphQL AP
 <Block name="API Key">
 
 ```ts
-import { Amplify } from 'aws-amplify'
+import { Amplify } from 'aws-amplify';
 
 Amplify.configure({
-  aws_appsync_graphqlEndpoint: 'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
+  aws_appsync_graphqlEndpoint:
+    'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
   aws_appsync_region: 'us-east-1',
 
   // Set the auth type as "API_KEY" and pass in the API key value
@@ -120,77 +124,83 @@ Amplify.configure({
   aws_appsync_authenticationType: 'API_KEY',
   aws_appsync_apiKey: 'da2-xxxxxxxxxxxxxxxxxxxxxxxxxx'
   // highlight-end
-})
+});
 ```
 
 </Block>
 <Block name="Amazon Cognito user pool">
 
 ```ts
-import { Amplify } from 'aws-amplify'
+import { Amplify } from 'aws-amplify';
 
 Amplify.configure({
-  aws_appsync_graphqlEndpoint: 'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
+  aws_appsync_graphqlEndpoint:
+    'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
   aws_appsync_region: 'us-east-1',
 
   // Set the auth type as "AMAZON_COGNITO_USER_POOLS"
   // highlight-start
-  aws_appsync_authenticationType: 'AMAZON_COGNITO_USER_POOLS',
+  aws_appsync_authenticationType: 'AMAZON_COGNITO_USER_POOLS'
   // highlight-end
-})
+});
 ```
+
 </Block>
 <Block name="AWS IAM">
 
 ```ts
-import { Amplify } from 'aws-amplify'
+import { Amplify } from 'aws-amplify';
 
 Amplify.configure({
-  aws_appsync_graphqlEndpoint: 'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
+  aws_appsync_graphqlEndpoint:
+    'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
   aws_appsync_region: 'us-east-1',
 
   // Set the auth type as "AWS_IAM"
   // highlight-start
-  aws_appsync_authenticationType: 'AWS_IAM',
+  aws_appsync_authenticationType: 'AWS_IAM'
   // highlight-end
-})
+});
 ```
+
 </Block>
 <Block name="OpenID Connect (OIDC)">
 
 ```ts
-import { Amplify } from 'aws-amplify'
+import { Amplify } from 'aws-amplify';
 
 Amplify.configure({
-  aws_appsync_graphqlEndpoint: 'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
+  aws_appsync_graphqlEndpoint:
+    'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
   aws_appsync_region: 'us-east-1',
 
   // Set the auth type as "OPENID_CONNECT"
   // highlight-start
-  aws_appsync_authenticationType: 'OPENID_CONNECT',
+  aws_appsync_authenticationType: 'OPENID_CONNECT'
   // highlight-end
-})
+});
 ```
 
 </Block>
 <Block name="Lambda Authorizer">
 
-You can implement your own custom API authorization logic using an AWS Lambda function. To add a Lambda as an authorization mode for your AppSync API, go to the *Settings* section of the AppSync console.
+You can implement your own custom API authorization logic using an AWS Lambda function. To add a Lambda as an authorization mode for your AppSync API, go to the _Settings_ section of the AppSync console.
 
 If you are using a Lambda function as an authorization mode with your AppSync API, you will need to pass an authentication token with each API request and will need to manage token refresh in your application.
 
 ```ts
-import { Amplify } from 'aws-amplify'
+import { Amplify } from 'aws-amplify';
 
 Amplify.configure({
-  aws_appsync_graphqlEndpoint: 'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
+  aws_appsync_graphqlEndpoint:
+    'https://abcxyz.appsync-api.us-east-1.amazonaws.com/graphql',
   aws_appsync_region: 'us-east-1',
 
   // Set the auth type as "AWS_LAMBDA"
   // highlight-start
-  aws_appsync_authenticationType: 'AWS_LAMBDA',
+  aws_appsync_authenticationType: 'AWS_LAMBDA'
   // highlight-end
-})
+});
 ```
 
 Next, when you make the GraphQL API request, you can provide an `authToken` parameter to add to your request header.
@@ -213,7 +223,6 @@ const createdTodo = await client.graphql({
 
 </BlockSwitcher>
 
-
 ## Generate GraphQL client code and typings
 
 You can generate common GraphQL queries, mutations, and subscriptions directly from your backend GraphQL schema. This allows you to avoid hand-authoring GraphQL documents from scratch when developing your API quickly and also provides you end-to-end typing.
@@ -227,6 +236,7 @@ By default, when you deploy your API with `amplify push`, you're prompted to gen
 ```bash
 amplify push
 ```
+
 ```console
 ? Do you want to generate code for your newly created GraphQL API
 > Yes
@@ -241,6 +251,7 @@ amplify push
 ```
 
 To customize any of the codegen settings above, run the following command in your Terminal:
+
 ```bash
 amplify update codegen
 ```
@@ -268,7 +279,7 @@ npx @aws-amplify/cli codegen
 
 You can use the generated GraphQL code after you import them into your codebase and pass them into the `API.graphql()` operation. With GraphQL, you typically have the following types of operations to interact with the API from a JavaScript client:
 
-- __Mutations__ - write data to the API (create, update, and delete operations)
+- **Mutations** - write data to the API (create, update, and delete operations)
 
 <BlockSwitcher>
 <Block name="TypeScript">
@@ -277,9 +288,17 @@ You can use the generated GraphQL code after you import them into your codebase 
 import { API } from 'aws-amplify';
 import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
 import { GraphQLQuery } from '@aws-amplify/api';
-import { CreateTodoInput, CreateTodoMutation, UpdateTodoMutation, DeleteTodoMutation } from './API';
+import {
+  CreateTodoInput,
+  CreateTodoMutation,
+  UpdateTodoMutation,
+  DeleteTodoMutation
+} from './API';
 
-const todo: CreateTodoInput = { name: "My first todo", description: "Hello world!" };
+const todo: CreateTodoInput = {
+  name: 'My first todo',
+  description: 'Hello world!'
+};
 
 /* create a todo */
 await API.graphql<GraphQLQuery<CreateTodoMutation>>({
@@ -294,8 +313,8 @@ await API.graphql<GraphQLQuery<UpdateTodoMutation>>({
   query: updateTodo,
   variables: {
     input: {
-      id: "ENTER_TODO_ID_HERE",
-      name: "Updated todo info"
+      id: 'ENTER_TODO_ID_HERE',
+      name: 'Updated todo info'
     }
   }
 });
@@ -305,7 +324,7 @@ await API.graphql<GraphQLQuery<DeleteTodoMutation>>({
   query: deleteTodo,
   variables: {
     input: {
-      id: "ENTER_TODO_ID_HERE"
+      id: 'ENTER_TODO_ID_HERE'
     }
   }
 });
@@ -318,7 +337,7 @@ await API.graphql<GraphQLQuery<DeleteTodoMutation>>({
 import { API } from 'aws-amplify';
 import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
 
-const todo = { name: "My first todo", description: "Hello world!" };
+const todo = { name: 'My first todo', description: 'Hello world!' };
 
 /* create a todo */
 await API.graphql({
@@ -333,8 +352,8 @@ await API.graphql({
   query: updateTodo,
   variables: {
     input: {
-      id: "ENTER_TODO_ID_HERE",
-      name: "Updated todo info"
+      id: 'ENTER_TODO_ID_HERE',
+      name: 'Updated todo info'
     }
   }
 });
@@ -344,7 +363,7 @@ await API.graphql({
   query: deleteTodo,
   variables: {
     input: {
-      id: "ENTER_TODO_ID_HERE"
+      id: 'ENTER_TODO_ID_HERE'
     }
   }
 });
@@ -353,7 +372,7 @@ await API.graphql({
 </Block>
 </BlockSwitcher>
 
-- __Queries__ - read data from the API (list and get operations)
+- **Queries** - read data from the API (list and get operations)
 
 <BlockSwitcher>
 <Block name="TypeScript">
@@ -364,11 +383,12 @@ import { GraphQLQuery } from '@aws-amplify/api';
 import { listTodos } from './graphql/queries';
 import { ListTodosQuery } from './API';
 
-const todos = await API.graphql<GraphQLQuery<ListTodosQuery>>({ query: listTodos });
+const todos = await API.graphql<GraphQLQuery<ListTodosQuery>>({
+  query: listTodos
+});
 ```
 
 </Block>
-
 
 <Block name="JavaScript">
 
@@ -391,6 +411,7 @@ Congratulations! You have finished the **Connect your app code to the API** guid
 ## Next steps
 
 Our recommended next steps include using the API to mutate and query data. You can also review how to subscribe to real-time events to look for mutations in your data. Some resources that will help with this work include:
+
 - [Create, update, and delete application data](/[platform]/prev/build-a-backend/graphqlapi/mutate-data/)
 - [Read application data](/[platform]/prev/build-a-backend/graphqlapi/query-data/)
 - [Subscribe to real-time events](/[platform]/prev/build-a-backend/graphqlapi/subscribe-data/)

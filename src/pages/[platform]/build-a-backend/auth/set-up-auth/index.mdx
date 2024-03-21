@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Set up Amplify Auth',
-  description: 'Amplify uses Amazon Cognito as the main authentication provider. Learn how to handle user registration, authentication, account recovery and other operations.',
+  description:
+    'Amplify uses Amazon Cognito as the main authentication provider. Learn how to handle user registration, authentication, account recovery and other operations.',
   platforms: [
     'javascript',
     'react-native',
@@ -16,13 +17,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'nextjs',
-        'vue',
-        'javascript',
-        'angular'
-      ],
+      platforms: ['react', 'nextjs', 'vue', 'javascript', 'angular'],
       canonicalPath: '/javascript/build-a-backend/auth/set-up-auth/'
     }
   ]
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -433,8 +428,8 @@ The `Authenticator` component offers a simple way to add authentication flows in
 
 ```html
 <script setup>
-  import { Authenticator } from "@aws-amplify/ui-vue";
-  import "@aws-amplify/ui-vue/styles.css";
+  import { Authenticator } from '@aws-amplify/ui-vue';
+  import '@aws-amplify/ui-vue/styles.css';
 
   import { Amplify } from 'aws-amplify';
   import config from './amplifyconfiguration.json';

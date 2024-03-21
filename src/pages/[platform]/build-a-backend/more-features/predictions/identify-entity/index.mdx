@@ -14,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'nextjs',
-        'angular',
-        'vue',
-        'react',
-        'javascript'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/predictions/identify-entity/'
+      platforms: ['nextjs', 'angular', 'vue', 'react', 'javascript'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/predictions/identify-entity/'
     }
   ]
 };
@@ -30,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

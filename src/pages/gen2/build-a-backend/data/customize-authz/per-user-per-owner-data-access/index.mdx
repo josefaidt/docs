@@ -4,7 +4,7 @@ export const meta = {
     "The owner authorization strategy restricts operations on a record to only the record's owner. When configured, the owner field (default `owner`) will automatically be added and populated with the identity of the created user. The API will authorize against the `owner` field to allow or deny operations."
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -23,9 +23,9 @@ You can use the `owner` authorization strategy to restrict a record's access to 
 const schema = a.schema({
   Todo: a
     .model({
-      content: a.string(),
+      content: a.string()
     })
-    .authorization([a.allow.owner()]),
+    .authorization([a.allow.owner()])
 });
 ```
 
@@ -35,9 +35,9 @@ const schema = a.schema({
 const schema = a.schema({
   Todo: a
     .model({
-      content: a.string(),
+      content: a.string()
     })
-    .authorization([a.allow.owner().to(['create', 'read', 'update'])]),
+    .authorization([a.allow.owner().to(['create', 'read', 'update'])])
 });
 ```
 
@@ -56,9 +56,9 @@ const schema = a.schema({
   Todo: a
     .model({
       content: a.string(),
-      owner: a.string().authorization([a.allow.owner().to(['read', 'delete'])]),
+      owner: a.string().authorization([a.allow.owner().to(['read', 'delete'])])
     })
-    .authorization([a.allow.owner()]),
+    .authorization([a.allow.owner()])
 });
 ```
 
@@ -73,8 +73,8 @@ const schema = a.schema({
   Todo: a
     .model({
       content: a.string(),
-      author: a.string(), // record owner information now stored in "author" field
+      author: a.string() // record owner information now stored in "author" field
     })
-    .authorization([a.allow.owner().inField('author')]),
+    .authorization([a.allow.owner().inField('author')])
 });
 ```

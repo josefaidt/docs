@@ -1,5 +1,5 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Manage authentication for users and groups',
   description: 'Manage authentication for users and groups',
@@ -36,7 +36,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +44,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 In Amplify Studio, you can create and manage users and groups, edit user attributes, and suspend users.
 

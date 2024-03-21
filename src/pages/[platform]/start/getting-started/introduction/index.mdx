@@ -22,7 +22,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -86,10 +86,12 @@ import android11 from '/src/fragments/start/getting-started/android/build-footer
 <InlineFilter filters={["javascript", "nextjs", "react", "react-native", "angular", "vue", "flutter"]}>
 
 <br />
-<InternalLinkButton href={{
-  pathname: '/[platform]/start/getting-started/installation',
-  query: { platform: useCurrentPlatform() }
-}}>
+<InternalLinkButton
+  href={{
+    pathname: '/[platform]/start/getting-started/installation',
+    query: { platform: useCurrentPlatform() }
+  }}
+>
   <span slot="text">Start the Tutorial</span>
 </InternalLinkButton>
 
@@ -100,7 +102,8 @@ Use Amplify Studio to get started with Amplify. [Get started](https://sandbox.am
 <InlineFilter filters={["flutter"]}>
 
 <small>
-Flutter and the related logo are trademarks of Google LLC. We are not endorsed by or affiliated with Google LLC.
+  Flutter and the related logo are trademarks of Google LLC. We are not endorsed
+  by or affiliated with Google LLC.
 </small>
 
 </InlineFilter>

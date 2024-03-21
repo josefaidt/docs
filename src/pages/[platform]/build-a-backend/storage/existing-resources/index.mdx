@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Use existing AWS resources',
-  description: 'Configure the Amplify Libraries to use an existing Amazon S3 bucket by referencing it in your configuration.',
+  description:
+    'Configure the Amplify Libraries to use an existing Amazon S3 bucket by referencing it in your configuration.',
   platforms: [
     'javascript',
     'flutter',
@@ -27,11 +28,7 @@ export const meta = {
       canonicalPath: '/javascript/build-a-backend/storage/existing-resources/'
     },
     {
-      platforms: [
-        'android',
-        'flutter',
-        'swift'
-      ],
+      platforms: ['android', 'flutter', 'swift'],
       canonicalPath: '/swift/build-a-backend/storage/existing-resources/'
     }
   ]
@@ -41,7 +38,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -78,21 +75,11 @@ If you are not using the Amplify CLI, an existing Amazon S3 bucket can be used b
   read/write access to the Cognito user pool that you are using with the Amplify
   Auth category.
 </Callout>
-```javascript
-import { Amplify } from 'aws-amplify';
-import amplifyconfig from './amplifyconfiguration.json';
+```javascript import {Amplify} from 'aws-amplify'; import amplifyconfig from './amplifyconfiguration.json';
 
-Amplify.configure(amplifyconfig);
-Amplify.configure({
-  ...Amplify.getConfig(),
-  Storage: {
-    S3: {
-      region: '[REGION]', // (required) - Amazon S3 bucket region
-      bucket: '[BUCKET NAME]' // (required) - Amazon S3 bucket URI
-    }
-  }
-});
-```
+Amplify.configure(amplifyconfig); Amplify.configure({ ...Amplify.getConfig(), Storage: { S3: { region: '[REGION]', // (required) - Amazon S3 bucket region bucket: '[BUCKET NAME]' // (required) - Amazon S3 bucket URI } } });
+
+````
 
 - **bucket**: Name of the bucket to use for storage
 - **region**: AWS Region where the bucket is provisioned (e.g. _us-east-1_)
@@ -111,6 +98,6 @@ Amplify.configure(existingConfig, {
     }
   }
 });
-```
+````
 
 </InlineFilter>

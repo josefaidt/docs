@@ -16,14 +16,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'angular',
-        'vue',
-        'nextjs',
-        'react'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/analytics/enable-disable/'
+      platforms: ['javascript', 'angular', 'vue', 'nextjs', 'react'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/analytics/enable-disable/'
     }
   ]
 };
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

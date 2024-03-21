@@ -2,19 +2,12 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Validate form data',
-  description: "Sanitize user input by adding validation rules to your form. By default, Amplify Studio infers a range of validation rules based on the data model. For example, given a data model with an 'AWSEmail' field, the generated form input will automatically run an email validation rule.",
-  platforms: [
-    'javascript',
-    'react', 
-    'nextjs'
-  ],
+  description:
+    "Sanitize user input by adding validation rules to your form. By default, Amplify Studio infers a range of validation rules based on the data model. For example, given a data model with an 'AWSEmail' field, the generated form input will automatically run an email validation rule.",
+  platforms: ['javascript', 'react', 'nextjs'],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'react', 
-        'nextjs'
-      ],
+      platforms: ['javascript', 'react', 'nextjs'],
       canonicalPath: '/javascript/build-ui/formbuilder/validations/'
     }
   ]
@@ -24,7 +17,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

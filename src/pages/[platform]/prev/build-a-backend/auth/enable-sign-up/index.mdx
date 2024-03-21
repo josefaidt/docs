@@ -13,13 +13,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'angular',
-        'nextjs',
-        'vue',
-        'javascript'
-      ],
+      platforms: ['react', 'angular', 'nextjs', 'vue', 'javascript'],
       canonicalPath: '/javascript/prev/build-a-backend/auth/enable-sign-up/'
     }
   ]
@@ -29,7 +23,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

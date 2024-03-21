@@ -1,9 +1,10 @@
 export const meta = {
   title: 'Next.js App Router (Client Components)',
-  description: 'Get started with AWS Amplify Gen 2 using the Next.js App Router.'
+  description:
+    'Get started with AWS Amplify Gen 2 using the Next.js App Router.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -23,12 +24,11 @@ import createProject from 'src/fragments/gen2/quickstart/create-nextjs-app-route
 
 import createAmplify from 'src/fragments/gen2/quickstart/create-amplify.mdx';
 
-<Fragments fragments={{ javascript: createAmplify, nextjs: createAmplify}} />
+<Fragments fragments={{ javascript: createAmplify, nextjs: createAmplify }} />
 
 import buildABackend from 'src/fragments/gen2/quickstart/build-a-backend.mdx';
 
 <Fragments fragments={{ javascript: buildABackend, nextjs: buildABackend }} />
-
 
 ## Build UI
 
@@ -46,10 +46,10 @@ Next, create a `components` folder in the root of your project and the contents 
 
 ```ts title="components/ConfigureAmplify.tsx"
 // components/ConfigureAmplify.tsx
-"use client";
+'use client';
 
-import config from "@/amplifyconfiguration.json";
-import { Amplify } from "aws-amplify";
+import config from '@/amplifyconfiguration.json';
+import { Amplify } from 'aws-amplify';
 
 Amplify.configure(config, { ssr: true });
 
@@ -58,7 +58,7 @@ export default function ConfigureAmplifyClientSide() {
 }
 ```
 
-Update `app/layout.tsx` to import and render `<ConfigureAmplifyClientSide />`.  This client component will configure Amplify for client pages in our application.
+Update `app/layout.tsx` to import and render `<ConfigureAmplifyClientSide />`. This client component will configure Amplify for client pages in our application.
 
 ```ts title="app/layout.tsx"
 // app/layout.tsx
@@ -118,17 +118,17 @@ Now, let's display data on our app's frontend. In the `components` directory cre
 
 ```tsx title="components/TodoList.tsx"
 // components/TodoList.tsx
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { generateClient } from "aws-amplify/data";
-import type { Schema } from "@/amplify/data/resource";
+import { useState, useEffect } from 'react';
+import { generateClient } from 'aws-amplify/data';
+import type { Schema } from '@/amplify/data/resource';
 
 // generate your data client using the Schema from your backend
 const client = generateClient<Schema>();
 
 export default function TodoList() {
-  const [todos, setTodos] = useState<Schema["Todo"][]>([]);
+  const [todos, setTodos] = useState<Schema['Todo'][]>([]);
 
   async function listTodos() {
     // fetch all todos
@@ -213,7 +213,7 @@ Create a couple of to-dos, then refresh the page to see them. You can also subsc
 ```js
 useEffect(() => {
   const sub = client.models.Todo.observeQuery().subscribe(({ items }) =>
-   setTodos([...items])
+    setTodos([...items])
   );
 
   return () => sub.unsubscribe();

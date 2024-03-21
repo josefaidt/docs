@@ -14,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'angular',
-        'nextjs',
-        'react',
-        'vue'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/troubleshooting/upgrade-amplify-packages/'
+      platforms: ['javascript', 'angular', 'nextjs', 'react', 'vue'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/troubleshooting/upgrade-amplify-packages/'
     }
   ]
 };
@@ -30,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

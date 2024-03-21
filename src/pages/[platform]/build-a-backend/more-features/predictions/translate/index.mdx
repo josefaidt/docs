@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Translate language',
-  description: 'Learn more about how to integrate translation capabilities for your application using Amplify',
+  description:
+    'Learn more about how to integrate translation capabilities for your application using Amplify',
   platforms: [
     'javascript',
     'swift',
@@ -14,14 +15,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'nextjs',
-        'vue',
-        'angular',
-        'react'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/predictions/translate/'
+      platforms: ['javascript', 'nextjs', 'vue', 'angular', 'react'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/predictions/translate/'
     }
   ]
 };
@@ -30,7 +26,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

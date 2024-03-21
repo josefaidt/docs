@@ -14,13 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'swift',
-        'android',
-        'android',
-        'swift'
-      ],
-      canonicalPath: '/swift/prev/build-a-backend/more-features/geo/configure-geofencing/'
+      platforms: ['swift', 'android', 'android', 'swift'],
+      canonicalPath:
+        '/swift/prev/build-a-backend/more-features/geo/configure-geofencing/'
     },
     {
       platforms: [
@@ -35,7 +31,8 @@ export const meta = {
         'angular',
         'nextjs'
       ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/geo/configure-geofencing/'
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/geo/configure-geofencing/'
     }
   ]
 };
@@ -44,7 +41,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

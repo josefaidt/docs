@@ -1,20 +1,12 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Model database',
   description: 'Create a database and GraphQL API.',
-  platforms: [
-    'javascript',
-    'nextjs',
-    'react'
-  ],
+  platforms: ['javascript', 'nextjs', 'react'],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'nextjs',
-        'react'
-      ],
+      platforms: ['javascript', 'nextjs', 'react'],
       canonicalPath: '/javascript/tools/console/tutorial/data/'
     }
   ]
@@ -24,7 +16,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -32,7 +24,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 Amplify Studio provides a visual way to create your app's data model and manage the contents of your database.
 

@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Migrate from Amplify JavaScript v5 to v6',
-  description: 'Migration guide to upgrade applications using Amplify JavaScript v5 to v6.',
+  description:
+    'Migration guide to upgrade applications using Amplify JavaScript v5 to v6.',
   platforms: [
     'angular',
     'javascript',
@@ -13,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'angular',
-        'react',
-        'vue',
-        'nextjs',
-        'javascript'
-      ],
-      canonicalPath: '/angular/build-a-backend/troubleshooting/migrate-from-javascript-v5-to-v6/'
+      platforms: ['angular', 'react', 'vue', 'nextjs', 'javascript'],
+      canonicalPath:
+        '/angular/build-a-backend/troubleshooting/migrate-from-javascript-v5-to-v6/'
     }
   ]
 };
@@ -29,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -40,4 +36,13 @@ export function getStaticProps(context) {
 
 import common_upgrading from '/src/fragments/lib/troubleshooting/common/upgrading.mdx';
 
-<Fragments fragments={{ javascript: common_upgrading, 'react-native': common_upgrading, angular: common_upgrading, nextjs: common_upgrading, react: common_upgrading, vue: common_upgrading }} />
+<Fragments
+  fragments={{
+    javascript: common_upgrading,
+    'react-native': common_upgrading,
+    angular: common_upgrading,
+    nextjs: common_upgrading,
+    react: common_upgrading,
+    vue: common_upgrading
+  }}
+/>

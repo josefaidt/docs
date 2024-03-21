@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Use CloudFormation to add custom AWS resources',
-  description: "The Amplify CLI provides the ability to add custom AWS resources with AWS CloudFormation. Running the 'amplify add custom' command in your Amplify project provides CloudFormation starter templates along with mechanisms to reference other Amplify-generated resources.",
+  description:
+    "The Amplify CLI provides the ability to add custom AWS resources with AWS CloudFormation. Running the 'amplify add custom' command in your Amplify project provides CloudFormation starter templates along with mechanisms to reference other Amplify-generated resources.",
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 The Amplify CLI provides the ability to add custom AWS resources with AWS CloudFormation. Running the `amplify add custom` command in your Amplify project provides CloudFormation starter templates along with mechanisms to reference other Amplify-generated resources.
 
@@ -53,6 +53,7 @@ To add custom AWS resources using AWS CloudFormation, run the following command:
 ```bash
 amplify add custom
 ```
+
 ```console
 ? How do you want to define this custom resource? …  (Use arrow keys or type to filter)
   AWS CDK
@@ -74,7 +75,7 @@ A skeleton CloudFormation template is generated in the `amplify/backend/custom/<
       "Type": "AWS::SNS::Topic",
       "Properties": {
         "TopicName": {
-          "Fn::Join": [ "", [ "sns-topic-1234-", { "Ref": "env" } ] ]
+          "Fn::Join": ["", ["sns-topic-1234-", { "Ref": "env" }]]
         }
       }
     },
@@ -97,7 +98,7 @@ A skeleton CloudFormation template is generated in the `amplify/backend/custom/<
 
 ## Reference Amplify backend name
 
-Amplify CLI will automatically populate the `env` parameter in the top of your CloudFormation template. 
+Amplify CLI will automatically populate the `env` parameter in the top of your CloudFormation template.
 
 ```json
 ...
@@ -133,6 +134,7 @@ The CloudFormation template for custom AWS resources can reference Amplify-gener
 ```bash
 amplify update custom
 ```
+
 ```console
 ✔ Do you want to access Amplify generated resources in your custom CloudFormation file? (y/N) · yes
 ? Select the categories you want this custom resource to have access to:

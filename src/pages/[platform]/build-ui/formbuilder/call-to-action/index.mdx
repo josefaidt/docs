@@ -2,19 +2,12 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Customize action buttons (Submit, Cancel, Clear, Reset)',
-  description: 'Amplify Studio generated forms come with three action buttons: **Submit**, **Cancel**, and **Clear** or **Reset**, depending on whether the form creates or updates a record.',
-  platforms: [
-    'javascript',
-    'react', 
-    'nextjs'
-  ],
+  description:
+    'Amplify Studio generated forms come with three action buttons: **Submit**, **Cancel**, and **Clear** or **Reset**, depending on whether the form creates or updates a record.',
+  platforms: ['javascript', 'react', 'nextjs'],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'react', 
-        'nextjs'
-      ],
+      platforms: ['javascript', 'react', 'nextjs'],
       canonicalPath: '/javascript/build-ui/formbuilder/call-to-action/'
     }
   ]
@@ -24,7 +17,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

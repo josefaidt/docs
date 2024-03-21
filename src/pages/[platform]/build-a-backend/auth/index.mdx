@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'Authentication',
-  description: 'Enable sign-in, sign-up and sign-out within minutes with pre-built UI components and powerful authentication APIs',
+  description:
+    'Enable sign-in, sign-up and sign-out within minutes with pre-built UI components and powerful authentication APIs',
   platforms: [
     'android',
     'angular',
@@ -35,7 +36,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Set up Amplify REST API',
-  description: 'The API category provides a solution for making HTTP requests to REST and GraphQL endpoints. The REST API category can be used for creating signed requests against Amazon API Gateway when the API Gateway Authorization is set to AWS_IAM.',
+  description:
+    'The API category provides a solution for making HTTP requests to REST and GraphQL endpoints. The REST API category can be used for creating signed requests against Amazon API Gateway when the API Gateway Authorization is set to AWS_IAM.',
   platforms: [
     'flutter',
     'swift',
@@ -16,13 +17,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'angular',
-        'react',
-        'javascript',
-        'vue',
-        'nextjs'
-      ],
+      platforms: ['angular', 'react', 'javascript', 'vue', 'nextjs'],
       canonicalPath: '/javascript/prev/build-a-backend/restapi/set-up-rest-api/'
     }
   ]
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'IAM Permissions Boundary for Amplify-generated roles',
-  description: 'Apply a Permissions Boundary to all IAM Roles created by Amplify CLI.',
+  description:
+    'Apply a Permissions Boundary to all IAM Roles created by Amplify CLI.',
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 To set the maximum permissions that can be granted to IAM Roles created by Amplify CLI, configure a [permissions boundary](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) for the project. Then, Amplify-generated IAM roles can perform only the actions that are allowed by both the roles’ policies and permissions boundary. You can configure a different permissions boundary for each environment. For example, this enables you to deny a dev environment all access to a prod environment's resources.
 
@@ -184,16 +184,17 @@ exports.handler = async (event, context) => {
   }
 };
 ```
+
 </Block>
 
 <Block name="AWS SDK V3">
 
 ```js
-import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, ScanCommand } from '@aws-sdk/client-dynamodb';
 const docClient = new DynamoDBClient();
 
 const params = {
-  TableName: process.env.STORAGE_USERS_NAME,
+  TableName: process.env.STORAGE_USERS_NAME
 };
 
 export const handler = async (event, context) => {

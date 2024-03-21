@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Add social provider sign-in',
-  description: 'Learn how to set up social sign-in providers like Facebook, Google, Amazon, or Sign in with Apple.',
+  description:
+    'Learn how to set up social sign-in providers like Facebook, Google, Amazon, or Sign in with Apple.',
   platforms: [
     'javascript',
     'flutter',
@@ -16,14 +17,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'react',
-        'angular',
-        'nextjs',
-        'javascript'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/auth/add-social-provider/'
+      platforms: ['vue', 'react', 'angular', 'nextjs', 'javascript'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/auth/add-social-provider/'
     }
   ]
 };
@@ -32,7 +28,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

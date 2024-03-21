@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Manage user profiles',
-  description: 'Learn more about how to enable customers to personalize their profile and verify their contact information with attributes.',
+  description:
+    'Learn more about how to enable customers to personalize their profile and verify their contact information with attributes.',
   platforms: [
     'javascript',
     'react-native',
@@ -30,7 +31,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

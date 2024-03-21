@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Set up Amplify Interactions',
-  description: 'AWS Amplify Interactions category enables AI-powered chatbots in your web or mobile apps. You can use Interactions to configure your backend chatbot provider and to integrate a chatbot UI into your app with just a single line of code.',
+  description:
+    'AWS Amplify Interactions category enables AI-powered chatbots in your web or mobile apps. You can use Interactions to configure your backend chatbot provider and to integrate a chatbot UI into your app with just a single line of code.',
   platforms: [
     'javascript',
     'react-native',
@@ -13,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'nextjs',
-        'vue',
-        'react',
-        'angular'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/interactions/set-up-interactions/'
+      platforms: ['javascript', 'nextjs', 'vue', 'react', 'angular'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/interactions/set-up-interactions/'
     }
   ]
 };
@@ -29,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

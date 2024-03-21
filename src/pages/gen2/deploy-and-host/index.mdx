@@ -6,7 +6,7 @@ export const meta = {
   route: '/gen2/deploy-and-host'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

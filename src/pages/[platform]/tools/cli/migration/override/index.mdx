@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Override feature enablement migration',
-  description: "Upgrading to Amplify CLI version 7 and above with a project created prior requires a migration to enable the new 'override' capability.",
+  description:
+    "Upgrading to Amplify CLI version 7 and above with a project created prior requires a migration to enable the new 'override' capability.",
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 Amplify CLI version 7 and above has been updated to give developers the ability to override Amplify-generated IAM, Cognito, and S3 configuration to best meet app requirements. With the new override capability, developers can easily configure their backend with Amplify-provided defaults but still customize fine-grained resource settings.
 

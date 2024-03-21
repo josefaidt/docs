@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Customize your auth rules',
-  description: "Learn more about how to configure authorization modes in Amplify's API category",
+  description:
+    "Learn more about how to configure authorization modes in Amplify's API category",
   platforms: [
     'flutter',
     'javascript',
@@ -16,14 +17,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'angular',
-        'react',
-        'vue',
-        'nextjs'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/graphqlapi/customize-authz-modes/'
+      platforms: ['javascript', 'angular', 'react', 'vue', 'nextjs'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/graphqlapi/customize-authz-modes/'
     }
   ]
 };
@@ -32,7 +28,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

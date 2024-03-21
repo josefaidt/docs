@@ -3,7 +3,8 @@ import { IconCheckCircle } from '@/components/Icons';
 
 export const meta = {
   title: 'How Amplify works',
-  description: 'Learn about the capabilities of AWS Amplify and how they can be used together or independently for fullstack app development.',
+  description:
+    'Learn about the capabilities of AWS Amplify and how they can be used together or independently for fullstack app development.',
   platforms: [
     'android',
     'angular',
@@ -17,21 +18,11 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'flutter',
-        'swift',
-        'android'
-      ],
+      platforms: ['flutter', 'swift', 'android'],
       canonicalPath: '/swift/how-amplify-works/'
     },
     {
-      platforms: [
-        'angular',
-        'vue',
-        'react-native',
-        'javascript',
-        'nextjs'
-      ],
+      platforms: ['angular', 'vue', 'react-native', 'javascript', 'nextjs'],
       canonicalPath: '/javascript/how-amplify-works/'
     }
   ]
@@ -41,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
