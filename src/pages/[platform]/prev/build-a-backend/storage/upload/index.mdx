@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Upload files',
-  description: "Learn more about how to upload files using Amplify's storage category",
+  description:
+    "Learn more about how to upload files using Amplify's storage category",
   platforms: [
     'javascript',
     'react-native',
@@ -16,13 +17,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'react',
-        'javascript',
-        'nextjs',
-        'angular'
-      ],
+      platforms: ['vue', 'react', 'javascript', 'nextjs', 'angular'],
       canonicalPath: '/javascript/prev/build-a-backend/storage/upload/'
     }
   ]
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

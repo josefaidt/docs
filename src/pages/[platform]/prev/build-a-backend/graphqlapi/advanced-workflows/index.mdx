@@ -16,14 +16,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'react',
-        'vue',
-        'angular',
-        'nextjs'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/graphqlapi/advanced-workflows/'
+      platforms: ['javascript', 'react', 'vue', 'angular', 'nextjs'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/graphqlapi/advanced-workflows/'
     }
   ]
 };
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

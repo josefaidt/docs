@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Configure Lambda resolvers',
-  description: 'Quickly and easily configure AWS Lambda resolvers within your AWS AppSync API.',
+  description:
+    'Quickly and easily configure AWS Lambda resolvers within your AWS AppSync API.',
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

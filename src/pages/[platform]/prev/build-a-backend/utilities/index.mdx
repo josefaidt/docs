@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'Utilities',
-  description: 'A set of utilities provided by Amplify such as a cache module, an eventing system, and more.',
+  description:
+    'A set of utilities provided by Amplify such as a cache module, an eventing system, and more.',
   platforms: [
     'android',
     'angular',
@@ -32,10 +33,7 @@ export const meta = {
       canonicalPath: '/javascript/prev/build-a-backend/utilities/'
     },
     {
-      platforms: [
-        'react-native',
-        'react-native'
-      ],
+      platforms: ['react-native', 'react-native'],
       canonicalPath: '/react-native/prev/build-a-backend/utilities/'
     }
   ]
@@ -45,7 +43,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

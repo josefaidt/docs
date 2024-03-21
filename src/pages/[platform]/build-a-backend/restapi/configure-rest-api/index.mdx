@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Configure REST API',
-  description: "Use Amplify CLI's simple guided workflow to add REST APIs to cloud-based web and mobile apps.",
+  description:
+    "Use Amplify CLI's simple guided workflow to add REST APIs to cloud-based web and mobile apps.",
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

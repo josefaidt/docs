@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Automatically track sessions',
-  description: 'The Amplify analytics plugin records when an application opens and closes. This session information can be viewed either from your local computer’s terminal or the AWS Console for Pinpoint.',
+  description:
+    'The Amplify analytics plugin records when an application opens and closes. This session information can be viewed either from your local computer’s terminal or the AWS Console for Pinpoint.',
   platforms: [
     'swift',
     'android',
@@ -16,14 +17,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'javascript',
-        'vue',
-        'angular',
-        'nextjs'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/analytics/auto-track-sessions/'
+      platforms: ['react', 'javascript', 'vue', 'angular', 'nextjs'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/analytics/auto-track-sessions/'
     }
   ]
 };
@@ -32,7 +28,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Text-to-speech',
-  description: 'Learn how to integrate text-to-speech capabilities into your application using Amplify.',
+  description:
+    'Learn how to integrate text-to-speech capabilities into your application using Amplify.',
   platforms: [
     'swift',
     'android',
@@ -23,7 +24,8 @@ export const meta = {
         'nextjs',
         'javascript'
       ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/predictions/text-to-speech/'
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/predictions/text-to-speech/'
     }
   ]
 };
@@ -32,7 +34,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

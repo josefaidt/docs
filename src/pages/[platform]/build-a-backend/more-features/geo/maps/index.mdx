@@ -14,13 +14,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'angular',
-        'vue',
-        'nextjs',
-        'react'
-      ],
+      platforms: ['javascript', 'angular', 'vue', 'nextjs', 'react'],
       canonicalPath: '/javascript/build-a-backend/more-features/geo/maps/'
     }
   ]
@@ -30,7 +24,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

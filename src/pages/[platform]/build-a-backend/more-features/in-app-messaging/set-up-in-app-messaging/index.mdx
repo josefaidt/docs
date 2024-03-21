@@ -13,11 +13,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react-native',
-        'react-native'
-      ],
-      canonicalPath: '/react-native/build-a-backend/more-features/in-app-messaging/set-up-in-app-messaging/'
+      platforms: ['react-native', 'react-native'],
+      canonicalPath:
+        '/react-native/build-a-backend/more-features/in-app-messaging/set-up-in-app-messaging/'
     }
   ]
 };
@@ -26,7 +24,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Define authorization rules',
-  description: "Learn more about how to define authorization rules for Amplify's REST API capabilities",
+  description:
+    "Learn more about how to define authorization rules for Amplify's REST API capabilities",
   platforms: [
     'flutter',
     'swift',
@@ -16,13 +17,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'angular',
-        'nextjs',
-        'vue',
-        'react',
-        'javascript'
-      ],
+      platforms: ['angular', 'nextjs', 'vue', 'react', 'javascript'],
       canonicalPath: '/javascript/prev/build-a-backend/restapi/customize-authz/'
     }
   ]
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

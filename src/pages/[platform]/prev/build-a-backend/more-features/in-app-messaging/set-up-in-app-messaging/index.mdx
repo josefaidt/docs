@@ -25,7 +25,8 @@ export const meta = {
         'nextjs',
         'javascript'
       ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/in-app-messaging/set-up-in-app-messaging/'
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/in-app-messaging/set-up-in-app-messaging/'
     }
   ]
 };
@@ -34,7 +35,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

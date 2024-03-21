@@ -13,14 +13,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'react',
-        'angular',
-        'javascript',
-        'nextjs'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/in-app-messaging/integrate-application/'
+      platforms: ['vue', 'react', 'angular', 'javascript', 'nextjs'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/in-app-messaging/integrate-application/'
     }
   ]
 };
@@ -29,7 +24,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

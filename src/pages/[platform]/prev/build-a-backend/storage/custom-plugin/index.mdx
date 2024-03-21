@@ -13,13 +13,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'react',
-        'angular',
-        'javascript',
-        'nextjs'
-      ],
+      platforms: ['vue', 'react', 'angular', 'javascript', 'nextjs'],
       canonicalPath: '/javascript/prev/build-a-backend/storage/custom-plugin/'
     }
   ]
@@ -29,7 +23,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

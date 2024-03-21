@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'Custom AWS resources',
-  description: 'Add custom AWS resources using the AWS Cloud Development Kit (CDK) or AWS CloudFormation',
+  description:
+    'Add custom AWS resources using the AWS Cloud Development Kit (CDK) or AWS CloudFormation',
   platforms: [
     'android',
     'angular',
@@ -38,7 +39,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

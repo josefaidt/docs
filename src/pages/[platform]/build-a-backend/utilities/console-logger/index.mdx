@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Console Logger',
-  description: 'AWS Amplify writes console logs through Console Logger. You can use Console Logger in your apps for the same purpose.',
+  description:
+    'AWS Amplify writes console logs through Console Logger. You can use Console Logger in your apps for the same purpose.',
   platforms: [
     'javascript',
     'react-native',
@@ -30,7 +31,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -68,9 +69,9 @@ When handling an error:
 
 ```javascript
 try {
-    // ...
-} catch(e) {
-    logger.error('error happened', e);
+  // ...
+} catch (e) {
+  logger.error('error happened', e);
 }
 ```
 
@@ -95,16 +96,17 @@ logger.debug('callback data', data); //  this will write the message since the g
 ```
 
 During web development, you can set global log level in browser console log:
+
 ```javascript
 window.LOG_LEVEL = 'DEBUG';
 ```
 
 Supported log levels:
 
-* `ERROR`
-* `WARN`
-* `INFO`
-* `DEBUG`
-* `VERBOSE`
+- `ERROR`
+- `WARN`
+- `INFO`
+- `DEBUG`
+- `VERBOSE`
 
 </InlineFilter>

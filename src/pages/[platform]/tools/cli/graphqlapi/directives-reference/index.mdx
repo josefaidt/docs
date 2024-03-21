@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Directives reference',
-  description: "A reference document of all Amplify-provided GraphQL directives that enhance your Amplify app's GraphQL API and database",
+  description:
+    "A reference document of all Amplify-provided GraphQL directives that enhance your Amplify app's GraphQL API and database",
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

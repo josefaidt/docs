@@ -3,10 +3,10 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 export const meta = {
   title: 'Add any AWS service',
   description: 'Learn how you can add any AWS service.',
-  route: "/gen2/build-a-backend/add-aws-services"
+  route: '/gen2/build-a-backend/add-aws-services'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

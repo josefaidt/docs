@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Create your application',
-  description: 'Project setup for Amplify prior to adding category-specific example.',
+  description:
+    'Project setup for Amplify prior to adding category-specific example.',
   platforms: [
     'angular',
     'javascript',
@@ -16,12 +17,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'nextjs',
-        'angular',
-        'vue',
-        'react'
-      ],
+      platforms: ['nextjs', 'angular', 'vue', 'react'],
       canonicalPath: '/react/start/project-setup/create-application/'
     }
   ]
@@ -31,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -60,8 +56,7 @@ import reactnative_getting_started from '/src/fragments/start/getting-started/re
 
 <Callout warning>
 
-**NOTE:** Amplify JS v6 supports Next.js with the version range: `>=13.5.0 <15.0.0`.
-Ensure you have the correct version to integrate with Amplify.
+**NOTE:** Amplify JS v6 supports Next.js with the version range: `>=13.5.0 <15.0.0`. Ensure you have the correct version to integrate with Amplify.
 
 </Callout>
 

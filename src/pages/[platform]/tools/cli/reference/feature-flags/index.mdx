@@ -1,5 +1,5 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Feature flags',
   description: 'More information about feature flags in Amplify CLI',
@@ -36,7 +36,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,9 +44,8 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
-import FeatureFlags from "/src/components/FeatureFlags";
+import FeatureFlags from '/src/components/FeatureFlags';
 
 Feature flags makes it possible to fine tune given functionality in the Amplify CLI.
 
@@ -142,7 +141,7 @@ Due to the multiple levels of configuration options and overrides, Amplify CLI d
 
 <Callout>
 
-**Note:** feature flags are case-insensitive, however are described here in camelCase for readability 
+**Note:** feature flags are case-insensitive, however are described here in camelCase for readability
 
 </Callout>
 

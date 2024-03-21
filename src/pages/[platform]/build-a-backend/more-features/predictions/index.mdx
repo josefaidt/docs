@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'AI/ML Predictions',
-  description: 'The Predictions category enables you to integrate machine learning in your application without any prior machine learning experience. The Predictions category comes with built-in support for both online and offline use cases.',
+  description:
+    'The Predictions category enables you to integrate machine learning in your application without any prior machine learning experience. The Predictions category comes with built-in support for both online and offline use cases.',
   platforms: [
     'android',
     'angular',
@@ -16,13 +17,7 @@ export const meta = {
   route: '/[platform]/build-a-backend/more-features/predictions',
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'nextjs',
-        'react',
-        'javascript',
-        'angular'
-      ],
+      platforms: ['vue', 'nextjs', 'react', 'javascript', 'angular'],
       canonicalPath: '/javascript/build-a-backend/more-features/predictions/'
     }
   ]
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Interact with bots',
-  description: 'Learn more about how to integrate chat bot interactions into your application using Amplify.',
+  description:
+    'Learn more about how to integrate chat bot interactions into your application using Amplify.',
   platforms: [
     'javascript',
     'react-native',
@@ -13,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'nextjs',
-        'javascript',
-        'angular',
-        'vue'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/interactions/chatbot/'
+      platforms: ['react', 'nextjs', 'javascript', 'angular', 'vue'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/interactions/chatbot/'
     }
   ]
 };
@@ -29,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

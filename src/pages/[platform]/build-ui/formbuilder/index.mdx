@@ -2,19 +2,12 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Form Builder',
-  description: "Amplify Studio's Form Builder automatically generates cloud-connected forms as React code, either from your data model, any JSON object, or from scratch. You can configure validation logic, adjust theming, and customize presentation all within the console.",
-  platforms: [
-    'javascript',
-    'react', 
-    'nextjs'
-  ],
+  description:
+    "Amplify Studio's Form Builder automatically generates cloud-connected forms as React code, either from your data model, any JSON object, or from scratch. You can configure validation logic, adjust theming, and customize presentation all within the console.",
+  platforms: ['javascript', 'react', 'nextjs'],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'react', 
-        'nextjs'
-      ],
+      platforms: ['javascript', 'react', 'nextjs'],
       canonicalPath: '/javascript/build-ui/formbuilder/'
     }
   ]
@@ -24,7 +17,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

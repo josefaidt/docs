@@ -2,23 +2,12 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Automatically track events',
-  description: 'You can enable automatic tracking of Storage Events such as uploads and downloads. Enabling this will automatically send Storage Events to Amazon Pinpoint and you will be able to see them within the AWS Pinpoint Console under Custom Events.',
-  platforms: [
-    'javascript',
-    'angular',
-    'nextjs',
-    'react',
-    'vue'
-  ],
+  description:
+    'You can enable automatic tracking of Storage Events such as uploads and downloads. Enabling this will automatically send Storage Events to Amazon Pinpoint and you will be able to see them within the AWS Pinpoint Console under Custom Events.',
+  platforms: ['javascript', 'angular', 'nextjs', 'react', 'vue'],
   canonicalObjects: [
     {
-      platforms: [
-        'nextjs',
-        'angular',
-        'vue',
-        'javascript',
-        'react'
-      ],
+      platforms: ['nextjs', 'angular', 'vue', 'javascript', 'react'],
       canonicalPath: '/javascript/prev/build-a-backend/storage/autotrack/'
     }
   ]
@@ -28,7 +17,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

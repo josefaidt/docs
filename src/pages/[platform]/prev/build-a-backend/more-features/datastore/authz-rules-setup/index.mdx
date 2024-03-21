@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Set up authorization rules',
-  description: 'Learn how to apply authorization rules to your models with the @auth directive',
+  description:
+    'Learn how to apply authorization rules to your models with the @auth directive',
   platforms: [
     'flutter',
     'swift',
@@ -16,14 +17,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'nextjs',
-        'angular',
-        'javascript',
-        'vue'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/datastore/authz-rules-setup/'
+      platforms: ['react', 'nextjs', 'angular', 'javascript', 'vue'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/datastore/authz-rules-setup/'
     }
   ]
 };
@@ -32,7 +28,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

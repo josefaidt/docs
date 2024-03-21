@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Work with location search',
-  description: 'Use Amplify Geo to add location search and location-based search capabilities.',
+  description:
+    'Use Amplify Geo to add location search and location-based search capabilities.',
   platforms: [
     'javascript',
     'swift',
@@ -14,14 +15,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'nextjs',
-        'angular',
-        'javascript',
-        'vue',
-        'react'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/geo/location-search/'
+      platforms: ['nextjs', 'angular', 'javascript', 'vue', 'react'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/geo/location-search/'
     }
   ]
 };
@@ -30,7 +26,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

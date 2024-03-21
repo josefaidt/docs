@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Authorization',
-  description: 'Getting started with authorization for an app using Amplify Studio',
+  description:
+    'Getting started with authorization for an app using Amplify Studio',
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 Authorization is the process of validating what a user can access. In Amplify Studio you can specify authorization rules that limit individual user or group access to create, read, update, or delete operations on your data. Amplify Studio supports owner, public, private, and group based authorization at the model level. When an authorization directive is added to a type, all fields of the type are made available to that mode by default.
 

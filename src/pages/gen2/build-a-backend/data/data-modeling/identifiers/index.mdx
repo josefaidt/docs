@@ -4,7 +4,7 @@ export const meta = {
     'Define the primary key for a model using single-field or composite identifiers.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -18,19 +18,23 @@ Identifiers are defined using the `.identifier()` method on a model definition. 
 const schema = a.schema({
   Todo: a.model({
     content: a.string(),
-    completed: a.boolean(),
-  }),
+    completed: a.boolean()
+  })
 });
 ```
 
 ```ts
 const client = generateClient<Schema>();
 
-const todo = await client.models.Todo.create({ content: 'Buy Milk', completed: false });
+const todo = await client.models.Todo.create({
+  content: 'Buy Milk',
+  completed: false
+});
 console.log(`New Todo created: ${todo.id}`); // New Todo created: 5DB6B4CC-CD41-49F5-9844-57C0AB506B69
 ```
 
 If you want, you can use Amplify Data to define single-field and composite identifiers:
+
 - Single-field identifier with a consumer-provided value (type: `id` or `string`, and must be marked `required`)
 - Composite identifier with a set of consumer-provided values (type: `id` or `string`, and must be marked `required`)
 
@@ -40,17 +44,23 @@ If the default `id` identifier field needs to be customized, you can do so by pa
 
 ```typescript
 const schema = a.schema({
-  Todo: a.model({
-    todoId: a.id().required(),
-    title: a.string(),
-    completed: a.boolean(),
-  }).identifier(['todoId'])
-  .authorization([a.allow.public()]),
+  Todo: a
+    .model({
+      todoId: a.id().required(),
+      title: a.string(),
+      completed: a.boolean()
+    })
+    .identifier(['todoId'])
+    .authorization([a.allow.public()])
 });
 
 const client = generateClient<Schema>();
 
- const { data: todo, errors } = await client.models.Todo.create({ todoId: 'MyUniqueTodoId', title: 'Buy Milk', completed: false });
+const { data: todo, errors } = await client.models.Todo.create({
+  todoId: 'MyUniqueTodoId',
+  title: 'Buy Milk',
+  completed: false
+});
 console.log(`New Todo created: ${todo.todoId}`); // New Todo created: MyUniqueTodoId
 ```
 
@@ -60,19 +70,24 @@ For cases where items are uniquely identified by more than a single field, you c
 
 ```typescript
 const schema = a.schema({
-  StoreBranch: a.model({
-    tenantId: a.id().required(),
-    name: a.string().required(),
-    country: a.string(),
-    state: a.string(),
-    city: a.string(),
-    zipCode: a.string(),
-    streetAddress: a.string(),
-  }).identifier(['tenantId', 'name'])
-  .authorization([a.allow.public()]),
+  StoreBranch: a
+    .model({
+      tenantId: a.id().required(),
+      name: a.string().required(),
+      country: a.string(),
+      state: a.string(),
+      city: a.string(),
+      zipCode: a.string(),
+      streetAddress: a.string()
+    })
+    .identifier(['tenantId', 'name'])
+    .authorization([a.allow.public()])
 });
 
 const client = generateClient<Schema>();
 
-const branch = await client.models.StoreBranch.get({ tenantId: '123', name: 'Downtown' }); // All identifier fields are required when retrieving an item
+const branch = await client.models.StoreBranch.get({
+  tenantId: '123',
+  name: 'Downtown'
+}); // All identifier fields are required when retrieving an item
 ```

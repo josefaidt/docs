@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'Troubleshooting',
-  description: 'Recommendations on how to resolve some of the common issues and problems that you might face when using Amplify',
+  description:
+    'Recommendations on how to resolve some of the common issues and problems that you might face when using Amplify',
   platforms: [
     'angular',
     'flutter',
@@ -27,10 +28,7 @@ export const meta = {
       canonicalPath: '/javascript/build-a-backend/troubleshooting/'
     },
     {
-      platforms: [
-        'flutter',
-        'flutter'
-      ],
+      platforms: ['flutter', 'flutter'],
       canonicalPath: '/flutter/build-a-backend/troubleshooting/'
     }
   ]
@@ -40,7 +38,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

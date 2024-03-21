@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Clear messages',
-  description: "Learn more about how to clear synced in-app messages from the user's device.",
+  description:
+    "Learn more about how to clear synced in-app messages from the user's device.",
   platforms: [
     'javascript',
     'react-native',
@@ -13,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'angular',
-        'nextjs',
-        'javascript',
-        'vue'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/in-app-messaging/clear-messages/'
+      platforms: ['react', 'angular', 'nextjs', 'javascript', 'vue'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/in-app-messaging/clear-messages/'
     }
   ]
 };
@@ -29,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

@@ -2,15 +2,16 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Migrate from v5 to v6',
-  description: 'Learn more about the migration steps to upgrade Server-Side APIs for Amplify JavaScript v5 to v6',
-  platforms: ['nextjs'],
+  description:
+    'Learn more about the migration steps to upgrade Server-Side APIs for Amplify JavaScript v5 to v6',
+  platforms: ['nextjs']
 };
 
 export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -23,7 +24,14 @@ This guide will help you migrate v5 SSR implementations that use `withSSRContext
 
 ## Step 1: Install `Next.js` Adapter
 
-<Callout>You will need to upgrade your existing [environment](/[platform]/build-a-backend/troubleshooting/migrate-from-javascript-v5-to-v6/#1-upgrade-your-dev-environment), [dependencies](/[platform]/build-a-backend/troubleshooting/migrate-from-javascript-v5-to-v6/#2-update-your-amplify-project-dependencies) and [amplify cli](/[platform]/build-a-backend/troubleshooting/migrate-from-javascript-v5-to-v6/#3-upgrade-amplify-cli-version-and-configuration-file) to `aws-amplify@6`-compatible versions</Callout>
+<Callout>
+  You will need to upgrade your existing
+  [environment](/[platform]/build-a-backend/troubleshooting/migrate-from-javascript-v5-to-v6/#1-upgrade-your-dev-environment),
+  [dependencies](/[platform]/build-a-backend/troubleshooting/migrate-from-javascript-v5-to-v6/#2-update-your-amplify-project-dependencies)
+  and [amplify
+  cli](/[platform]/build-a-backend/troubleshooting/migrate-from-javascript-v5-to-v6/#3-upgrade-amplify-cli-version-and-configuration-file)
+  to `aws-amplify@6`-compatible versions
+</Callout>
 
 ```sh
 npm install @aws-amplify/adapter-nextjs
@@ -73,10 +81,11 @@ export const { runWithAmplifyServerContext } = createServerRunner({
     import amplifyConfig from '@/amplifyconfiguration.json';
 
     Amplify.configure(
-        amplifyConfig, 
+        amplifyConfig,
         { ssr: true }
     );
     ```
+
   </div>
 </Columns>
 
@@ -97,7 +106,7 @@ Make sure you are importing API’s from the `/server` subpath when in a server 
     const getServerSideProps = async ({ req }) => {
       const SSR = withSSRContext({ req });
       const user = await SSR.Auth.currentAuthenticatedUser();
-      
+
       return { props: { user } };
     };
     ```
@@ -171,7 +180,7 @@ Now update the implementation in your server-side-rendered component:
     **V6**
 
     ```ts
-    import { 
+    import {
       reqResBasedClient,
       runWithAmplifyServerContext
     } from '@/utils/amplifyServerUtils';
@@ -200,7 +209,7 @@ Now update the implementation in your server-side-rendered component:
 
 ## Migrating from DataStore to GraphQL API client in a server context
 
-DataStore is no longer supported within a server context in v6. You will need to use the GraphQL API client instead. 
+DataStore is no longer supported within a server context in v6. You will need to use the GraphQL API client instead.
 
 For a successful transition to using the API category, you will need to be aware of [how conflict resolution works](https://docs.aws.amazon.com/appsync/latest/devguide/conflict-detection-and-sync.html#conflict-detection-and-resolution). DataStore API's use the `auto-merge` strategy as the default, which is assumed in the examples below. The `auth-merge` strategy requires the following adjustments to standard GraphQL operations:
 
@@ -217,7 +226,13 @@ amplify codegen statements
 amplify codegen types
 ```
 
-<Callout> Do not try to perform DataStore mutations directly on items returned by GraphQL operations. The returned types are not compatible and should not be mixed. If you need to update an item using DataStore client-side, you should first query that item using DataStore, then perform the update.</Callout>
+<Callout>
+  {' '}
+  Do not try to perform DataStore mutations directly on items returned by GraphQL
+  operations. The returned types are not compatible and should not be mixed. If you
+  need to update an item using DataStore client-side, you should first query that
+  item using DataStore, then perform the update.
+</Callout>
 
 ### Setup API Client
 
@@ -247,12 +262,13 @@ Follow the instructions for [Using the API category in v6](/[platform]/build-a-b
       };
     }
     ```
+
   </div>
   <div>
     **V6**
 
     ```ts
-    import { 
+    import {
       reqResBasedClient,
       runWithAmplifyServerContext
     } from '@/utils/amplifyServerUtils';
@@ -264,15 +280,15 @@ Follow the instructions for [Using the API category in v6](/[platform]/build-a-b
         nextServerContext: { request: req, response: res },
         operation: async (contextSpec) => {
           const variables = {
-            filter: { 
-              _deleted: { eq: false } 
+            filter: {
+              _deleted: { eq: false }
             }
           };
-          
+
           return reqResBasedClient.graphql(contextSpec, {
             query: listTodos,
             variables,
-            authMode: 'apiKey' // May be required when using multi-auth 
+            authMode: 'apiKey' // May be required when using multi-auth
           });
         }
       });
@@ -284,6 +300,7 @@ Follow the instructions for [Using the API category in v6](/[platform]/build-a-b
       };
     };
     ```
+
   </div>
 
 </Columns>
@@ -303,14 +320,14 @@ Follow the instructions for [Using the API category in v6](/[platform]/build-a-b
 
     export async function getServerSideProps({ req }) {
       const SSR = withSSRContext({ req });
-      
+
       const original = await SSR.DataStore.query(Todo, '123456');
       const updatedTodo = await SSR.DataStore.save(
         Todo.copyOf(original, updated => {
         updated.lastViewed = new Date()
       })
     );
-      
+
       return {
         props: {
           todo: serializeModel(updatedTodo),
@@ -324,12 +341,12 @@ Follow the instructions for [Using the API category in v6](/[platform]/build-a-b
     **V6**
 
     ```ts
-    import { 
+    import {
       reqResBasedClient,
       runWithAmplifyServerContext
     } from '@/utils/amplifyServerUtils';
     import { updateTodo } from '@/graphql/queries';
-    import { GRAPHQL_AUTH_MODE } from 
+    import { GRAPHQL_AUTH_MODE } from
 
     // Server-Side
     const getServerSideProps = async ({ req, res }) => {
@@ -340,11 +357,11 @@ Follow the instructions for [Using the API category in v6](/[platform]/build-a-b
             id: '123456',
             lastViewed: new Date()
           };
-          
+
           return reqResBasedClient.graphql(contextSpec, {
             query: updateTodo,
             variables: { input: todoDetails },
-            authMode: 'userPool' // May be required when using multi-auth 
+            authMode: 'userPool' // May be required when using multi-auth
           });
         }
       });
@@ -356,6 +373,7 @@ Follow the instructions for [Using the API category in v6](/[platform]/build-a-b
       };
     };
     ```
+
   </div>
 
 </Columns>

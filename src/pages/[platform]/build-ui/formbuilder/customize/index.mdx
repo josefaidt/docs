@@ -2,19 +2,12 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Customize form inputs',
-  description: 'Use the Form Builder in Amplify Studio to customize React form components. You can add new form inputs, bind them to a field, customize labels, and add validation rules.',
-  platforms: [
-    'javascript',
-    'react', 
-    'nextjs'
-  ],
+  description:
+    'Use the Form Builder in Amplify Studio to customize React form components. You can add new form inputs, bind them to a field, customize labels, and add validation rules.',
+  platforms: ['javascript', 'react', 'nextjs'],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'react', 
-        'nextjs'
-      ],
+      platforms: ['javascript', 'react', 'nextjs'],
       canonicalPath: '/javascript/build-ui/formbuilder/customize/'
     }
   ]
@@ -24,7 +17,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

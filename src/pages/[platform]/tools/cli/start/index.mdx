@@ -3,7 +3,8 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'Start',
-  description: 'Get started with Amplify CLI unified toolchain to create, integrate, and manage services for your app.',
+  description:
+    'Get started with Amplify CLI unified toolchain to create, integrate, and manage services for your app.',
   platforms: [
     'android',
     'angular',
@@ -38,7 +39,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

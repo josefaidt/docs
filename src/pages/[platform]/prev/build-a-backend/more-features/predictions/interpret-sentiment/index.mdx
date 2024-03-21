@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Interpret sentiment',
-  description: 'Learn how to determine key phrases, sentiment, language, syntax, and entities from text using Amplify.',
+  description:
+    'Learn how to determine key phrases, sentiment, language, syntax, and entities from text using Amplify.',
   platforms: [
     'swift',
     'android',
@@ -23,7 +24,8 @@ export const meta = {
         'react-native',
         'react'
       ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/predictions/interpret-sentiment/'
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/predictions/interpret-sentiment/'
     }
   ]
 };
@@ -32,7 +34,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

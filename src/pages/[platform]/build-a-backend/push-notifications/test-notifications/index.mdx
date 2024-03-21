@@ -3,12 +3,7 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 export const meta = {
   title: 'Test push notifications',
   description: 'Overview of testing your push notifications',
-  platforms: [
-    'flutter',
-    'swift',
-    'android',
-    'react-native'
-  ],
+  platforms: ['flutter', 'swift', 'android', 'react-native'],
   canonicalObjects: [
     {
       platforms: [
@@ -18,7 +13,8 @@ export const meta = {
         'react-native',
         'swift'
       ],
-      canonicalPath: '/react-native/build-a-backend/push-notifications/test-notifications/'
+      canonicalPath:
+        '/react-native/build-a-backend/push-notifications/test-notifications/'
     }
   ]
 };
@@ -27,7 +23,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

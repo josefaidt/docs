@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Mocking and testing',
-  description: 'Learn how to quickly test and debug without pushing all changes in your Amplify project to the cloud. Use local mocking and testing for certain categories including API (AWS AppSync), Storage (Amazon DynamoDB and Amazon S3), and Functions (AWS Lambda).',
+  description:
+    'Learn how to quickly test and debug without pushing all changes in your Amplify project to the cloud. Use local mocking and testing for certain categories including API (AWS AppSync), Storage (Amazon DynamoDB and Amazon S3), and Functions (AWS Lambda).',
   platforms: [
     'angular',
     'javascript',
@@ -30,7 +31,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

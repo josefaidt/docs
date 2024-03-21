@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Connect API to existing MySQL or PostgreSQL database',
-  description: 'Learn how to connect your API to an existing MySQL or PostgreSQL database.',
+  description:
+    'Learn how to connect your API to an existing MySQL or PostgreSQL database.',
   platforms: [
     'javascript',
     'react',
@@ -27,7 +28,8 @@ export const meta = {
         'angular',
         'nextjs'
       ],
-      canonicalPath: '/javascript/build-a-backend/graphqlapi/connect-api-to-existing-database/'
+      canonicalPath:
+        '/javascript/build-a-backend/graphqlapi/connect-api-to-existing-database/'
     }
   ]
 };
@@ -36,7 +38,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -50,7 +52,6 @@ export function getStaticProps(context) {
 The following content requires you to deploy the Amplify GraphQL APIs via AWS Cloud Development Kit (CDK). If you have not yet deployed an Amplify GraphQL API with AWS CDK yet, review [Set up GraphQL API](/[platform]/build-a-backend/graphqlapi/set-up-graphql-api).
 
 </Callout>
-
 
 In this section, you'll learn how to:
 
@@ -109,8 +110,10 @@ type Query {
 }
 
 type Mutation {
-  createPost(title: String! content: String!): AWSJSON
-    @sql(statement: "INSERT INTO posts (title, content) VALUES (:title, :content);")
+  createPost(title: String!, content: String!): AWSJSON
+    @sql(
+      statement: "INSERT INTO posts (title, content) VALUES (:title, :content);"
+    )
     @auth(rules: [{ allow: public }])
 }
 ```
@@ -306,7 +309,6 @@ import fs from 'fs';
 In your `lib/<your-project-name>-stack.ts` file, read from the `sql-statements/` folder and add them as custom SQL statements to your Amplify GraphQL API:
 
 ```js
-
 // Define custom SQL statements folder path
 const sqlStatementsPath = path.join(__dirname, 'sql-statements');
 
@@ -328,7 +330,6 @@ const sqlStrategy = SQLLambdaModelDataSourceStrategyFactory.fromCustomSqlFiles(
     }
   }
 );
-
 
 const amplifyApi = new AmplifyGraphqlApi(this, 'SqlBoundApi', {
   definition: AmplifyGraphqlDefinition.fromFilesAndStrategy(
@@ -394,7 +395,8 @@ If you want to return the result of the SQL statement, you can use `AWSJSON` as 
 
 ```graphql
 type Mutation {
-  publishPosts: AWSJSON @sql(statement: "UPDATE posts SET published = 1;")
+  publishPosts: AWSJSON
+    @sql(statement: "UPDATE posts SET published = 1;")
     @auth(rules: [{ allow: public }])
 }
 ```
@@ -457,10 +459,9 @@ type Mutation {
 </BlockSwitcher>
 
 <Callout info>
-  The return type for custom queries and mutations expecting row data must
-  be an array of the corresponding model.
+  The return type for custom queries and mutations expecting row data must be an
+  array of the corresponding model.
 </Callout>
-
 
 ## Apply authorization rules
 
@@ -557,7 +558,8 @@ CREATE TABLE Ingredients (
 Execute the following SQL statement on your database using a MySQL, PostgreSQL Client, or CLI tool similar to `psql` and export the output to a CSV file:
 
 <Callout warning>
-  You must include column headers when exporting the database schema output to a CSV file.
+  You must include column headers when exporting the database schema output to a
+  CSV file.
 </Callout>
 
 Replace `<database-name>` with the name of your database/schema.
@@ -649,7 +651,6 @@ Next, generate an Amplify GraphQL API schema by running the following command, r
 npx @aws-amplify/cli api generate-schema --engine-type mysql --sql-schema schema.csv --out schema.sql.graphql
 ```
 
-
 Next, update the first argument of `AmplifyGraphqlDefinition.fromFilesAndStrategy` to include the `schema.sql.graphql` file generated in the previous step:
 
 ```ts
@@ -670,9 +671,8 @@ Open your **schema.sql.graphql** file, you should see something like this. The a
 
 ```graphql
 input AMPLIFY {
- engine: String = "mysql"
+  engine: String = "mysql"
 }
-
 
 type Ingredient @refersTo(name: "Ingredients") @model {
   id: Int! @refersTo(name: "ingredient_id") @primaryKey
@@ -894,69 +894,68 @@ Unlike MySQL, PostgreSQL does support date time or timestamp values with an offs
 
 </Callout>
 
-| SQL                | GraphQL      |
-|--------------------|--------------|
-| **String**         |              |
-| char               | String       |
-| varchar            | String       |
-| tinytext           | String       |
-| text               | String       |
-| mediumtext         | String       |
-| longtext           | String       |
-| **Geometry**       |              |
-| geometry           | String       |
-| point              | String       |
-| linestring         | String       |
-| geometryCollection | String       |
-| **Numeric**        |              |
-| smallint           | Int          |
-| mediumint          | Int          |
-| int                | Int          |
-| integer            | Int          |
-| bigint             | Int          |
-| tinyint            | Int          |
-| float              | Float        |
-| double             | Float        |
-| decimal            | Float        |
-| dec                | Float        |
-| numeric            | Float        |
-| **Date and Time**  |              |
-| date               | AWSDate      |
-| datetime           | AWSDateTime   |
-| timestamp          | AWSDateTime   |
-| time               | AWSTime       |
-| year               | Int          |
-| **Binary**         |              |
-| binary             | String        |
-| varbinary          | String        |
-| tinyblob           | String        |
-| blob               | String        |
-| mediumblob         | String        |
-| longblob           | String        |
-| **Others**         |              |
-| bool               | Boolean       |
-| boolean            | Boolean       |
-| bit                | Int          |
-| json               | AWSJSON       |
-| enum               | ENUM          |
+| SQL                | GraphQL     |
+| ------------------ | ----------- |
+| **String**         |             |
+| char               | String      |
+| varchar            | String      |
+| tinytext           | String      |
+| text               | String      |
+| mediumtext         | String      |
+| longtext           | String      |
+| **Geometry**       |             |
+| geometry           | String      |
+| point              | String      |
+| linestring         | String      |
+| geometryCollection | String      |
+| **Numeric**        |             |
+| smallint           | Int         |
+| mediumint          | Int         |
+| int                | Int         |
+| integer            | Int         |
+| bigint             | Int         |
+| tinyint            | Int         |
+| float              | Float       |
+| double             | Float       |
+| decimal            | Float       |
+| dec                | Float       |
+| numeric            | Float       |
+| **Date and Time**  |             |
+| date               | AWSDate     |
+| datetime           | AWSDateTime |
+| timestamp          | AWSDateTime |
+| time               | AWSTime     |
+| year               | Int         |
+| **Binary**         |             |
+| binary             | String      |
+| varbinary          | String      |
+| tinyblob           | String      |
+| blob               | String      |
+| mediumblob         | String      |
+| longblob           | String      |
+| **Others**         |             |
+| bool               | Boolean     |
+| boolean            | Boolean     |
+| bit                | Int         |
+| json               | AWSJSON     |
+| enum               | ENUM        |
 
 ### Supported Amplify directives for auto-generated GraphQL schema
 
-| Name         | Supported | Model Level | Field Level | Description |
-|--------------|:---------:|:-----------:|:-----------:|-------------|
-| `@model`     | ✅        | ✅          | ❌          | Creates a datasource and resolver for a table.            |
-| `@auth`      | ✅        | ✅          | ✅       | Allows access to data based on a set of authorization methods and operations. |
-| `@primaryKey`| ✅        | ❌          | ✅          | Sets a field to be the primary key. |
-| `@index`     | ✅        | ❌          | ✅          | Defines an index on a table.         |
-| `@default`   | ✅        | ❌          | ✅          | Sets the default value for a column.         |
-| `@hasOne`    | ✅        | ❌          | ✅          | Defines a one-way 1:1 relationship from a parent to child model. |
-| `@hasMany`   | ✅        | ❌          | ✅          | Defines a one-way 1:M relationship between two models, the reference being on the child. |
-| `@belongsTo` | ✅        | ❌          | ✅          | Defines bi-directional relationship with the parent model. |
-| `@manyToMany`| ❌        | ❌          | ❌          | Defines a M:N relationship between two models.       |
-| `@refersTo`  | ✅        | ✅          | ✅          | Maps a model to a table, or a field to a column, by name. |
-| `@mapsTo`    | ❌        | ❌          | ❌          | Maps a model to a DynamoDB table.        |
-| `@sql`       | ✅        | ❌          | ✅          | Accepts an inline SQL statement or reference to a .sql file to be executed to resolve a Custom Query or Mutation. |
-
+| Name | Supported | Model Level | Field Level | Description |
+| --- | :-: | :-: | :-: | --- |
+| `@model` | ✅ | ✅ | ❌ | Creates a datasource and resolver for a table. |
+| `@auth` | ✅ | ✅ | ✅ | Allows access to data based on a set of authorization methods and operations. |
+| `@primaryKey` | ✅ | ❌ | ✅ | Sets a field to be the primary key. |
+| `@index` | ✅ | ❌ | ✅ | Defines an index on a table. |
+| `@default` | ✅ | ❌ | ✅ | Sets the default value for a column. |
+| `@hasOne` | ✅ | ❌ | ✅ | Defines a one-way 1:1 relationship from a parent to child model. |
+| `@hasMany` | ✅ | ❌ | ✅ | Defines a one-way 1:M relationship between two models, the reference being on the child. |
+| `@belongsTo` | ✅ | ❌ | ✅ | Defines bi-directional relationship with the parent model. |
+| `@manyToMany` | ❌ | ❌ | ❌ | Defines a M:N relationship between two models. |
+| `@refersTo` | ✅ | ✅ | ✅ | Maps a model to a table, or a field to a column, by name. |
+| `@mapsTo` | ❌ | ❌ | ❌ | Maps a model to a DynamoDB table. |
+| `@sql` | ✅ | ❌ | ✅ | Accepts an inline SQL statement or reference to a .sql file to be executed to resolve a Custom Query or Mutation. |
 
 ## Troubleshooting
 

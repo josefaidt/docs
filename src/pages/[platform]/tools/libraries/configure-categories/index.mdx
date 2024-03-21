@@ -30,7 +30,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -41,7 +41,7 @@ export function getStaticProps(context) {
 
 When using the Amplify CLI, the **amplifyconfiguration.json** file gets created and updated automatically for you based upon the resources you have added and configured.
 
-If you are not using the Amplify CLI or need to override these settings, this documentation shows the available configuration properties for each category. 
+If you are not using the Amplify CLI or need to override these settings, this documentation shows the available configuration properties for each category.
 
 <Callout info>
 

@@ -2,23 +2,12 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Get file properties',
-  description: "Learn more about how to get a file's properties without downloading the file using Amplify's storage category.",
-  platforms: [
-    'javascript',
-    'angular',
-    'nextjs',
-    'react',
-    'vue'
-  ],
+  description:
+    "Learn more about how to get a file's properties without downloading the file using Amplify's storage category.",
+  platforms: ['javascript', 'angular', 'nextjs', 'react', 'vue'],
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'nextjs',
-        'javascript',
-        'react',
-        'angular'
-      ],
+      platforms: ['vue', 'nextjs', 'javascript', 'react', 'angular'],
       canonicalPath: '/javascript/prev/build-a-backend/storage/get-properties/'
     }
   ]
@@ -28,7 +17,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

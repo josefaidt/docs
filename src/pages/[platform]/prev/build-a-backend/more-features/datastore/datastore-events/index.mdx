@@ -16,14 +16,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'nextjs',
-        'vue',
-        'javascript',
-        'angular'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/datastore/datastore-events/'
+      platforms: ['react', 'nextjs', 'vue', 'javascript', 'angular'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/datastore/datastore-events/'
     }
   ]
 };
@@ -32,7 +27,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

@@ -1,20 +1,12 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Collections',
   description: 'Figma to React code with Amplify Studio',
-  platforms: [
-    'javascript',
-    'nextjs',
-    'react'
-  ],
+  platforms: ['javascript', 'nextjs', 'react'],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'nextjs',
-        'react'
-      ],
+      platforms: ['javascript', 'nextjs', 'react'],
       canonicalPath: '/javascript/tools/console/tutorial/collections/'
     }
   ]
@@ -24,7 +16,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -32,7 +24,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 Amplify Studio also allows you to build lists and grids based on individual UI components. Let's create a `NewHomes` grid that showcases the latest homes added to the app.
 

@@ -1,9 +1,10 @@
 export const meta = {
   title: 'Configure custom identity and group claims',
-  description: "Amplify Data allows you to configure custom identity and group claims instead of using the default Cognito claims, which can be useful if you want to populate claims from an external source like a database or 3rd party auth provider. The example shows how to check the `user_id` identity claim and the `user_groups` group claim that could come from a custom pre token generation Lambda trigger. Defining these custom claims provides more flexibility in authorization rules."
+  description:
+    'Amplify Data allows you to configure custom identity and group claims instead of using the default Cognito claims, which can be useful if you want to populate claims from an external source like a database or 3rd party auth provider. The example shows how to check the `user_id` identity claim and the `user_groups` group claim that could come from a custom pre token generation Lambda trigger. Defining these custom claims provides more flexibility in authorization rules.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -24,16 +25,15 @@ const schema = a.schema({
       id: a.id(),
       owner: a.string(),
       postname: a.string(),
-      content: a.string(),
+      content: a.string()
     })
     .authorization([
       a.allow.owner().identityClaim('user_id'),
-      a.allow.specificGroups(['Moderator']).withClaimIn('user_groups'),
-    ]),
+      a.allow.specificGroups(['Moderator']).withClaimIn('user_groups')
+    ])
 });
 
 export type Schema = ClientSchema<typeof schema>;
 
 export const data = defineData({ schema });
-
 ```

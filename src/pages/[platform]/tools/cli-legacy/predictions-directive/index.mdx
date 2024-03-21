@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Connect machine learning services',
-  description: 'The @predictions directive allows you to query an orchestration of AI/ML services such as Amazon Rekognition, Amazon Translate, and/or Amazon Polly.',
+  description:
+    'The @predictions directive allows you to query an orchestration of AI/ML services such as Amazon Rekognition, Amazon Translate, and/or Amazon Polly.',
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -47,7 +48,9 @@ export function getStaticProps(context) {
 
 <MigrationAlert
   isLegacy
-  url={'/[platform]/build-a-backend/graphqlapi/connect-machine-learning-services/'}
+  url={
+    '/[platform]/build-a-backend/graphqlapi/connect-machine-learning-services/'
+  }
 />
 
 ## @predictions

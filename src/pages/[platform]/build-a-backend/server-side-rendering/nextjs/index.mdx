@@ -1,5 +1,4 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'Use Amplify categories APIs from Next.js',
@@ -32,7 +31,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -45,8 +44,7 @@ This guide walks through how to use Amplify Auth, GraphQL API, REST API, and Sto
 
 <Callout warning>
 
-**NOTE:** Amplify JS v6 supports Next.js with the version range: `>=13.5.0 <15.0.0`.
-Ensure you have the correct version to integrate with Amplify.
+**NOTE:** Amplify JS v6 supports Next.js with the version range: `>=13.5.0 <15.0.0`. Ensure you have the correct version to integrate with Amplify.
 
 </Callout>
 

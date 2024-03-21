@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Under the hood',
-  description: 'Learn more about the foundational auth concepts for cloud-based application and how they work with Amplify.',
+  description:
+    'Learn more about the foundational auth concepts for cloud-based application and how they work with Amplify.',
   platforms: [
     'javascript',
     'react-native',
@@ -15,13 +16,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'angular',
-        'react',
-        'nextjs',
-        'vue',
-        'javascript'
-      ],
+      platforms: ['angular', 'react', 'nextjs', 'vue', 'javascript'],
       canonicalPath: '/javascript/build-a-backend/auth/under-the-hood/'
     }
   ]
@@ -31,7 +26,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

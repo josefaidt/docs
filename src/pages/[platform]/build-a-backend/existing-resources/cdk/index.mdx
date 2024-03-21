@@ -1,24 +1,24 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Connect to existing AWS resources built with the CDK',
-  description: "Connect a new app to AWS resources built with the CDK.",
+  description: 'Connect a new app to AWS resources built with the CDK.',
   platforms: [
-                'angular',
-                'flutter',
-                'javascript',
-                'nextjs',
-                'react',
-                'react-native',
-                'vue'
-              ]
+    'angular',
+    'flutter',
+    'javascript',
+    'nextjs',
+    'react',
+    'react-native',
+    'vue'
+  ]
 };
 
 export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -27,7 +27,7 @@ export function getStaticProps(context) {
   };
 }
 
-This guide shows you how to connect a new app to AWS resources you've already created using the [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.com/cdk/). The AWS CDK is an open-source software development framework for defining cloud infrastructure as code with modern programming languages. This infrastructure is then deployed through [AWS CloudFormation](https://aws.amazon.com/cloudformation/). 
+This guide shows you how to connect a new app to AWS resources you've already created using the [AWS Cloud Development Kit (AWS CDK)](https://aws.amazon.com/cdk/). The AWS CDK is an open-source software development framework for defining cloud infrastructure as code with modern programming languages. This infrastructure is then deployed through [AWS CloudFormation](https://aws.amazon.com/cloudformation/).
 
 <InlineFilter filters={["javascript", "react-native", "angular", "nextjs", "react", "vue"]}>
 
@@ -45,18 +45,18 @@ Before you begin, you will need:
 
 <InlineFilter filters={["javascript", "react-native", "angular", "nextjs", "react", "vue"]}>
 
-* An AWS account: If you don't already have an account, follow the [Setting Up Your AWS Environment](https://aws.amazon.com/getting-started/guides/setup-environment/) tutorial for a quick overview.
-* The Amplify CLI [installed](/[platform]/tools/cli/start/set-up-cli/) and configured.
-* A text editor. For this guide, we will use VS Code, but you can use your preferred IDE.
+- An AWS account: If you don't already have an account, follow the [Setting Up Your AWS Environment](https://aws.amazon.com/getting-started/guides/setup-environment/) tutorial for a quick overview.
+- The Amplify CLI [installed](/[platform]/tools/cli/start/set-up-cli/) and configured.
+- A text editor. For this guide, we will use VS Code, but you can use your preferred IDE.
 
 </InlineFilter>
 
 <InlineFilter filters={["flutter"]}>
 
-* An AWS account: If you don't already have an account, follow the [Setting Up Your AWS Environment](https://aws.amazon.com/getting-started/guides/setup-environment/) tutorial for a quick overview.
-* The Amplify CLI [installed](/[platform]/tools/cli/start/set-up-cli/) and configured.
-* A text editor. For this guide, we will use VS Code, but you can use your preferred IDE.
-* Flutter and its command-line tools [installed](https://docs.flutter.dev/get-started/install) and configured.
+- An AWS account: If you don't already have an account, follow the [Setting Up Your AWS Environment](https://aws.amazon.com/getting-started/guides/setup-environment/) tutorial for a quick overview.
+- The Amplify CLI [installed](/[platform]/tools/cli/start/set-up-cli/) and configured.
+- A text editor. For this guide, we will use VS Code, but you can use your preferred IDE.
+- Flutter and its command-line tools [installed](https://docs.flutter.dev/get-started/install) and configured.
 
 </InlineFilter>
 
@@ -64,17 +64,17 @@ Before you begin, you will need:
 
 The CDK provides a simple way to define cloud infrastructure in code. In this section, we will use the CDK to build out the backend resources for our application.
 
-**Step 1:** Create a folder for the CDK app by running the following command in your terminal. 
+**Step 1:** Create a folder for the CDK app by running the following command in your terminal.
 
 ```bash title="Terminal" showLineNumbers={false}
-mkdir cdk-backend 
+mkdir cdk-backend
 ```
 
 **Step 2:** Navigate to the `cdk-backend` folder and create a new CDK project by running the `cdk init` command and specifying your preferred language.
 
 ```bash title="Terminal"
-cd cdk-backend 
-cdk init --language typescript 
+cd cdk-backend
+cdk init --language typescript
 ```
 
 **Step 3:** Open the newly created CDK project using VS Code, or your preferred IDE.
@@ -85,7 +85,7 @@ cdk init --language typescript
 npm install @aws-amplify/data-construct
 ```
 
-**Step 5:** Update the `cdk_backend/lib/cdk-backend-stack.ts` file as shown in the following code to use the `AmplifyData` construct  to create an AWS AppSync API. 
+**Step 5:** Update the `cdk_backend/lib/cdk-backend-stack.ts` file as shown in the following code to use the `AmplifyData` construct to create an AWS AppSync API.
 
 ```ts title="lib/cdk-backend-stack.ts"
 import * as cdk from 'aws-cdk-lib';
@@ -129,11 +129,19 @@ cdk deploy
 
 **Step 7:** The CDK will prepare the resources for deployment and will display the following prompt. Enter **Y** and press **Enter**.
 
-<img src="/images/existing-resources/resources-cdk.png" alt="The CDK preparing for deployment." width="750" />
+<img
+  src="/images/existing-resources/resources-cdk.png"
+  alt="The CDK preparing for deployment."
+  width="750"
+/>
 
 The CDK will deploy the stacks and display the following confirmation. Note the details of the deployed API; we’re going to use them in the next section.
 
-<img src="/images/existing-resources/cdk-stacks.png" alt="CDK deploying the stacks." width="750" />
+<img
+  src="/images/existing-resources/cdk-stacks.png"
+  alt="CDK deploying the stacks."
+  width="750"
+/>
 
 Now that you have built the backend API with the CDK, you can connect a frontend.
 
@@ -141,31 +149,35 @@ Now that you have built the backend API with the CDK, you can connect a frontend
 
 ## Build a React app and connect to the GraphQL API
 
-In this section, we will connect a React web app to our existing GraphQL API. First, we will create a new React project and install the necessary Amplify packages. Next, we will use the Amplify CLI to generate GraphQL code matching our API structure. Then, we will add React components to perform queries and mutations to manage to-do items in our API. After that, we will configure the Amplify library with details of our backend API. Finally, we will run the application to demonstrate full CRUD functionality with our existing API. 
+In this section, we will connect a React web app to our existing GraphQL API. First, we will create a new React project and install the necessary Amplify packages. Next, we will use the Amplify CLI to generate GraphQL code matching our API structure. Then, we will add React components to perform queries and mutations to manage to-do items in our API. After that, we will configure the Amplify library with details of our backend API. Finally, we will run the application to demonstrate full CRUD functionality with our existing API.
 
 **Step 1:** Create a React app by running the following command in your terminal.
 
 ```bash title="Terminal" showLineNumbers={false}
-npx create-react-app react-amplify-connect 
+npx create-react-app react-amplify-connect
 ```
 
 **Step 2:** Open the newly created React app using VS Code, or your preferred IDE.
- 
-**Step 3:** Install the `aws-amplify`, `@aws-amplify/ui-react`, and `@aws-amplify/cli` packages by running the following commands. 
+
+**Step 3:** Install the `aws-amplify`, `@aws-amplify/ui-react`, and `@aws-amplify/cli` packages by running the following commands.
 
 ```bash title="Terminal" showLineNumbers={false}
-npm install aws-amplify @aws-amplify/ui-react @aws-amplify/cli 
+npm install aws-amplify @aws-amplify/ui-react @aws-amplify/cli
 ```
 
 **Step 4:** Use the awsAppsyncApiId and awsAppsyncRegion values of the CDK stack you created previously to generate the GraphQL client helper code by running the following command.
 
-<img src="/images/existing-resources/outputs-cdk.png" alt="awsAppsyncApiId and awsAppsyncRegion values highlighted within the outputs of the CDK stack." width="750" />
+<img
+  src="/images/existing-resources/outputs-cdk.png"
+  alt="awsAppsyncApiId and awsAppsyncRegion values highlighted within the outputs of the CDK stack."
+  width="750"
+/>
 
 ```react showLineNumbers={false}
-npx @aws-amplify/cli codegen add --apiId <aws-appsync-api-id> --region <aws-appsync-region> 
+npx @aws-amplify/cli codegen add --apiId <aws-appsync-api-id> --region <aws-appsync-region>
 ```
 
-**Step 5:** Accept the default values for the prompts. 
+**Step 5:** Accept the default values for the prompts.
 
 ```console title="Terminal" showLineNumbers={false}
 ? Choose the type of app that you're building javascript
@@ -181,12 +193,16 @@ npx @aws-amplify/cli codegen add --apiId <aws-appsync-api-id> --region <aws-apps
 
 The Amplify CLI will create the GraphQL client helper code inside the `src/graphql` folder.
 
-<img src="/images/existing-resources/client-helper-models2-cdk.png" alt="mutations.js, queries.js, and subscriptions.js within the graphql folder." width="400" />
+<img
+  src="/images/existing-resources/client-helper-models2-cdk.png"
+  alt="mutations.js, queries.js, and subscriptions.js within the graphql folder."
+  width="400"
+/>
 
 **Step 6:** Update the `App.js` file with the following code to create a form with a button to create to-dos, as well as a way to fetch and render the to-do list.
 
 ```jsx title="src/App.js"
-import { Amplify} from 'aws-amplify'
+import { Amplify } from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
 import { useEffect, useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
@@ -196,13 +212,13 @@ import { listTodos } from './graphql/queries';
 Amplify.configure({
   API: {
     GraphQL: {
- // highlight-start
+      // highlight-start
       endpoint: '<your-graphql-endpoint>',
       region: '<your-aws-region>',
       defaultAuthMode: 'apiKey',
       apiKey: '<your-api-key>'
- // highlight-end
-      }
+      // highlight-end
+    }
   }
 });
 
@@ -309,11 +325,10 @@ const styles = {
 export default App;
 ```
 
-
 **Step 7:** Run the app using the following command.
 
 ```bash title="Terminal" showLineNumbers={false}
-npm start 
+npm start
 ```
 
 **Step 8:** Use the form to create a few to-do items.
@@ -335,19 +350,20 @@ In this section, we will connect a Flutter mobile app to the GraphQL API we crea
 **Step 1:** Create a Flutter app by running the following command in your terminal.
 
 ```bash title="Terminal" showLineNumbers={false}
-flutter create flutter_todo_app --platforms=web   
+flutter create flutter_todo_app --platforms=web
 ```
 
-**Step 2:** Open the newly created Flutter app by running the following commands in your terminal. 
+**Step 2:** Open the newly created Flutter app by running the following commands in your terminal.
 
 ```bash title="Terminal"
-cd flutter_todo_app 
+cd flutter_todo_app
 code . -r
 ```
 
 **Step 3**: Update the `pubspec.yaml` file in the app’s root directory to add the required dependencies, as shown in the following code.
 
 {/* cSpell:disable */}
+
 ```yaml title="pubspec.yaml"
 name: flutter_todo_app
 description: "A new Flutter project."
@@ -362,7 +378,7 @@ dependencies:
   flutter:
     sdk: flutter
   amplify_flutter: ^1.0.0
-  amplify_api: ^1.0.0  
+  amplify_api: ^1.0.0
   go_router: ^6.5.5
   cupertino_icons: ^1.0.2
 // highlight-end
@@ -375,6 +391,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 ```
+
 {/* cSpell:enable */}
 
 **Step 4:** Run the following command in your terminal to install the dependencies you added to the `pubspec.yaml` file.
@@ -383,17 +400,21 @@ flutter:
 flutter pub get
 ```
 
-**Step 5:** Install the @aws-amplify/cli packages by running the following command. 
+**Step 5:** Install the @aws-amplify/cli packages by running the following command.
 
 ```bash title="Terminal" showLineNumbers={false}
-npm install @aws-amplify/cli 
+npm install @aws-amplify/cli
 ```
 
-**Step 6:** Create a new folder and name it `graphql`. Inside it, create the file `schema.graphql`. 
+**Step 6:** Create a new folder and name it `graphql`. Inside it, create the file `schema.graphql`.
 
-<img src="/images/existing-resources/schema-graphql-cdk.png" alt="The schema.graphql file inside the graphql folder." width="450" />
+<img
+  src="/images/existing-resources/schema-graphql-cdk.png"
+  alt="The schema.graphql file inside the graphql folder."
+  width="450"
+/>
 
-**Step 7:** Update the file `schema.graphql`, as shown in the following example, to define the Todo data model, similar to what you used for the CDK app. 
+**Step 7:** Update the file `schema.graphql`, as shown in the following example, to define the Todo data model, similar to what you used for the CDK app.
 
 ```graphql title="schema.graphql"
 type Todo @model @auth(rules: [{ allow: public }]) {
@@ -410,7 +431,11 @@ type Todo @model @auth(rules: [{ allow: public }]) {
 npx @aws-amplify/cli codegen models --model-schema ./graphql --target flutter --output-dir ./lib/models
 ```
 
-<img src="/images/existing-resources/client-helper-models-cdk.png" alt="The ModelProvider.dart and Todo.dart files within the models folder." width="450" />
+<img
+  src="/images/existing-resources/client-helper-models-cdk.png"
+  alt="The ModelProvider.dart and Todo.dart files within the models folder."
+  width="450"
+/>
 
 **Step 9:** Create the file `todo_item_page.dart` inside the `lib` folder and update it with the following code to present a form to the user for creating a to-do item. Once submitted, the form will initiate a GraphQL mutation to add or modify the item in the database.
 
@@ -733,7 +758,7 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-**Step 11:** Update `main.dart` to configure Amplify using the details of the GraphQL API you created using the CDK app in the previous section.  
+**Step 11:** Update `main.dart` to configure Amplify using the details of the GraphQL API you created using the CDK app in the previous section.
 
 ```dart title="main.dart"
 import 'package:amplify_api/amplify_api.dart';
@@ -819,7 +844,7 @@ class MyApp extends StatelessWidget {
 **Step 12:** Run the app in the Chrome browser using the following command.
 
 ```bash title="Terminal" showLineNumbers={false}
-flutter run -d chrome 
+flutter run -d chrome
 ```
 
 <video autoPlay={true} muted={true} loop={true} width="100%">

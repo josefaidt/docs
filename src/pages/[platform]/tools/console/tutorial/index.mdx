@@ -4,19 +4,11 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 export const meta = {
   title: 'Tutorial',
   description: 'Tutorial',
-  platforms: [
-    'javascript',
-    'nextjs',
-    'react'
-  ],
+  platforms: ['javascript', 'nextjs', 'react'],
   route: '/[platform]/tools/console/tutorial',
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'javascript',
-        'nextjs'
-      ],
+      platforms: ['react', 'javascript', 'nextjs'],
       canonicalPath: '/javascript/tools/console/tutorial/'
     }
   ]
@@ -26,7 +18,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

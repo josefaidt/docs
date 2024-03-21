@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Resolve conflicts',
-  description: 'Learn how to resolve conflicts when an event is sent and meets the criteria set forth by multiple in-app messages.',
+  description:
+    'Learn how to resolve conflicts when an event is sent and meets the criteria set forth by multiple in-app messages.',
   platforms: [
     'javascript',
     'react-native',
@@ -13,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'vue',
-        'javascript',
-        'angular',
-        'nextjs'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/in-app-messaging/resolve-conflicts/'
+      platforms: ['react', 'vue', 'javascript', 'angular', 'nextjs'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/in-app-messaging/resolve-conflicts/'
     }
   ]
 };
@@ -29,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

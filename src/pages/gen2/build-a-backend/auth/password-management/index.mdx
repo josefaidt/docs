@@ -4,7 +4,7 @@ export const meta = {
     'Learn how to set up password change and recovery for your users.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -26,7 +26,6 @@ By default, your users can retrieve access to their accounts if they forgot thei
 | `email`             | Email                             |
 | `email` and `phone` | Email                             |
 
-
 ### Override the default user account verification channel
 
 You can always change the channel used by your authentication resources by overriding the following setting.
@@ -38,9 +37,9 @@ export const auth = defineAuth({
   loginWith: {
     email: true
   },
-// highlight-start
+  // highlight-start
   accountRecovery: 'EMAIL_ONLY'
-// highlight-end
+  // highlight-end
 });
 ```
 
@@ -160,7 +159,6 @@ async function handleConfirmResetPassword({
 
 </Block>
 </BlockSwitcher>
-
 
 ## Update password
 

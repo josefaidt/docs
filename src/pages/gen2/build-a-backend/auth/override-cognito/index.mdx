@@ -3,7 +3,7 @@ export const meta = {
   description: 'Learn how to override Amplify-generated Cognito resources.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -36,24 +36,21 @@ You can override the password policy by using the L1 `cfnUserPool` construct and
 import { defineBackend } from '@aws-amplify/backend';
 import { auth } from './auth/resource.js';
 const backend = defineBackend({
-  auth,
+  auth
 });
 // extract L1 CfnUserPool resources
 const { cfnUserPool } = backend.auth.resources.cfnResources;
 // use CDK's `addPropertyOverride` to modify properties directly
-cfnUserPool.addPropertyOverride(
-  "Policies",
-  {
-    PasswordPolicy: {
-      MinimumLength: 10,
-      RequireLowercase: true,
-      RequireNumbers: true,
-      RequireSymbols: true,
-      RequireUppercase: true,
-      TemporaryPasswordValidityDays: 20,
-    },
+cfnUserPool.addPropertyOverride('Policies', {
+  PasswordPolicy: {
+    MinimumLength: 10,
+    RequireLowercase: true,
+    RequireNumbers: true,
+    RequireSymbols: true,
+    RequireUppercase: true,
+    TemporaryPasswordValidityDays: 20
   }
-);
+});
 ```
 
 ## Custom Attributes
@@ -74,11 +71,11 @@ const backend = defineBackend({
 // extract L1 CfnUserPool resources
 const { cfnUserPool } = backend.auth.resources.cfnResources;
 // use CDK's `addPropertyOverride` to modify properties directly
-cfnUserPool.addPropertyOverride("Schema", [
+cfnUserPool.addPropertyOverride('Schema', [
   {
-    Name: "publicName",
-    AttributeDataType: "String",
-    Mutable: true,
-  },
+    Name: 'publicName',
+    AttributeDataType: 'String',
+    Mutable: true
+  }
 ]);
 ```

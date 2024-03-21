@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Explore key workflows for Amplify CLI',
-  description: 'How to initialize a new Amplify project and other typical Amplify CLI workflows and commands.',
+  description:
+    'How to initialize a new Amplify project and other typical Amplify CLI workflows and commands.',
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 ## Initialize new project
 
@@ -98,7 +98,8 @@ Once you have made your category updates, run the command `amplify push` to upda
 
 ### amplify pull
 
-The `amplify pull` command operates similar to a _git pull_, fetching upstream backend environment definition changes from the cloud* and update the local environment to match that definition. The command is particularly helpful in team scenarios when multiple team members are editing the same backend, pulling a backend into a new project, or when connecting to [multiple frontend projects](/[platform]/tools/cli/teams/multi-frontend/) that share the same Amplify backend environment.
+The `amplify pull` command operates similar to a _git pull_, fetching upstream backend environment definition changes from the cloud\* and update the local environment to match that definition. The command is particularly helpful in team scenarios when multiple team members are editing the same backend, pulling a backend into a new project, or when connecting to [multiple frontend projects](/[platform]/tools/cli/teams/multi-frontend/) that share the same Amplify backend environment.
+
 > \* The CLI will use the S3 deployment bucket to retrieve your project information including the CloudFormation templates from the last successful `amplify push`.
 
 <Callout>
@@ -146,12 +147,14 @@ npm install -g @aws-amplify/cli
 ```bash
 amplify upgrade
 ```
+
 </Block>
 <Block name="cURL (Windows)">
 
 ```bash
 amplify upgrade
 ```
+
 </Block>
 </BlockSwitcher>
 
@@ -166,6 +169,7 @@ amplify -v
 Confirm the installed version of the Amplify CLI. You can find the latest version of the CLI here - [https://www.npmjs.com/package/@aws-amplify/cli](https://www.npmjs.com/package/@aws-amplify/cli).
 
 ### (Optional) Update projects using latest Amplify CLI
+
 Navigate to your Amplify project folder using the following command `cd <Project-Filepath>`. To verify if it is a valid Amplify project folder, enter the following command in the CLI:
 
 ```bash
@@ -196,8 +200,7 @@ If you are receiving errors on push regarding unknown GraphQL directives and hav
 
 ## Uninstall Amplify CLI
 
-Use the following commands to completely remove Amplify CLI from your system. Removing the Amplify CLI will NOT delete any of your Amplify projects.
-To delete a project, run `amplify delete` within the project directory.
+Use the following commands to completely remove Amplify CLI from your system. Removing the Amplify CLI will NOT delete any of your Amplify projects. To delete a project, run `amplify delete` within the project directory.
 
 <BlockSwitcher>
 <Block name="NPM">
@@ -212,15 +215,16 @@ npm uninstall -g @aws-amplify/cli
 ```bash
 amplify uninstall
 ```
+
 </Block>
 <Block name="cURL (Windows)">
 
 ```bash
 amplify uninstall
 ```
+
 </Block>
 </BlockSwitcher>
-
 
 ## List of commands
 

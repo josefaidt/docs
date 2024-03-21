@@ -3,13 +3,12 @@ export const meta = {
   description: 'Use fullstack branch deployments to test changes from feature branches.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
     }
   };
-
 }
 
 Amplify code-first DX (Gen 2) offers fullstack branch deployments that allow you to automatically deploy infrastructure and application code changes from feature branches. This enables testing changes in an isolated environment before merging to the main branch.

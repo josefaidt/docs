@@ -3,7 +3,7 @@ export const meta = {
   description: 'Learn how to set Analytics resource powered by Pinpoint'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -17,49 +17,52 @@ export function getStaticProps(context) {
 
 </Callout>
 
-Amplify enables you to collect analytics data for your app. The Analytics category uses Amazon Cognito Identity pools to _identify_ users in your app.
-The following is an example utilizing the [AWS Cloud Development Kit (AWS CDK)](https://docs.aws.amazon.com/cdk/latest/guide/home.html) to create the an Analytics resource powered by [Amazon Pinpoint](https://aws.amazon.com/pinpoint/).
+Amplify enables you to collect analytics data for your app. The Analytics category uses Amazon Cognito Identity pools to _identify_ users in your app. The following is an example utilizing the [AWS Cloud Development Kit (AWS CDK)](https://docs.aws.amazon.com/cdk/latest/guide/home.html) to create the an Analytics resource powered by [Amazon Pinpoint](https://aws.amazon.com/pinpoint/).
 
 ```ts title="amplify/backend.ts"
-import { Policy, PolicyStatement } from "aws-cdk-lib/aws-iam";
-import { CfnApp } from "aws-cdk-lib/aws-pinpoint";
+import { Policy, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { CfnApp } from 'aws-cdk-lib/aws-pinpoint';
 
 const backend = defineBackend({
-  auth, 
-  data,
-  // additional resources 
+  auth,
+  data
+  // additional resources
 });
 
-const analyticsStack = backend.createStack("analytics-stack");
+const analyticsStack = backend.createStack('analytics-stack');
 
 // create a Pinpoint app
-const pinpoint = new CfnApp(analyticsStack, "Pinpoint", {
-  name: "myPinpointApp",
+const pinpoint = new CfnApp(analyticsStack, 'Pinpoint', {
+  name: 'myPinpointApp'
 });
 
 // create an IAM policy to allow interacting with Pinpoint
-const pinpointPolicy = new Policy(analyticsStack, "PinpointPolicy", {
-  policyName: "PinpointPolicy",
+const pinpointPolicy = new Policy(analyticsStack, 'PinpointPolicy', {
+  policyName: 'PinpointPolicy',
   statements: [
     new PolicyStatement({
-      actions: ["mobiletargeting:UpdateEndpoint", "mobiletargeting:PutEvents"],
-      resources: [pinpoint.attrArn + "/*"],
-    }),
-  ],
+      actions: ['mobiletargeting:UpdateEndpoint', 'mobiletargeting:PutEvents'],
+      resources: [pinpoint.attrArn + '/*']
+    })
+  ]
 });
 
 // apply the policy to the authenticated and unauthenticated roles
-backend.auth.resources.authenticatedUserIamRole.attachInlinePolicy(pinpointPolicy);
-backend.auth.resources.unauthenticatedUserIamRole.attachInlinePolicy(pinpointPolicy);
+backend.auth.resources.authenticatedUserIamRole.attachInlinePolicy(
+  pinpointPolicy
+);
+backend.auth.resources.unauthenticatedUserIamRole.attachInlinePolicy(
+  pinpointPolicy
+);
 
 // patch the custom Pinpoint resource to the expected output configuration
 backend.addOutput({
   Analytics: {
     AWSPinpoint: {
       appId: pinpoint.ref,
-      region: Stack.of(pinpoint).region,
-    },
-  },
+      region: Stack.of(pinpoint).region
+    }
+  }
 });
 ```
 

@@ -4,7 +4,7 @@ export const meta = {
     'Learn more about working with Android, iOS, Flutter, and React Native apps.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -27,7 +27,6 @@ Before you get started, make sure you have the following installed:
 ## Build a mobile app
 
 Here is how you can build a To Do application on each platform with CRUD operations:
-
 
 <BlockSwitcher>
   <Block name="Android">
@@ -87,8 +86,9 @@ Running this command will scaffold a lightweight Amplify project in your current
 Amplify gen2 provides a new way to develop applications. Now you are able to run your application with a sandbox environment and generate the configuration files for your application. To run your application with a sandbox environment, you can run the following command:
 
 <Callout warning>
-  Be sure to add a "raw" folder under app/src/main/res directory if it doesn't
-  exist.
+
+Be sure to add a "raw" folder under app/src/main/res directory if it doesn't exist.
+
 </Callout>
 
 ```bash
@@ -113,7 +113,11 @@ After you have configured the authentication resource, you can use the Amplify U
 
 To use the Amplify UI libraries, you need to add the following dependencies to your app/build.gradle file:
 
-<Callout warning>Be sure to have compileSdk version as 34 or higher.</Callout>
+<Callout warning>
+
+Be sure to have compileSdk version as 34 or higher.
+
+</Callout>
 
 ```kotlin
 dependencies {

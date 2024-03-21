@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Migrate from v5 to v6',
-  description: 'Learn more about the migration steps to upgrade Push Notifications APIs for Amplify JavaScript v5 to v6',
+  description:
+    'Learn more about the migration steps to upgrade Push Notifications APIs for Amplify JavaScript v5 to v6',
   platforms: ['react-native']
 };
 
@@ -10,7 +11,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -114,6 +115,7 @@ The `getPermissionStatus` API in v6 has not changed in behavior; however, this A
       ```
 
     </div>
+
   </Columns>
 </Accordion>
 
@@ -411,6 +413,7 @@ The `identifyUser` API in v6 has not changed in behavior; however, it is now exp
       ```
 
     </div>
+
   </Columns>
 </Accordion>
 

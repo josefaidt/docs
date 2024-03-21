@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Warehouse Management System',
-  description: 'Configure common access patters for your app following a warehouse management system example.',
+  description:
+    'Configure common access patters for your app following a warehouse management system example.',
   platforms: [
     'javascript',
     'angular',
@@ -27,7 +28,8 @@ export const meta = {
         'javascript',
         'vue'
       ],
-      canonicalPath: '/javascript/build-a-backend/graphqlapi/best-practice/warehouse-management/'
+      canonicalPath:
+        '/javascript/build-a-backend/graphqlapi/best-practice/warehouse-management/'
     }
   ]
 };
@@ -36,7 +38,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -79,12 +81,16 @@ The following schema introduces the required indexes and relationships so that y
 ```graphql
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/auth
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
-
+input AMPLIFY {
+  globalAuthRule: AuthRule = { allow: public }
+} # FOR TESTING ONLY!
 type Order @model {
   id: ID!
-  customerID: ID! @index(name: "byCustomerByStatusByDate", sortKeyFields: ["status", "date"]) @index(name: "byCustomerByDate", sortKeyFields: ["date"])
-  accountRepresentativeID: ID! @index(name: "byRepresentativebyDate", sortKeyFields: ["date"])
+  customerID: ID!
+    @index(name: "byCustomerByStatusByDate", sortKeyFields: ["status", "date"])
+    @index(name: "byCustomerByDate", sortKeyFields: ["date"])
+  accountRepresentativeID: ID!
+    @index(name: "byRepresentativebyDate", sortKeyFields: ["date"])
   productID: ID! @index(name: "byProduct", sortKeyFields: ["id"])
   status: String!
   amount: Int!
@@ -95,19 +101,37 @@ type Customer @model {
   id: ID!
   name: String!
   phoneNumber: String
-  accountRepresentativeID: ID! @index(name: "byRepresentative", sortKeyFields: ["id"])
+  accountRepresentativeID: ID!
+    @index(name: "byRepresentative", sortKeyFields: ["id"])
   ordersByDate: [Order] @hasMany(indexName: "byCustomerByDate", fields: ["id"])
-  ordersByStatusDate: [Order] @hasMany(indexName: "byCustomerByStatusByDate", fields: ["id"])
+  ordersByStatusDate: [Order]
+    @hasMany(indexName: "byCustomerByStatusByDate", fields: ["id"])
 }
 
 type Employee @model {
   id: ID!
-  name: String! @index(name: "byName", queryField: "employeeByName", sortKeyFields: ["id"])
+  name: String!
+    @index(name: "byName", queryField: "employeeByName", sortKeyFields: ["id"])
   startDate: String!
   phoneNumber: String!
   warehouseID: ID! @index(name: "byWarehouse", sortKeyFields: ["id"])
-  jobTitle: String! @index(name: "byTitle", queryField: "employeesByJobTitle", sortKeyFields: ["id"])
-  newHire: String! @index(name: "newHire", queryField: "employeesNewHire", sortKeyFields: ["id"]) @index(name: "newHireByStartDate", queryField: "employeesNewHireByStartDate", sortKeyFields: ["startDate"])
+  jobTitle: String!
+    @index(
+      name: "byTitle"
+      queryField: "employeesByJobTitle"
+      sortKeyFields: ["id"]
+    )
+  newHire: String!
+    @index(
+      name: "newHire"
+      queryField: "employeesNewHire"
+      sortKeyFields: ["id"]
+    )
+    @index(
+      name: "newHireByStartDate"
+      queryField: "employeesNewHireByStartDate"
+      sortKeyFields: ["startDate"]
+    )
 }
 
 type Warehouse @model {
@@ -120,12 +144,18 @@ type AccountRepresentative @model {
   customers: [Customer] @hasMany(indexName: "byRepresentative", fields: ["id"])
   orders: [Order] @hasMany(indexName: "byRepresentativebyDate", fields: ["id"])
   orderTotal: Int
-  salesPeriod: String @index(name: "bySalesPeriodByOrderTotal", queryField: "repsByPeriodAndTotal", sortKeyFields: ["orderTotal"])
+  salesPeriod: String
+    @index(
+      name: "bySalesPeriodByOrderTotal"
+      queryField: "repsByPeriodAndTotal"
+      sortKeyFields: ["orderTotal"]
+    )
 }
 
 type Inventory @model {
   productID: ID! @primaryKey(sortKeyFields: ["warehouseID"])
-  warehouseID: ID! @index(name: "byWarehouseID", queryField: "itemsByWarehouseID")
+  warehouseID: ID!
+    @index(name: "byWarehouseID", queryField: "itemsByWarehouseID")
   inventoryAmount: Int!
 }
 
@@ -142,21 +172,23 @@ Now that you have the schema created, let's create the items in the database tha
 ```graphql
 # first
 mutation createWarehouse {
-  createWarehouse(input: {id: "1"}) {
+  createWarehouse(input: { id: "1" }) {
     id
   }
 }
 
 # second
 mutation createEmployee {
-  createEmployee(input: {
-    id: "amanda"
-    name: "Amanda",
-    startDate: "2018-05-22",
-    phoneNumber: "6015555555",
-    warehouseID: "1",
-    jobTitle: "Manager",
-    newHire: "true"}
+  createEmployee(
+    input: {
+      id: "amanda"
+      name: "Amanda"
+      startDate: "2018-05-22"
+      phoneNumber: "6015555555"
+      warehouseID: "1"
+      jobTitle: "Manager"
+      newHire: "true"
+    }
   ) {
     id
     jobTitle
@@ -170,11 +202,9 @@ mutation createEmployee {
 
 # third
 mutation createAccountRepresentative {
-  createAccountRepresentative(input: {
-    id: "dabit"
-    orderTotal: 400000
-    salesPeriod: "January 2019"
-  }) {
+  createAccountRepresentative(
+    input: { id: "dabit", orderTotal: 400000, salesPeriod: "January 2019" }
+  ) {
     id
     orderTotal
     salesPeriod
@@ -183,12 +213,14 @@ mutation createAccountRepresentative {
 
 # fourth
 mutation createCustomer {
-  createCustomer(input: {
-    id: "jennifer_thomas"
-    accountRepresentativeID: "dabit"
-    name: "Jennifer Thomas"
-    phoneNumber: "+16015555555"
-  }) {
+  createCustomer(
+    input: {
+      id: "jennifer_thomas"
+      accountRepresentativeID: "dabit"
+      name: "Jennifer Thomas"
+      phoneNumber: "+16015555555"
+    }
+  ) {
     id
     name
     accountRepresentativeID
@@ -198,10 +230,7 @@ mutation createCustomer {
 
 # fifth
 mutation createProduct {
-  createProduct(input: {
-    id: "yeezyboost"
-    name: "Yeezy Boost"
-  }) {
+  createProduct(input: { id: "yeezyboost", name: "Yeezy Boost" }) {
     id
     name
   }
@@ -209,11 +238,9 @@ mutation createProduct {
 
 # sixth
 mutation createInventory {
-  createInventory(input: {
-    productID: "yeezyboost"
-    warehouseID: "1"
-    inventoryAmount: 300
-  }) {
+  createInventory(
+    input: { productID: "yeezyboost", warehouseID: "1", inventoryAmount: 300 }
+  ) {
     productID
     inventoryAmount
     warehouseID
@@ -222,14 +249,16 @@ mutation createInventory {
 
 # seventh
 mutation createOrder {
-  createOrder(input: {
-    amount: 300
-    date: "2018-07-12"
-    status: "pending"
-    accountRepresentativeID: "dabit"
-    customerID: "jennifer_thomas"
-    productID: "yeezyboost"
-  }) {
+  createOrder(
+    input: {
+      amount: 300
+      date: "2018-07-12"
+      status: "pending"
+      accountRepresentativeID: "dabit"
+      customerID: "jennifer_thomas"
+      productID: "yeezyboost"
+    }
+  ) {
     id
     customerID
     accountRepresentativeID
@@ -304,9 +333,7 @@ The query one would need to get the orders to a customer within a date range wou
 ```graphql
 query getCustomerWithOrdersByDate($customerID: ID!) {
   getCustomer(id: $customerID) {
-    ordersByDate(date: {
-      between: [ "2018-01-22", "2020-10-11" ]
-    }) {
+    ordersByDate(date: { between: ["2018-01-22", "2020-10-11"] }) {
       items {
         id
         amount
@@ -327,11 +354,14 @@ In this example, a composite sort key (combination of two or more keys) with the
 query listCustomersWithOrdersByStatusDate {
   listCustomers {
     items {
-      ordersByStatusDate(statusDate: {
-        between: [
-          { status: "pending", date: "2018-01-22" },
-          { status: "pending", date: "2020-10-11" }
-        ]}) {
+      ordersByStatusDate(
+        statusDate: {
+          between: [
+            { status: "pending", date: "2018-01-22" }
+            { status: "pending", date: "2020-10-11" }
+          ]
+        }
+      ) {
         items {
           id
           amount
@@ -385,7 +415,7 @@ This needs a one to many relationship from warehouses to employees. As can be se
 query getWarehouse($warehouseID: ID!) {
   getWarehouse(id: $warehouseID) {
     id
-    employees{
+    employees {
       items {
         id
         name
@@ -464,17 +494,13 @@ As can be seen in the AccountRepresentative model this relationship uses the `by
 query getOrdersForAccountRepresentative($representativeId: ID!) {
   getAccountRepresentative(id: $representativeId) {
     id
-    orders(date: {
-      between: [
-         "2010-01-22", "2020-10-11"
-      ]
-    }) {
-        items {
-          id
-          status
-          amount
-          date
-        }
+    orders(date: { between: ["2010-01-22", "2020-10-11"] }) {
+      items {
+        id
+        status
+        amount
+        date
+      }
     }
   }
 }
@@ -515,7 +541,6 @@ query inventoryByProductAndWarehouse($productID: ID!, $warehouseID: ID!) {
     inventoryAmount
   }
 }
-
 ```
 
 You can also get all inventory from an individual warehouse by using the `itemsByWarehouseID` query created by the `byWarehouseID` key:
@@ -554,11 +579,10 @@ The sales period is either a date range or maybe even a month or week. Therefore
 ```graphql
 query repsByPeriodAndTotal {
   repsByPeriodAndTotal(
-    sortDirection: DESC,
-    salesPeriod: "January 2019",
-    orderTotal: {
-      ge: 1000
-    }) {
+    sortDirection: DESC
+    salesPeriod: "January 2019"
+    orderTotal: { ge: 1000 }
+  ) {
     items {
       id
       orderTotal

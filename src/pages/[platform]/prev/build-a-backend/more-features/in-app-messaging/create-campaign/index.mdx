@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Create an in-app messaging campaign',
-  description: 'Learn how to create a new Pinpoint campaign and configure it to be used with your Amplify project.',
+  description:
+    'Learn how to create a new Pinpoint campaign and configure it to be used with your Amplify project.',
   platforms: [
     'javascript',
     'react-native',
@@ -13,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'angular',
-        'vue',
-        'nextjs',
-        'react',
-        'javascript'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/in-app-messaging/create-campaign/'
+      platforms: ['angular', 'vue', 'nextjs', 'react', 'javascript'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/in-app-messaging/create-campaign/'
     }
   ]
 };
@@ -29,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

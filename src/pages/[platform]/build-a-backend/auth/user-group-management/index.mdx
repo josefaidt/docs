@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Set up user group management',
-  description: 'Create logical groups in Cognito User Pools and assign permissions to access resources in Amplify categories with the Amplify CLI.',
+  description:
+    'Create logical groups in Cognito User Pools and assign permissions to access resources in Amplify categories with the Amplify CLI.',
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

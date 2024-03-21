@@ -1,10 +1,9 @@
 export const meta = {
   title: 'Connect your app to an existing data backend',
-  description:
-    'Learn how to connect your app to an existing data backend.'
+  description: 'Learn how to connect your app to an existing data backend.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -61,8 +60,8 @@ import { schema as rdsSchema } from './schema.rds.ts';
 const schema = a.schema({
   Todo: a.model({
     content: a.string(),
-    isDone: a.boolean(),
-  }),
+    isDone: a.boolean()
+  })
 });
 
 // Use the `.combine()` operator to stitch together the models backed by DynamoDB
@@ -74,7 +73,7 @@ const combinedSchema = a.schema.combine([schema, rdsSchema]);
 export type Schema = typeof schema;
 export const data = defineData({
   // highlight-next-line
-  schema: combinedSchema,
+  schema: combinedSchema
 });
 ```
 

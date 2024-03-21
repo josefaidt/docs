@@ -1,8 +1,9 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'SSM Parameter Store',
-  description: 'Version 11 of Amplify CLI will start using Parameter Store from AWS Systems Manager (SSM). Parameter Store will be used to keep a copy of the various values stored in team-provider-info.json. Amplify CLI will use standard parameters to keep this copy of the values. This usage falls under the permanent free tier of SSM.',
+  description:
+    'Version 11 of Amplify CLI will start using Parameter Store from AWS Systems Manager (SSM). Parameter Store will be used to keep a copy of the various values stored in team-provider-info.json. Amplify CLI will use standard parameters to keep this copy of the values. This usage falls under the permanent free tier of SSM.',
   platforms: [
     'android',
     'angular',
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -44,7 +45,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 Version 11 of Amplify CLI will start using [Parameter Store from AWS Systems Manager (SSM)](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html). Parameter Store will be used to keep a copy of the various values stored in `team-provider-info.json`. Amplify CLI will use standard parameters to keep this copy of the values. This usage falls under the permanent free tier of SSM.
 

@@ -1,20 +1,12 @@
 import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
-                  
+
 export const meta = {
   title: 'Bind UI to data',
   description: 'Figma to React code with Amplify Studio',
-  platforms: [
-    'javascript',
-    'nextjs',
-    'react'
-  ],
+  platforms: ['javascript', 'nextjs', 'react'],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'nextjs',
-        'react'
-      ],
+      platforms: ['javascript', 'nextjs', 'react'],
       canonicalPath: '/javascript/tools/console/tutorial/bindui/'
     }
   ]
@@ -24,7 +16,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -32,7 +24,6 @@ export function getStaticProps(context) {
     }
   };
 }
-          
 
 Studio also allows you to bind UI elements to real backend data. Add properties to components, then reference the properties in your child UI elements. To get started, first, [login to Amplify Studio](/[platform]/tools/console/adminui/start/#logging-in-and-creating-an-app), then navigate into a UI component by choosing the **Configure** button in the **UI Library**. For this example, you'll use the _CardB_ component.
 

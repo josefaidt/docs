@@ -27,7 +27,8 @@ export const meta = {
         'android',
         'swift'
       ],
-      canonicalPath: '/javascript/build-a-backend/graphqlapi/best-practice/query-with-sorting/'
+      canonicalPath:
+        '/javascript/build-a-backend/graphqlapi/best-practice/query-with-sorting/'
     }
   ]
 };
@@ -36,7 +37,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Migrate from v5 to v6',
-  description: 'Learn more about the migration steps to upgrade In-app messaging APIs for Amplify JavaScript v5 to v6',
+  description:
+    'Learn more about the migration steps to upgrade In-app messaging APIs for Amplify JavaScript v5 to v6',
   platforms: [
     'javascript',
     'react-native',
@@ -21,7 +22,8 @@ export const meta = {
         'javascript',
         'nextjs'
       ],
-      canonicalPath: '/javascript/build-a-backend/more-features/in-app-messaging/in-app-messaging-migration-guide/'
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/in-app-messaging/in-app-messaging-migration-guide/'
     }
   ]
 };
@@ -30,7 +32,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -250,6 +252,7 @@ The `identifyUser` API in v6 has not changed in behavior; however, it is now exp
       ```
 
     </div>
+
   </Columns>
 </Accordion>
 
@@ -515,6 +518,7 @@ The way to notify any interaction event listeners of your users' interactions wi
       ```
 
     </div>
+
   </Columns>
 </Accordion>
 

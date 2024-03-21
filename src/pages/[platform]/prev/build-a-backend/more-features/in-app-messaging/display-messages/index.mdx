@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Display messages',
-  description: 'Learn how in-app messages are displayed when an In-App Messaging or analytics event is sent and matches the criteria set forth by your active In-App Messaging campaigns.',
+  description:
+    'Learn how in-app messages are displayed when an In-App Messaging or analytics event is sent and matches the criteria set forth by your active In-App Messaging campaigns.',
   platforms: [
     'javascript',
     'react-native',
@@ -13,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'angular',
-        'nextjs',
-        'javascript',
-        'react'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/more-features/in-app-messaging/display-messages/'
+      platforms: ['vue', 'angular', 'nextjs', 'javascript', 'react'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/more-features/in-app-messaging/display-messages/'
     }
   ]
 };
@@ -29,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

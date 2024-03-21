@@ -1,9 +1,10 @@
 export const meta = {
   title: 'Signed-in user data access',
-  description: "The `private` authorization strategy restricts record access to only signed-in users authenticated through IAM, Cognito, or OpenID Connect, applying the authorization rule to all users. It provides a simple way to make data private to all authenticated users."
+  description:
+    'The `private` authorization strategy restricts record access to only signed-in users authenticated through IAM, Cognito, or OpenID Connect, applying the authorization rule to all users. It provides a simple way to make data private to all authenticated users.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -18,7 +19,11 @@ The `private` authorization strategy restricts record access to only signed-in u
 You can use the `private` authorization strategy to restrict a record's access to every signed-in user.
 
 <Callout>
-**Note:** If you want to restrict a record's access to a specific user, see [Per-user/per-owner data access](/gen2/build-a-backend/data/customize-authz/per-user-per-owner-data-access/). The `private` authorization strategy detailed on this page applies the authorization rule for data access to **every** signed-in user.
+  **Note:** If you want to restrict a record's access to a specific user, see
+  [Per-user/per-owner data
+  access](/gen2/build-a-backend/data/customize-authz/per-user-per-owner-data-access/).
+  The `private` authorization strategy detailed on this page applies the
+  authorization rule for data access to **every** signed-in user.
 </Callout>
 
 In the example below, anyone with a valid JWT token from the Cognito user pool is allowed access to all Todos.
@@ -27,9 +32,9 @@ In the example below, anyone with a valid JWT token from the Cognito user pool i
 const schema = a.schema({
   Todo: a
     .model({
-      content: a.string(),
+      content: a.string()
     })
-    .authorization([a.allow.private()]),
+    .authorization([a.allow.private()])
 });
 ```
 
@@ -41,9 +46,9 @@ You can also override the authorization provider. In the example below, `iam` is
 const schema = a.schema({
   Todo: a
     .model({
-      content: a.string(),
+      content: a.string()
     })
-    .authorization([a.allow.private('iam')]),
+    .authorization([a.allow.private('iam')])
 });
 ```
 

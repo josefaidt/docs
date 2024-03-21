@@ -3,24 +3,13 @@ import { getChildPageNodes } from '@/utils/getChildPageNodes';
 
 export const meta = {
   title: 'Deployment',
-  description: 'With Amplify Hosting, developers building apps with Amplify can continuously deploy updates to their backend and frontend on every code commit.',
-  platforms: [
-    'angular',
-    'javascript',
-    'nextjs',
-    'react',
-    'vue'
-  ],
+  description:
+    'With Amplify Hosting, developers building apps with Amplify can continuously deploy updates to their backend and frontend on every code commit.',
+  platforms: ['angular', 'javascript', 'nextjs', 'react', 'vue'],
   route: '/[platform]/deploy-and-host/deployment',
   canonicalObjects: [
     {
-      platforms: [
-        'vue',
-        'nextjs',
-        'react',
-        'javascript',
-        'angular'
-      ],
+      platforms: ['vue', 'nextjs', 'react', 'javascript', 'angular'],
       canonicalPath: '/javascript/deploy-and-host/deployment/'
     }
   ]
@@ -30,7 +19,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   const childPageNodes = getChildPageNodes(meta.route);
   return {
     props: {

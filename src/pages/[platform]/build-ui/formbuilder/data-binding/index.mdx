@@ -2,19 +2,12 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Data binding',
-  description: 'Cloud connected forms can be bound to data models with relationships, allowing multiple data models to be updated upon submission.',
-  platforms: [
-    'javascript',
-    'react', 
-    'nextjs'
-  ],
+  description:
+    'Cloud connected forms can be bound to data models with relationships, allowing multiple data models to be updated upon submission.',
+  platforms: ['javascript', 'react', 'nextjs'],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'react', 
-        'nextjs'
-      ],
+      platforms: ['javascript', 'react', 'nextjs'],
       canonicalPath: '/javascript/build-ui/formbuilder/data-binding/'
     }
   ]
@@ -24,7 +17,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

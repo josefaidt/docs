@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Identify a user',
-  description: 'Learn how to segment and target your In-App Messaging campaigns to specific user subsets.',
+  description:
+    'Learn how to segment and target your In-App Messaging campaigns to specific user subsets.',
   platforms: [
     'javascript',
     'react-native',
@@ -13,14 +14,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'nextjs',
-        'vue',
-        'javascript',
-        'angular'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/in-app-messaging/identify-user/'
+      platforms: ['react', 'nextjs', 'vue', 'javascript', 'angular'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/in-app-messaging/identify-user/'
     }
   ]
 };
@@ -29,7 +25,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

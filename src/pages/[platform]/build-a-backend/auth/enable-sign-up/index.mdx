@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Enable sign-up, sign-in, and sign-out',
-  description: "Learn how to use Amplify's sign-up, sign-in, and sign-out APIs.",
+  description:
+    "Learn how to use Amplify's sign-up, sign-in, and sign-out APIs.",
   platforms: [
     'javascript',
     'react-native',
@@ -13,13 +14,7 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'nextjs',
-        'angular',
-        'javascript',
-        'vue',
-        'react'
-      ],
+      platforms: ['nextjs', 'angular', 'javascript', 'vue', 'react'],
       canonicalPath: '/javascript/build-a-backend/auth/enable-sign-up/'
     }
   ]
@@ -29,7 +24,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

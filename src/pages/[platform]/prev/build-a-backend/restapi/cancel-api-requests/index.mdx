@@ -13,14 +13,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'react',
-        'javascript',
-        'vue',
-        'nextjs',
-        'angular'
-      ],
-      canonicalPath: '/javascript/prev/build-a-backend/restapi/cancel-api-requests/'
+      platforms: ['react', 'javascript', 'vue', 'nextjs', 'angular'],
+      canonicalPath:
+        '/javascript/prev/build-a-backend/restapi/cancel-api-requests/'
     }
   ]
 };
@@ -29,7 +24,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

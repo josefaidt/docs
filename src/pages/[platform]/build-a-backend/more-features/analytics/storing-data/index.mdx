@@ -2,24 +2,14 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Storing analytics data',
-  description: 'The Amazon Kinesis Firehose analytics provider allows you to send analytics data to an Amazon Kinesis Firehose stream for reliably storing data.',
-  platforms: [
-    'javascript',
-    'angular',
-    'nextjs',
-    'react',
-    'vue'
-  ],
+  description:
+    'The Amazon Kinesis Firehose analytics provider allows you to send analytics data to an Amazon Kinesis Firehose stream for reliably storing data.',
+  platforms: ['javascript', 'angular', 'nextjs', 'react', 'vue'],
   canonicalObjects: [
     {
-      platforms: [
-        'nextjs',
-        'javascript',
-        'vue',
-        'angular',
-        'react'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/analytics/storing-data/'
+      platforms: ['nextjs', 'javascript', 'vue', 'angular', 'react'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/analytics/storing-data/'
     }
   ]
 };
@@ -28,7 +18,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

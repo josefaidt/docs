@@ -4,7 +4,7 @@ export const meta = {
     'Learn how to build and customize sign-up, sign-in, and sign-out from scratch.'
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       meta
@@ -47,16 +47,16 @@ import { defineAuth } from '@aws-amplify/backend';
 
 export const auth = defineAuth({
   loginWith: {
-    email: true,
+    email: true
   },
-// highlight-start
+  // highlight-start
   userAttributes: {
     birthdate: {
       required: false,
-      mutable: false,
-    },
-  },
-// highlight-end
+      mutable: false
+    }
+  }
+  // highlight-end
 });
 ```
 
@@ -194,17 +194,17 @@ You can change the verification email by overriding the `verificationEmailStyle`
 
 ```ts title="amplify/auth/resource.ts"
 // amplify/auth/resource.ts
-import { defineAuth } from "@aws-amplify/backend";
+import { defineAuth } from '@aws-amplify/backend';
 
 export const auth = defineAuth({
   loginWith: {
     email: {
-      verificationEmailStyle: "CODE",
+      verificationEmailStyle: 'CODE',
       verificationEmailBody: (code: string) =>
         `Welcome! Your verification code is ${code}.`,
-      verificationEmailSubject: "Welcome! Here is your verification code",
-    },
-  },
+      verificationEmailSubject: 'Welcome! Here is your verification code'
+    }
+  }
 });
 ```
 

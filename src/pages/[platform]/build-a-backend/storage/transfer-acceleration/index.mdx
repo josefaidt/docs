@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Use transfer acceleration',
-  description: 'Learn how to enable and use Transfer Acceleration on your S3 bucket',
+  description:
+    'Learn how to enable and use Transfer Acceleration on your S3 bucket',
   platforms: [
     'javascript',
     'flutter',
@@ -24,7 +25,8 @@ export const meta = {
         'react',
         'javascript'
       ],
-      canonicalPath: '/javascript/build-a-backend/storage/transfer-acceleration/'
+      canonicalPath:
+        '/javascript/build-a-backend/storage/transfer-acceleration/'
     }
   ]
 };
@@ -33,7 +35,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -81,6 +83,7 @@ Next, deploy this storage resource:
 ```sh
 amplify push
 ```
+
 </InlineFilter>
 
 <InlineFilter filters={['javascript', 'react-native', 'angular', 'nextjs', 'react', 'vue']}>
@@ -114,6 +117,7 @@ The following Storage APIs support accelerated endpoint
 ## Upload files using the accelerated S3 endpoint
 
 We switch to the accelerated S3 endpoint by using the `useAccelerateEndpoint` parameter set to `true` in the `AWSS3StorageUploadFileOptions`.
+
 <BlockSwitcher>
 
 <Block name="Java">
@@ -129,6 +133,7 @@ AWSS3StorageUploadFileOptions awsS3StorageUploadFileOptions =
    storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
 );
 ```
+
 </Block>
 <Block name="Kotlin - Callbacks">
 
@@ -144,6 +149,7 @@ val awsS3StorageUploadFileOptions = AWSS3StorageUploadFileOptions.builder().
    { Log.e("MyAmplifyApp", "Upload failed", it) }
 )
 ```
+
 </Block>
 <Block name="Kotlin - Coroutines">
 
@@ -160,6 +166,7 @@ try {
 }
 )
 ```
+
 </Block>
 <Block name="RxJava">
 
@@ -176,6 +183,7 @@ rxUploadOperation
             );
 );
 ```
+
 </Block>
 </BlockSwitcher>
 <Callout>Note: useAccelerateEndpoint flag is available in AWSS3StorageUploadFileOptions, AWSS3StorageUploadInputStreamOptions, AWSS3StorageDownloadFileOptions and AWSS3StorageGetPresignedUrlOptions</Callout>
@@ -188,11 +196,11 @@ rxUploadOperation
 
 You can use transfer acceleration when calling the following APIs:
 
-* `getUrl`
-* `downloadData`
-* `downloadFile`
-* `uploadData`
-* `uploadFile`
+- `getUrl`
+- `downloadData`
+- `downloadFile`
+- `uploadData`
+- `uploadFile`
 
 Set `useAccelerateEndpoint` to `true` in the corresponding Storage S3 plugin options to apply an accelerated S3 endpoint to the operation. For example, upload a file using transfer acceleration:
 
@@ -227,6 +235,7 @@ Future<void> uploadFileUsingAcceleration(String filePath, String key) async {
 ## Use Transfer Acceleration on Storage Operations
 
 You can use transfer acceleration by setting `"useAccelerateEndpoint"` to `true` in the corresponding `pluginOptions` for any of the following Storage APIs:
+
 - `getUrl(key:options:)`
 - `downloadData(key:options:)`
 - `downloadFile(key:local:options:)`

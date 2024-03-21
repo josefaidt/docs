@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'How it works',
-  description: 'Amplify DataStore provides a persistent on-device storage repository for you to write, read, and observe changes to data if you are online or offline, and seamlessly sync to the cloud as well as across devices. Learn more about how it works.',
+  description:
+    'Amplify DataStore provides a persistent on-device storage repository for you to write, read, and observe changes to data if you are online or offline, and seamlessly sync to the cloud as well as across devices. Learn more about how it works.',
   platforms: [
     'javascript',
     'react-native',
@@ -16,14 +17,9 @@ export const meta = {
   ],
   canonicalObjects: [
     {
-      platforms: [
-        'javascript',
-        'react',
-        'nextjs',
-        'vue',
-        'angular'
-      ],
-      canonicalPath: '/javascript/build-a-backend/more-features/datastore/how-it-works/'
+      platforms: ['javascript', 'react', 'nextjs', 'vue', 'angular'],
+      canonicalPath:
+        '/javascript/build-a-backend/more-features/datastore/how-it-works/'
     }
   ]
 };
@@ -32,7 +28,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

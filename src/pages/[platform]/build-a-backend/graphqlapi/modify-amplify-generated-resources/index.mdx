@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'Modify Amplify-generated resources',
-  description: 'Learn more about how to modify Amplify-generated resources for Amplify GraphQL APIs. This allows you to modify underlying AppSync, DynamoDB, Lambda, and OpenSearch resources.',
+  description:
+    'Learn more about how to modify Amplify-generated resources for Amplify GraphQL APIs. This allows you to modify underlying AppSync, DynamoDB, Lambda, and OpenSearch resources.',
   platforms: [
     'javascript',
     'react-native',
@@ -27,7 +28,8 @@ export const meta = {
         'javascript',
         'react'
       ],
-      canonicalPath: '/javascript/build-a-backend/graphqlapi/modify-amplify-generated-resources/'
+      canonicalPath:
+        '/javascript/build-a-backend/graphqlapi/modify-amplify-generated-resources/'
     }
   ]
 };
@@ -36,7 +38,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,

@@ -2,7 +2,8 @@ import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
 
 export const meta = {
   title: 'List files',
-  description: "Learn more about how to list all of the uploaded objects using Amplify's storage category.",
+  description:
+    "Learn more about how to list all of the uploaded objects using Amplify's storage category.",
   platforms: [
     'javascript',
     'flutter',
@@ -33,7 +34,7 @@ export const getStaticPaths = async () => {
   return getCustomStaticPath(meta.platforms);
 };
 
-export function getStaticProps(context) {
+export function getStaticProps() {
   return {
     props: {
       platform: context.params.platform,
@@ -136,8 +137,8 @@ To list current user's objects:
 import { list } from 'aws-amplify/storage';
 
 try {
-  const response = await list({ 
-    prefix: 'photos/', 
+  const response = await list({
+    prefix: 'photos/',
     options:  {
       accessLevel: 'protected',
     }
@@ -154,8 +155,8 @@ To list other user's objects:
 import { list } from 'aws-amplify/storage';
 
 try {
-  const response = await list({ 
-    prefix: 'photos/', 
+  const response = await list({
+    prefix: 'photos/',
     options:  {
       accessLevel: 'protected',
       targetIdentityId: 'xxxxxxx' // the identityId of that user
@@ -173,8 +174,8 @@ try {
 import { list } from 'aws-amplify/storage';
 
 try {
-  const response = await list({ 
-    prefix: 'photos/', 
+  const response = await list({
+    prefix: 'photos/',
     options:  {
       accessLevel: 'private',
     }
