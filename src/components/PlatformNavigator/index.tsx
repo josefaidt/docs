@@ -1,6 +1,6 @@
+import { useRouter } from 'next/router';
 import { Flex, Text, View } from '@aws-amplify/ui-react';
 import { frameworks } from '@/constants/frameworks';
-
 import { VersionSwitcher } from '../VersionSwitcher';
 import { Popover } from '../Popover';
 import {
@@ -18,7 +18,10 @@ export function PlatformNavigator({
   currentPlatform,
   isGen1
 }: PlatformNavigatorProps) {
+  const router = useRouter();
   const platformTitle = PLATFORM_DISPLAY_NAMES[currentPlatform];
+  // strip the current platform from the route
+  const currentPlatformRoute = router.pathname.replace('/[platform]', '');
 
   const platformItem = frameworks.filter((platform) => {
     return platform.title === platformTitle;
@@ -56,7 +59,11 @@ export function PlatformNavigator({
                   <Popover.ListItem
                     current={current}
                     key={`platform-${index}`}
-                    href={isGen1 ? `/gen1${platform.href}` : platform.href}
+                    href={
+                      isGen1
+                        ? `/gen1${platform.href}${currentPlatformRoute}`
+                        : `${platform.href}${currentPlatformRoute}`
+                    }
                   >
                     {platform.icon}
                     {platform.title}
