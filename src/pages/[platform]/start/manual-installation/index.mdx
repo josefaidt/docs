@@ -46,7 +46,7 @@ npm add --save-dev @aws-amplify/backend@latest @aws-amplify/backend-cli@latest t
 
 Next, create the entry point for your backend, `amplify/backend.ts`, with the following code:
 
-```ts
+```ts title="amplify/backend.ts"
 import { defineBackend } from '@aws-amplify/backend';
 
 defineBackend({});
@@ -64,7 +64,7 @@ The current file is a CommonJS module whose imports will produce 'require' calls
 
 Or, you can create a local file in the Amplify backend directory, `amplify/package.json`:
 
-```json
+```json title="amplify/package.json"
 {
   "type": "module"
 }
