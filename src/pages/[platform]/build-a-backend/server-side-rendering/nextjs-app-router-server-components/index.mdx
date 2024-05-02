@@ -240,9 +240,7 @@ export default function Login() {
 
 Finally, create a `Logout` component to be used later.
 
-```ts title="components/Logout.tsx"
-// components/Logout.tsx
-
+```tsx title="components/Logout.tsx"
 "use client";
 
 import { signOut } from "aws-amplify/auth";
@@ -296,11 +294,8 @@ This middleware runs `fetchAuthSession` wrapped in `runWithAmplifyServerContext`
 
 
 ```ts title="middleware.ts"
-// middleware.ts
-import { NextRequest, NextResponse } from "next/server";
-
+import type { NextRequest, NextResponse } from "next/server";
 import { fetchAuthSession } from "aws-amplify/auth/server";
-
 import { runWithAmplifyServerContext } from "@/utils/amplify-utils";
 
 export async function middleware(request: NextRequest) {
@@ -351,9 +346,7 @@ The code below uses the `cookiesClient` to provide access to the `Todo` model de
 
 Modify your app's home page file, `app/page.tsx`, with the following code:
 
-```ts title="app/page.tsx"
-// app/page.tsx
-
+```tsx title="app/page.tsx"
 import { cookiesClient } from "@/utils/amplify-utils";
 
 async function App() {
@@ -380,13 +373,9 @@ Let's update the component to have a form for prompting the user for the title f
 
 After creating a to-do, `revalidatePath` is run to clear the Next.js cache for this route to instantly update the results from the server without a full page reload.
 
-```ts title="app/page.tsx"
-// app/page.tsx
-
+```tsx title="app/page.tsx"
 import { revalidatePath } from "next/cache";
-
 import { AuthGetCurrentUserServer, cookiesClient } from "@/utils/amplify-utils";
-
 import Logout from "@/components/Logout";
 
 async function App() {

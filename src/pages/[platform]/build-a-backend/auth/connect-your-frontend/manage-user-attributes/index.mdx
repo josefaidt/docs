@@ -232,7 +232,7 @@ You can use the `updateUserAttribute` API to create or update existing user attr
 <BlockSwitcher>
 <Block name="TypeScript">
 
-```typescript
+```ts
 import {
   updateUserAttribute,
   type UpdateUserAttributeOutput
@@ -516,7 +516,7 @@ Future<void> updateUserAttributes() async {
 You can use the `updateUserAttributes` API to create or update multiple existing user attributes.
 
 <InlineFilter filters={['javascript', 'angular', 'react', 'vue', 'react-native', 'nextjs']}>
-```typescript
+```ts
 import { updateUserAttributes, type UpdateUserAttributesOutput } from "aws-amplify/auth";
 
 await updateUserAttributes({
@@ -586,7 +586,7 @@ RxAmplify.Auth.updateUserAttributes(attributes)
 Some attributes require confirmation for the attribute update to complete. If the attribute needs to be confirmed, part of the result of the `updateUserAttribute` or `updateUserAttributes` APIs will be `CONFIRM_ATTRIBUTE_WITH_CODE`. A confirmation code will be sent to the delivery medium mentioned in the delivery details. When the user gets the confirmation code, you can present a UI to the user to enter the code and invoke the `confirmUserAttribute` API with their input:
 
 <InlineFilter filters={['javascript', 'angular', 'react', 'vue', 'react-native', 'nextjs']}>
-```typescript
+```ts
 import {
   confirmUserAttribute,
   type ConfirmUserAttributeInput

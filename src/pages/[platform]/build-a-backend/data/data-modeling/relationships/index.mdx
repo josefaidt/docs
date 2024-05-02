@@ -47,7 +47,7 @@ Create a one-to-many relationship between two models using the `hasMany()` and `
 2. Add a **relationship field** called `team` that references the `teamId` field. This allows you to query for the team information from the **Member** model.
 3. Add a **relationship field** called `members` that references the `teamId` field on the **Member** model.
 
-```typescript
+```ts
 const schema = a.schema({
   Member: a.model({
     name: a.string().required(),
@@ -468,7 +468,7 @@ Create a one-to-one relationship between two models using the `hasOne()` and `be
 2. Add a **relationship field** called `customer` that references the `customerId` field. This allows you to query for the customer information from the **Cart** model.
 3. Add a **relationship field** called `activeCart` that references the `customerId` field on the **Cart** model.
 
-```typescript
+```ts
 const schema = a.schema({
   Cart: a.model({
     items: a.string().required().array(),
@@ -835,7 +835,7 @@ val cart = Amplify.API.query(
 ## Model a "many-to-many" relationship
 In order to create a many-to-many relationship between two models, you have to create a model that serves as a "join table". This "join table" should contain two one-to-many relationships between the two related entities. For example, to model a **Post** that has many **Tags** and a **Tag** has many **Posts**, you'll need to create a new **PostTag** model that represents the relationship between these two entities.
 
-```typescript
+```ts
 const schema = a.schema({
   PostTag: a.model({
     // 1. Create reference fields to both ends of
@@ -874,7 +874,7 @@ const schema = a.schema({
 
 Relationships are defined uniquely by their reference fields. For example, a Post can have separate relationships with a Person model for `author` and `editor`.
 
-```typescript
+```ts
 const schema = a.schema({
   Post: a.model({
     title: a.string().required(),

@@ -50,7 +50,7 @@ You can create an `amplifyServerUtils.ts` file under a `utils` folder in your co
 
 For example, the `utils/amplifyServerUtils.ts` file may contain the following content:
 
-```typescript
+```ts
 import { createServerRunner } from '@aws-amplify/adapter-nextjs';
 import outputs from '@/amplify_outputs.json';
 
@@ -75,9 +75,8 @@ When you use the Amplify library on the client-side of your Next.js app, you wil
 
 </Callout>
 
-```typescript
+```ts
 'use client';
-
 import outputs from '@/amplify_outputs.json';
 import { Amplify } from 'aws-amplify';
 
@@ -106,7 +105,7 @@ If you're using the Next.js App Router, you can create a client component to con
 
 `ConfigureAmplifyClientSide.ts`:
 
-```typescript
+```ts title="app/ConfigureAmplifyClientSide.ts"
 'use client';
 
 import { Amplify } from 'aws-amplify';
@@ -121,7 +120,7 @@ export default function ConfigureAmplifyClientSide() {
 
 `layout.tsx`:
 
-```jsx
+```tsx title="app/layout.tsx"
 import ConfigureAmplifyClientSide from '@/components/ConfigureAmplifyClientSide';
 import './globals.css';
 
@@ -160,7 +159,7 @@ You can use the Amplify Auth category APIs to sign up and sign in your end users
 
 You can use the `fetchAuthSession` API to check the auth sessions that are attached to the incoming requests in the middleware of your Next.js app to protect your routes. For example:
 
-```typescript
+```ts
 import { fetchAuthSession } from 'aws-amplify/auth/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { runWithAmplifyServerContext } from '@/utils/amplifyServerUtils';
@@ -306,7 +305,7 @@ export default async function StaticallyRenderedPage() {
 
 In route handlers require implementing an API route that enables `GET /apis/get-current-user`.
 
-```typescript
+```ts
 import { getCurrentUser } from 'aws-amplify/auth/server';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
@@ -330,7 +329,7 @@ When you call `fetch('/apis/get-current-user')` it returns a payload that contai
 
 The following example extracts current user data from the request and provides them to a page react component via its props.
 
-```typescript
+```ts
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const currentUser = await runWithAmplifyServerContext({
     nextServerContext: { request: req, response: res },
@@ -345,7 +344,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 Similar to static rendering with the App Router, you can pass `null` as the value of the `nextServerContext` parameter to use the Amplify Storage API with guest access.
 
-```typescript
+```ts
 export async function getStaticProps() {
   const splashUrl = await runWithAmplifyServerContext({
     nextServerContext: null,
