@@ -1,0 +1,46 @@
+import { getCustomStaticPath } from '@/utils/getCustomStaticPath';
+import api from "./api.json"
+
+export const meta = {
+  title: api.packageName,
+  description: `Reference for ${api.packageName}`,
+  platforms: [
+    'android',
+    'angular',
+    'flutter',
+    'javascript',
+    'nextjs',
+    'react',
+    'react-native',
+    'swift',
+    'vue'
+  ]
+};
+
+export async function getStaticPaths() {
+  return getCustomStaticPath(meta.platforms);
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      meta,
+    }
+  };
+}
+
+export function slugify(text) {
+  return text
+    .toLowerCase()
+    .normalize('NFD')  // Normalize to decomposed form
+    .replace(/[^\p{L}\p{N}\p{Pd}-]+/gu, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+{api.children.map((child) => (
+  <>
+    <h2 key={child.id} id={slugify(child.name)}>{child.name}</h2>
+
+  </>
+))}

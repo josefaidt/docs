@@ -983,6 +983,9 @@ export const directory = {
               path: 'src/pages/[platform]/reference/project-structure/index.mdx'
             },
             {
+              path: 'src/pages/[platform]/reference/aws-amplify-backend/index.tsx'
+            },
+            {
               path: 'src/pages/[platform]/reference/amplify_outputs/index.mdx'
             },
             {
