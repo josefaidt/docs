@@ -6,7 +6,10 @@ import rehypeMdxCodeProps from 'rehype-mdx-code-props';
 const require = createRequire(import.meta.url);
 import rehypeImgSize from 'rehype-img-size';
 import remarkGfm from 'remark-gfm';
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypeSlug from 'rehype-slug';
+import recmaMdxFrontmatter from './plugins/recma-mdx-frontmatter.mjs';
 
 dotenv.config({ path: './.env.custom' });
 
@@ -14,12 +17,13 @@ const nextJSConfig = () => {
   const withMDX = createMDX({
     extension: /\.mdx$/,
     options: {
-      remarkPlugins: [remarkGfm],
+      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
       rehypePlugins: [
         [rehypeImgSize, { dir: 'public' }],
         rehypeMdxCodeProps,
         rehypeSlug
-      ]
+      ],
+      recmaPlugins: [recmaMdxFrontmatter]
     }
   });
 

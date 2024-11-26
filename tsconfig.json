@@ -31,6 +31,8 @@
     "src/**/*.tsx",
     "tasks",
     "adobe.d.ts",
-    "jest.setup.ts"
+    "jest.setup.ts",
+    "mdx-components.tsx",
+    "mdx.d.ts"
   ]
 }
