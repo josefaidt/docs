@@ -11,5 +11,6 @@
   },
   "[mdx]": {
     "editor.wordWrap": "on"
-  }
+  },
+  "cSpell.ignorePaths": ["./*.json", ".vscode/**", ".github/**"]
 }
