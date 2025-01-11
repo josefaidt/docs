@@ -394,6 +394,7 @@ import {
   GetCredentialsOptions,
   AuthTokens,
 } from 'aws-amplify/auth';
+import outputs from '../amplify_outputs.json';
 
 // Note: This example requires installing `@aws-sdk/client-cognito-identity` to obtain Cognito credentials
 // npm i @aws-sdk/client-cognito-identity
@@ -458,7 +459,7 @@ class CustomCredentialsProvider implements CredentialsAndIdentityIdProvider {
 
 // Create an instance of your custom provider
 const customCredentialsProvider = new CustomCredentialsProvider();
-Amplify.configure(awsconfig, {
+Amplify.configure(outputs, {
   Auth: {
     // Supply the custom credentials provider to Amplify
     credentialsProvider: customCredentialsProvider
@@ -753,9 +754,10 @@ Note: To work with Service Interface Objects, your Amazon Cognito users' [IAM ro
 
 Create a custom Auth token provider for situations where you would like provide your own tokens for a service. For example, using OIDC Auth with AppSync.  You must supply the token provider to Amplify via the `Amplify.configure` method call. Below, you can see sample code of how such a custom provider can be built to achieve the use case.
 
-```javascript
+```ts
 import { Amplify } from 'aws-amplify';
 import { TokenProvider, decodeJWT } from 'aws-amplify/auth';
+import outputs from '../amplify_outputs.json';
 
 // ...
 
@@ -775,7 +777,7 @@ const myTokenProvider: TokenProvider = {
   },
 };
 
-Amplify.configure(awsconfig, {
+Amplify.configure(outputs, {
   Auth: {
     tokenProvider: myTokenProvider
   }

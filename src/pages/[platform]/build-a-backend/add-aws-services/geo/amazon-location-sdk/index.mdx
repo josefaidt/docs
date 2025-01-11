@@ -70,7 +70,7 @@ const createClient = async () => {
   const session = await fetchAuthSession();
   const client = new LocationClient({
     credentials: session.credentials,
-    region: amplifyconfig.aws_project_region
+    region: outputs.auth.aws_region
   });
   return client;
 };
